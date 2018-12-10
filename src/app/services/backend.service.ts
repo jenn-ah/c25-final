@@ -94,9 +94,9 @@ constructor(
   private http: HttpClient,
 ){}
 
-getCustomer(){
-  const url = this.baseUrl + "/users";
-  return this.http.get(url).toPromise();
+customerLogin(username, password){
+  const customerUrl = this.baseUrl + "/customers";
+  return this.http.post(customerUrl, { username: username, password:password}).toPromise();
 }
 
 

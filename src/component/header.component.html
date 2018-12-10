@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" *ngIf=loggedIn>
 <div class="categories">
   <h2><a routerLink="" *ngIf="isLoggedIn">Categories</a></h2>
   <select name="categories" id="categories">

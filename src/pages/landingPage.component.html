@@ -1,4 +1,4 @@
-<div class="landingPage">
+<div class="landingPage" >
 <div class="Customerlogin">
   <h2><a (click)="customerLoginBtnPress()">Customer Login</a></h2>
   <form *ngIf="customerLoginPressed">
@@ -6,7 +6,7 @@
     <input type="text" name="username" id="username" [(ngModel)]="username">
     <label for="password">Password</label>
     <input type="text" name="password" id="password" [(ngModel)]="password">
-    <button (click)="userLogin()">Submit</button>
+    <button (click)="customerLogin()">Submit</button>
   </form>
 </div>
 <div class="vendorLogin">
@@ -16,7 +16,7 @@
     <input type="text" name="username" id="username" [(ngModel)]="username">
     <label for="password">Password</label>
     <input type="text" name="password" id="password" [(ngModel)]="password">
-    <button (click)="userLogin()">Submit</button>
+    <button (click)="vendorLogin()">Submit</button>
   </form>
 </div>
 <div class="customerRegister">
