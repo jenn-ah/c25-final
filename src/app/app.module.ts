@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '../component/header.component';
 import { LandingPageComponent } from '../pages/landingPage.component';
 import { DashboardComponent } from 'src/component/dashboard/dashboard.component';
+import { MessageComponent } from 'src/pages/message/message.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DashboardComponent } from 'src/component/dashboard/dashboard.component'
     AppComponent,
     HeaderComponent,
     LandingPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    MessageComponent
   
   ],
   imports: [
