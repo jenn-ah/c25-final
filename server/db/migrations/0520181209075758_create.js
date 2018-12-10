@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
     table.string('website', 255);
     table.string('description', 1000);
     table.integer('phone_number');
-    table.integer('license_number');
+    table.string('license_number');
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
   })
