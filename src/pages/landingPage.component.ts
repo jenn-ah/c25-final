@@ -12,7 +12,8 @@ export class LandingPageComponent implements OnInit {
   vendorLoginPressed: boolean = false;
   username: string;
   password: string;
-
+  isCustomer: boolean = true;
+  isVendor: boolean = true;
 
 
   constructor(
@@ -22,17 +23,19 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() { };
 
   customerLoginBtnPress() {
+    this.isVendor = false;
     return this.customerLoginPressed = true;
   }
 
   vendorLoginBtnPress() {
+    this.isCustomer = false;
     return this.vendorLoginPressed = true;
   }
 
-customerLogin(){
-  return this.backend.customerLogin
-  
-}
+  customerLogin() {
+    return this.backend.customerLogin
+
+  }
 
 
 

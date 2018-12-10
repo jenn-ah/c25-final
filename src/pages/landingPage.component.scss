@@ -1,0 +1,20 @@
+div{
+display: flex;
+flex-flow: row wrap;
+align-items: center;
+
+}
+div.customer{
+  display: flex;
+  flex-flow: column;
+  margin: 30px;
+}
+div.vendor{
+  display: flex;
+  flex-flow: column;
+  margin: 30px;
+}
+button{
+  font-size: 30px;
+  border-radius: 20px;
+}
