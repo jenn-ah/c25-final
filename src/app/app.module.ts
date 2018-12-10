@@ -9,6 +9,7 @@ import { HeaderComponent } from '../component/header.component';
 import { LandingPageComponent } from '../pages/landingPage.component';
 import { DashboardComponent } from 'src/component/dashboard/dashboard.component';
 import { MessageComponent } from 'src/pages/message/message.component';
+import { PostsComponent } from 'src/pages/posts/posts.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MessageComponent } from 'src/pages/message/message.component';
     HeaderComponent,
     LandingPageComponent,
     DashboardComponent,
-    MessageComponent
+    MessageComponent,
+    PostsComponent
   
   ],
   imports: [
