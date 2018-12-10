@@ -5,11 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '../component/header.component';
+import { LandingPageComponent } from '../pages/landingPage.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,8 +6,6 @@ import { HttpClient } from "@angular/common/http"
 })
 export class BackendService{
   baseUrl: string = 'http://localhost:4200/';
-  post: any[] = [];
-  id: number;
   customer: {
     id: number,
     username:string,
