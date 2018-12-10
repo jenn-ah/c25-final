@@ -10,6 +10,7 @@ import { LandingPageComponent } from '../pages/landingPage.component';
 import { DashboardComponent } from 'src/component/dashboard/dashboard.component';
 import { MessageComponent } from 'src/pages/message/message.component';
 import { PostsComponent } from 'src/pages/posts/posts.component';
+import { CreateComponent } from 'src/pages/create/create.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PostsComponent } from 'src/pages/posts/posts.component';
     LandingPageComponent,
     DashboardComponent,
     MessageComponent,
-    PostsComponent
+    PostsComponent,
+    CreateComponent
   
   ],
   imports: [
