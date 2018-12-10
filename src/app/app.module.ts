@@ -12,6 +12,7 @@ import { MessageComponent } from 'src/pages/message/message.component';
 import { PostsComponent } from 'src/pages/posts/posts.component';
 import { CreateComponent } from 'src/pages/create/create.component';
 import { ProfileComponent } from 'src/pages/profile/profile.component';
+import { HomeComponent } from 'src/pages/home/home.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ProfileComponent } from 'src/pages/profile/profile.component';
     MessageComponent,
     PostsComponent,
     CreateComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomeComponent
   
   ],
   imports: [

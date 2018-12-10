@@ -5,6 +5,7 @@ import { MessageComponent } from 'src/pages/message/message.component';
 import { PostsComponent } from 'src/pages/posts/posts.component';
 import { CreateComponent } from 'src/pages/create/create.component';
 import { ProfileComponent } from 'src/pages/profile/profile.component';
+import { HomeComponent } from 'src/pages/home/home.component';
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
+  { path:'home', component: HomeComponent},
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];
 
