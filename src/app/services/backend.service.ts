@@ -99,6 +99,12 @@ export class BackendService {
     return this.http.post(customerUrl, { username: username, password: password }).toPromise();
   }
 
+  getAllHomeItems() {
+    const url = this.baseUrl + 'api/posts'
+    return this.http.get(url).toPromise()
+  }
+
+
   register(data) {
     console.log('this is data', data);
     const userUrl = this.baseUrl + `api/customers`;
@@ -115,7 +121,7 @@ export class BackendService {
       })
       .toPromise();
   }
-
+ 
   createNewPost(data) {
     console.log('post data', data)
     const url = this.baseUrl + "api/posts";

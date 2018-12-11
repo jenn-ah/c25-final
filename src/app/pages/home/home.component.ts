@@ -8,11 +8,24 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
+    home: object;
 
     constructor(private backend: BackendService, private router: Router) {
+
+        this.backend.getAllHomeItems()
+            .then((data) => {
+                console.log(data)
+                this.home = data
+            })
+            .catch((err) => {
+                alert('error has occured')
+                window.location.href = '/error'
+                console.log('failure', err)
+            })
 
     }
 
     ngOnInit() { }
+
 
 }
