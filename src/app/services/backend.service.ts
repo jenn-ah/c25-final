@@ -121,11 +121,16 @@ export class BackendService {
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
-      price: data.price,
+      customer_id: data.customer_id,
+      post_priority: data.post_priority,
+      vendor_id: data.vendor_id,
+      photo: data.photo,
+      state: data.state,
+      city: data.city,
+      budget: data.budget,
       description: data.description,
-      bid: data.bid,
+      can_bid: data.can_bid,
       zip_code: data.zip_code,
-      emergency: data.emergency
     }).toPromise();
   }
 }
