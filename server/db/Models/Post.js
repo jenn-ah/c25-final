@@ -1,9 +1,4 @@
 const bookshelf = require('./bookshelf');
-require('./Customer');
-require('./Category');
-require('./Vendor');
-require('./PostStatus');
-require('./PostPriority');
 
 
 class Post extends bookshelf.Model {
@@ -11,23 +6,19 @@ class Post extends bookshelf.Model {
   get hasTimestamps() { return true; }
 
   customerId() {
-    return this.belongsTo('Customer');
+    return this.belongsTo('Customer', 'id');
   }
 
   categoryId() {
-    return this.belongsTo('Category');
+    return this.hasOne('Category', 'category_id');
   }
 
   postStatusId() {
-    return this.belongsTo('PostStatus');
+    return this.hasOne('PostStatus', 'post_status_id');
   }
 
   postPriorityId() {
-    return this.belongsTo('PostPriority'); 
-  }
-
-  vendorId() {
-    return this.belongsTo('Vendor');
+    return this.hasOne('PostPriority', 'post_priority_id');
   }
 }
 

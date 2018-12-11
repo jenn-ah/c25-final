@@ -1,53 +1,83 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SessionService {
-user: {
-    id: number,
-    username: string,
-    isLoggedIn: boolean
+export class SessionService{
+  customer: {
+    id:number,
+    first_name: string,
+    last_name: string,
+    username:string,
+    isLoggedIn: boolean,
+    city: string,
+    state: string,
+    zip_code: number,
+  } = {
+    id:null,
+    first_name: '',
+    last_name: '',
+    username:'',
+    isLoggedIn:false,
+    city: "",
+    state: "",
+    zip_code: null,
+  }
+vendor:{
+  id: number,
+  first_name: string,
+  last_name: string,
+  company_name:string,
+  isLoggedIn: boolean,
+  city: string,
+  state: string,
+  zip_code: number
 } = {
-    id: undefined,
-    username: '',
-    isLoggedIn: false
+  id:null,
+  first_name:"",
+  last_name:"",
+  company_name:"",
+  isLoggedIn: false,
+  city:"",
+  state:"",
+  zip_code:null,
 }
 
-    constructor(){
-        const userString = localStorage.getItem('user');
-        if (userString){
-            try{ this.user = JSON.parse(userString); }
-            catch(err) { console.log(err) }
-        }
+  constructor(){
+    const customerString = localStorage.getItem("customer");
+    if(customerString){
+      try { this.customer = JSON.parse(customerString); }
+      catch (err) {console.log(err)}
     }
 
-    setSession(user){
-        this.user.id = user.id;
-        this.user.username = user.username;
-        this.user.isLoggedIn = true;
-
-        localStorage.setItem('user', JSON.stringify(this.user))
-    }
-
-    clearSession(){
-        this.user.id = undefined;
-        this.user.username = '';
-        this.user.isLoggedIn = false;
-
-        localStorage.removeItem('user');
-    }
-
-    getIsVendorLoggedIn(){
-        return this.user.isLoggedIn;
-    }
-
-    getIsCustomerLoggedIn(){
-      return this.user.isLoggedIn;
+     const vendorString = localStorage.getItem("vendor");
+     if(vendorString){
+       try { this.vendor = JSON.parse(vendorString);}
+       catch(err) { console.log(err)}
+     }
   }
 
-    getUser(){
-        return this.user;
-    }
+  setCustomerSession(customer){
+    this.customer.id = customer.id;
+    this.customer.first_name = customer.first_name;
+    this.customer.last_name = customer.last_name;
+    this.customer.username = customer.username;
+    this.customer.isLoggedIn = true;
+    this.customer.city = customer.city;
+    this.customer.state = customer.state;
+    this.customer.zip_code = customer.zip_code;
+    localStorage.setItem('customer', JSON.stringify(this.customer))
+  }
 
+  setVendorSession(vendor){
+    this.vendor.id = vendor.id;
+    this.vendor.first_name = vendor.first_name,
+    this.vendor.last_name = vendor.last_name,
+    this.vendor.company_name = vendor.company_name,
+    this.vendor.isLoggedIn = true,
+    this.vendor.city = vendor.city,
+    this.vendor.state = vendor.state,
+    this.vendor.zip_code = vendor.zip_code,
+    localStorage.setItem('vendor', JSON.stringify(this.vendor))
+  }
 }
