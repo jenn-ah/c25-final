@@ -3,12 +3,21 @@ const app = express();
 const bodyParser = require('body-parser')
 const PORT = process.env.EXPRESS_HOST_PORT || 8989;
 
-app.use(bodyParser.json({}))
-app.use(bodyParser.urlencoded({extended:true}))
+const categoriesRouter = require('./routes/categories');
+const customersRouter = require('./routes/customers');
+const postsRouter = require('./routes/posts');
+const vendorsRouter = require('./routes/vendors');
 
-app.get('/api/smoke', (req, res) => {
-    res.send('smoke test');
-})
+
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.use('/api/categories', categoriesRouter);
+app.use('/api/customers', customersRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/vendors', vendorsRouter);
+
 
 app.post(`/api/vendors`, (req, res) => {
     let ={company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number }=req.body
