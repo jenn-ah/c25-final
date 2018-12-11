@@ -17,28 +17,28 @@ export class RegisterComponent {
     zip_code: string;
     city: string
   } = {
-    first_name: '',
-    last_name: '',
-    username: '',
-    password: '',
-    email: '',
-    state: '',
-    zip_code: '',
-    city: ''
-  };
+      first_name: '',
+      last_name: '',
+      username: '',
+      password: '',
+      email: '',
+      state: '',
+      zip_code: '',
+      city: ''
+    };
 
-   constructor(private backend: BackendService, private router: Router) {}
-   
-   createCustomer(){
+  constructor(private backend: BackendService, private router: Router) { }
+
+  createCustomer() {
     event.preventDefault();
-    return this.backend 
+    return this.backend
       .register(this.newCustomerForm)
       .then(() => {
         console.log('then', this.newCustomerForm)
         return this.router.navigate(['/home']);
       })
       .catch(err => {
-        console.log('err', this.newCustomerForm)
+        console.log('catch', this.newCustomerForm)
         return this.router.navigate(['/error']);
       });
   }

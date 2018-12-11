@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
-
+  console.log('this is req.body', req.body);
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {

@@ -100,17 +100,18 @@ export class BackendService {
   }
 
   register(data) {
+    console.log('this is data', data);
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
       .post(userUrl, {
-        username: this.customer.username,
-        password: this.customer.password,
-        first_name: this.customer.first_name,
-        last_name: this.customer.last_name,
-        state: this.customer.state,
-        zip_code: this.customer.zip_code,
-        city: this.customer.city,
-        email: this.customer.email
+        username: data.username,
+        password: data.password,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        state: data.state,
+        zip_code: data.zip_code,
+        city: data.city,
+        email: data.email
       })
       .toPromise();
   }
