@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../app/services/backend.service';
+import { BackendService } from '../../../app/services/backend.service';
 
 @Component({
   templateUrl: './landingPage.component.html',
@@ -46,5 +46,6 @@ export class LandingPageComponent implements OnInit {
     return this.backend.vendorLogin(this.loginForm.company_name, this.loginForm.password)
   }
 
+  
 
 }

@@ -1,9 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from '../../src/pages/landingPage.component'
+import { LandingPageComponent } from '../app/pages/landing/landingPage.component'
+import { MessageComponent } from '../app/pages/message/message.component';
+import { PostsComponent } from '../app/pages/posts/posts.component';
+import { CreateComponent } from '../app/pages/create/create.component';
+import { ProfileComponent } from '../app/pages/profile/profile.component';
+import { HomeComponent } from '../app/pages/home/home.component';
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
+  { path:'messages', component: MessageComponent},
+  { path:'posts', component: PostsComponent},
+  { path:'create', component: CreateComponent},
+  { path:'profile', component: ProfileComponent},
+  { path:'home', component: HomeComponent},
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];
 

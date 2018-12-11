@@ -5,14 +5,14 @@ import {AuthService } from "./auth.service";
 @Injectable({
   providedIn: "root"
 })
-export class BackendService{
+export class BackendService {
   baseUrl: string = 'http://localhost:4200/';
   username: string;
   company_name:string;
   password: string;
   customer: {
     id: number,
-    username:string,
+    username: string,
     password: string,
     first_name: string,
     last_name: string,

@@ -5,8 +5,14 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from '../app/component/header.component';
-import { LandingPageComponent } from '../pages/landingPage.component';
+import { HeaderComponent } from '../app/component/header/header.component';
+import { LandingPageComponent } from '../app/pages/landing/landingPage.component';
+import { DashboardComponent } from '../app/component/dashboard/dashboard.component';
+import { MessageComponent } from '../app/pages/message/message.component';
+import { PostsComponent } from '../app/pages/posts/posts.component';
+import { CreateComponent } from '../app/pages/create/create.component';
+import { ProfileComponent } from '../app/pages/profile/profile.component';
+import { HomeComponent } from '../app/pages/home/home.component';
 
 
 @NgModule({
@@ -14,6 +20,13 @@ import { LandingPageComponent } from '../pages/landingPage.component';
     AppComponent,
     HeaderComponent,
     LandingPageComponent,
+    DashboardComponent,
+    MessageComponent,
+    PostsComponent,
+    CreateComponent,
+    ProfileComponent,
+    HomeComponent
+  
   ],
   imports: [
     BrowserModule,
