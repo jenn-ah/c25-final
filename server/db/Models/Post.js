@@ -23,7 +23,7 @@ class Post extends bookshelf.Model {
   }
 
   postPriorityId() {
-    return this.belongsTo('PostPriority'); 
+    return this.belongsTo('PostPriority');
   }
 
   vendorId() {

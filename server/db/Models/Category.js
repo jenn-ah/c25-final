@@ -1,4 +1,5 @@
 const bookshelf = require('./bookshelf');
+require('./Post');
 
 class Category extends bookshelf.Model {
   get tableName() { return "categories"; }
