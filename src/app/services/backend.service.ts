@@ -1,11 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
+import {AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class BackendService{
   baseUrl: string = 'http://localhost:4200/';
+  username: string;
+  company_name:string;
+  password: string;
   customer: {
     id: number,
     username:string,
@@ -92,13 +96,26 @@ export class BackendService{
 
 constructor(
   private http: HttpClient,
+  private auth: AuthService,
 ){}
 
 customerLogin(username, password){
-  const customerUrl = this.baseUrl + "/customers";
-  return this.http.post(customerUrl, { username: username, password:password}).toPromise();
+  const customerUrl = this.baseUrl + "api/customers";
+  return this.http.post(customerUrl, { username: username, password:password}).toPromise()
+.then((customer)=>{
+return this.auth.customerLoginCheck(customer, this.username, this.password)
+
+})
 }
 
+vendorLogin(company_name,password){
+  const vendorUrl = this.baseUrl + "api/vendors";
+  return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
+.then((vendor)=>{
+  return this.auth.vendorLoginCheck(vendor, this.company_name, this.password )
+
+})
+}
 
 
 

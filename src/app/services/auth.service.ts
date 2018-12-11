@@ -12,5 +12,19 @@ export class AuthService {
     private session: SessionService,
   ){}
 
+  customerLoginCheck(customer, username, password){
+    if(customer.password === password && customer.username === username){
+    return this.session.setCustomerSession(customer)
+  }else{
+    return `Username and/or password, incorrect.`
+  }
+  }
 
+  vendorLoginCheck(vendor, companyName, password){
+    if(vendor.password === password && vendor.company_name === companyName){
+      return this.session.setVendorSession(vendor)
+    }else{
+      return `Company Name and/or password, incorrect.`
+    }
+  }
 }

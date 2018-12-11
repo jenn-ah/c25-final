@@ -11,6 +11,7 @@ export class LandingPageComponent implements OnInit {
   customerLoginPressed: boolean = false;
   vendorLoginPressed: boolean = false;
   username: string;
+  company_name: string;
   password: string;
   isCustomer: boolean = true;
   isVendor: boolean = true;
@@ -33,10 +34,13 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-    return this.backend.customerLogin
+    return this.backend.customerLogin(this.username, this.password)
 
   }
 
+  vendorLogin(){
+    return this.backend.vendorLogin(this.company_name, this.password)
+  }
 
 
 }
