@@ -11,6 +11,9 @@
   <div>password:
     <input name="password" type="text" [(ngModel)]="newCustomerForm.password" />
   </div>
+  <div>email:
+    <input name="email" type="text" [(ngModel)]="newCustomerForm.email" />
+  </div>
   <div>state:
     <input name="state" type="text" [(ngModel)]="newCustomerForm.state" />
   </div>
@@ -20,5 +23,6 @@
   <div>zip_code:
     <input name="zip_code" type="text" [(ngModel)]="newCustomerForm.zip_code" />
   </div>
+  <button (click)="createCustomer()"> Submit </button>
 
 </form>

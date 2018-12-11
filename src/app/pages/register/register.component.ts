@@ -29,14 +29,16 @@ export class RegisterComponent {
 
    constructor(private backend: BackendService, private router: Router) {}
    
-   createUser(event){
+   createCustomer(){
     event.preventDefault();
     return this.backend 
       .register(this.newCustomerForm)
       .then(() => {
+        console.log('then', this.newCustomerForm)
         return this.router.navigate(['/home']);
       })
       .catch(err => {
+        console.log('err', this.newCustomerForm)
         return this.router.navigate(['/error']);
       });
   }

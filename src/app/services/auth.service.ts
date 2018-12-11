@@ -12,8 +12,9 @@ export class AuthService {
     private session: SessionService,
   ) { }
 
-  register(newUser) {
-    return this.backend.register(newUser)
+  register(data) {
+    console.log('succesful')
+    return this.backend.register(data)
     //should look more like a login.
   }
 

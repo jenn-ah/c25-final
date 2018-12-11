@@ -99,7 +99,7 @@ export class BackendService {
     return this.http.post(customerUrl, { username: username, password: password }).toPromise();
   }
 
-  register(newUser) {
+  register(data) {
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
       .post(userUrl, {

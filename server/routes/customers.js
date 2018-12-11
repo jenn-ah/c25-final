@@ -50,7 +50,8 @@ router.post('/', (req, res) => {
     })
       .save()
       .then(customer => {
-        return res.json(customer);
+        const newCustomer = customer.toJSON()
+        return res.send(newCustomer);
       })
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });
