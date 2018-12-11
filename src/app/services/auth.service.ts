@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BackendService } from './backend.service';
 import { SessionService } from './session.service';
 
 @Injectable({
@@ -8,9 +7,19 @@ import { SessionService } from './session.service';
 
 export class AuthService {
   constructor(
-    private backend: BackendService,
     private session: SessionService,
   ){}
 
+  customerLoginCheck(customer){
+    return this.session.setCustomerSession(customer)
+  }
 
+  vendorLoginCheck(vendor){
+      return this.session.setVendorSession(vendor)
+    }
 }
+    // .then((vendor)=>{
+    //   return this.auth.vendorLoginCheck(vendor, this.company_name, this.password )
+    
+    // })
+    

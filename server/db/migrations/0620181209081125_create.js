@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('posts', (table)=>{
     table.increments('id');
     table.string('title', 255).notNullable();
+    table.integer('category_id').notNullable();
     table.integer('customer_id').references('id').inTable('customers').notNullable();
     table.integer('post_status_id').references('id').inTable('post_statuses');
     table.integer('post_priority_id').references('id').inTable('post_priorities');
