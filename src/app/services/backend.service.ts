@@ -99,5 +99,20 @@ export class BackendService {
     return this.http.post(customerUrl, { username: username, password: password }).toPromise();
   }
 
+  register(newUser) {
+    const userUrl = this.baseUrl + `api/customers`;
+    return this.http
+      .post(userUrl, {
+        username: this.customer.username,
+        password: this.customer.password,
+        first_name: this.customer.first_name,
+        last_name: this.customer.last_name,
+        state: this.customer.state,
+        zip_code: this.customer.zip_code,
+        city: this.customer.city,
+        email: this.customer.email
+      })
+      .toPromise();
+  }
 
 }
