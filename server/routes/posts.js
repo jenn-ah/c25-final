@@ -23,20 +23,23 @@ router.post('/', (req, res) => {
   const parseCustId = parseInt(customer_id);
   const parsePostStatId = parseInt(post_status_id);
   const parsePostPriorId = parseInt(post_priority_id);
+  const parseBudget = parseInt(budget);
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlphanumeric(title)) {
-    return res.json({ status: Error, message: 'Invalid title' });
+    return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (!validator.isAlphanumeric(description)) {
-    return res.json({ status: Error, message: 'Invalid description ' });
+    return res.status(400).json({ status: Error, message: 'Invalid description ' });
   } else if (!validator.isAlpha(city)) {
-    return res.json({ status: Error, message: 'Invalid city' });
+    return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isAlpha(state) && (state.length !== 2)) {
-    return res.json({ status: Error, message: 'Invalid state' });
+    return res.status(400).json({ status: Error, message: 'Invalid state' });
   } else if (!validator.isNumeric(zip_code) && (zip_code.length !== 5)) {
-    return res.json({ status: Error, message: 'Invalid zipcode' });
+    return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
+  } else if (!validator.isNumeric(budget)) {
+    return res.status(400).json({ status: Error, message: 'Invalid input for budget' });
   } else if (!validator.isBoolean(can_bid)) {
-    return res.json({ status: Error, message: 'Invalid input' });
+    return res.status(400).json({ status: Error, message: 'Invalid input' });
   } else {
 
     return new Post({
@@ -49,7 +52,7 @@ router.post('/', (req, res) => {
       city,
       state,
       zip_code: parseZipcode,
-      budget,
+      budget: parseBudget,
       can_bid
     })
       .save()
