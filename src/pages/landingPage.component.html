@@ -1,0 +1,28 @@
+<div class="landingPage" >
+<div class="Customerlogin">
+  <h2><a (click)="customerLoginBtnPress()">Customer Login</a></h2>
+  <form *ngIf="customerLoginPressed">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" [(ngModel)]="username">
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password" [(ngModel)]="password">
+    <button (click)="customerLogin()">Submit</button>
+  </form>
+</div>
+<div class="vendorLogin">
+  <h2><a (click)="vendorLoginBtnPress()">Vendor Login</a></h2>
+  <form *ngIf="vendorLoginPressed">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" [(ngModel)]="username">
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password" [(ngModel)]="password">
+    <button (click)="vendorLogin()">Submit</button>
+  </form>
+</div>
+<div class="customerRegister">
+  <h2><a *ngIf="!isLoggedIn" routerLink="">New Customer Register</a></h2>
+</div>
+<div class="vendorRegister">
+  <h2><a *ngIf="!isLoggedIn" routerLink="">New Vendor Register</a></h2>
+</div>
+</div>
