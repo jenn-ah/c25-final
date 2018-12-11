@@ -10,11 +10,12 @@ export class LandingPageComponent implements OnInit {
   isLoggedIn: boolean = false;
   customerLoginPressed: boolean = false;
   vendorLoginPressed: boolean = false;
-  username: string;
-  company_name: string;
-  password: string;
+  username: string
+  company_name: string
+  password: string
   isCustomer: boolean = true;
   isVendor: boolean = true;
+
 
 
   constructor(
@@ -34,8 +35,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-    return this.backend.customerLogin(this.username, this.password)
-
+     return this.backend.customerLogin(this.username, this.password)
   }
 
   vendorLogin(){

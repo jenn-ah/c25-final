@@ -102,21 +102,13 @@ constructor(
 customerLogin(username, password){
   const customerUrl = this.baseUrl + "api/customers";
   return this.http.post(customerUrl, { username: username, password:password}).toPromise()
-.then((customer)=>{
-return this.auth.customerLoginCheck(customer, this.username, this.password)
-
-})
+  .then(()=>{
+    this.auth.customerLoginCheck(this.customer)
+  })
 }
 
 vendorLogin(company_name,password){
   const vendorUrl = this.baseUrl + "api/vendors";
   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
-.then((vendor)=>{
-  return this.auth.vendorLoginCheck(vendor, this.company_name, this.password )
-
-})
 }
-
-
-
 }
