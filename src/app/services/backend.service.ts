@@ -100,6 +100,4 @@ customerLogin(username, password){
 }
 
 
-
-
 }
