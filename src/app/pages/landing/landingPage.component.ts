@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../app/services/backend.service';
+import { BackendService } from '../../../app/services/backend.service';
 
 @Component({
   templateUrl: './landingPage.component.html',
@@ -12,8 +12,6 @@ export class LandingPageComponent implements OnInit {
   vendorLoginPressed: boolean = false;
   username: string;
   password: string;
-
-
 
   constructor(
     private backend: BackendService,
@@ -29,11 +27,9 @@ export class LandingPageComponent implements OnInit {
     return this.vendorLoginPressed = true;
   }
 
-customerLogin(){
-  return this.backend.customerLogin
-  
-}
+  customerLogin() {
+    return this.backend.customerLogin
 
-
+  }
 
 }

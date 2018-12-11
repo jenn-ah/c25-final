@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from '../../src/pages/landingPage.component'
-import { MessageComponent } from 'src/pages/message/message.component';
-import { PostsComponent } from 'src/pages/posts/posts.component';
-import { CreateComponent } from 'src/pages/create/create.component';
-import { ProfileComponent } from 'src/pages/profile/profile.component';
-import { HomeComponent } from 'src/pages/home/home.component';
+import { LandingPageComponent } from '../app/pages/landing/landingPage.component'
+import { MessageComponent } from '../app/pages/message/message.component';
+import { PostsComponent } from '../app/pages/posts/posts.component';
+import { CreateComponent } from '../app/pages/create/create.component';
+import { ProfileComponent } from '../app/pages/profile/profile.component';
+import { HomeComponent } from '../app/pages/home/home.component';
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},

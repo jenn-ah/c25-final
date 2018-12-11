@@ -5,14 +5,14 @@ import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from '../component/header.component';
-import { LandingPageComponent } from '../pages/landingPage.component';
-import { DashboardComponent } from 'src/component/dashboard/dashboard.component';
-import { MessageComponent } from 'src/pages/message/message.component';
-import { PostsComponent } from 'src/pages/posts/posts.component';
-import { CreateComponent } from 'src/pages/create/create.component';
-import { ProfileComponent } from 'src/pages/profile/profile.component';
-import { HomeComponent } from 'src/pages/home/home.component';
+import { HeaderComponent } from '../app/component/header/header.component';
+import { LandingPageComponent } from '../app/pages/landing/landingPage.component';
+import { DashboardComponent } from '../app/component/dashboard/dashboard.component';
+import { MessageComponent } from '../app/pages/message/message.component';
+import { PostsComponent } from '../app/pages/posts/posts.component';
+import { CreateComponent } from '../app/pages/create/create.component';
+import { ProfileComponent } from '../app/pages/profile/profile.component';
+import { HomeComponent } from '../app/pages/home/home.component';
 
 
 @NgModule({
