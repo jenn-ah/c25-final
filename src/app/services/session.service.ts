@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BackendService } from './backend.service';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +43,7 @@ vendor:{
   zip_code:null,
 }
 
-  constructor(
-    private backend: BackendService,
-    private auth: AuthService,
-  ){
+  constructor(){
     const customerString = localStorage.getItem("customer");
     if(customerString){
       try { this.customer = JSON.parse(customerString); }
