@@ -1,14 +1,25 @@
 .dashboard{
-    position: absolute;
-    bottom: 30px;
+    position: fixed;
+    bottom: 10px;
     width: 100%;
     display: inline;
     text-align: center;
 }
 
-h4{
-    border-top: solid black;
-    display: inline;
+.links{
+    width: 100%; 
+    padding: 10px;
+}
 
+div{
+    // border-top: solid black;
+    display: inline;
     width: 100%;
+
+}
+
+.icon{
+    height: 35px;
+    width: 35px;
+    margin: 18px;
 }
