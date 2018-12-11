@@ -14,7 +14,7 @@ export class AuthService {
     return this.session.setCustomerSession(customer)
   }
 
-  vendorLoginCheck(vendor, companyName, password){
+  vendorLoginCheck(vendor){
       return this.session.setVendorSession(vendor)
     }
 }

@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
 const PORT = process.env.EXPRESS_HOST_PORT || 8989;
+
+app.use(bodyParser.json({}))
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/api/smoke', (req, res) => {
     res.send('smoke test');
 })
 
-app.post(`/api/login/vendors`, (req, res) => {
+app.post(`/api/vendors`, (req, res) => {
     let ={company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number }=req.body
     return new Vendor()
     .where({ company_name: company_name })
@@ -23,7 +27,7 @@ app.post(`/api/login/vendors`, (req, res) => {
     })
   })
 
-  app.post(`/api/login/customers`, (req, res) => {
+  app.post(`/api/customers`, (req, res) => {
     let ={username, password, id, email, first_name, last_name, city, state, zip_code, }=req.body
     return new Customer()
     .where({ username: username })
