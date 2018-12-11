@@ -20,10 +20,6 @@ class Post extends bookshelf.Model {
   postPriorityId() {
     return this.hasOne('PostPriority', 'post_priority_id');
   }
-
-  vendorId() {
-    return this.belongsTo('Vendor', 'id');
-  }
 }
 
 module.exports = bookshelf.model('Post', Post);
