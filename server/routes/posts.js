@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const { title, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
-
+  console.log('post req body', req.body);
   const parseCustId = parseInt(customer_id);
   const parsePostStatId = parseInt(post_status_id);
   const parsePostPriorId = parseInt(post_priority_id);

@@ -116,4 +116,16 @@ export class BackendService {
       .toPromise();
   }
 
+  createNewPost(data) {
+    console.log('post data', data)
+    const url = this.baseUrl + "api/posts";
+    return this.http.post(url, {
+      title: data.title,
+      price: data.price,
+      description: data.description,
+      bid: data.bid,
+      zip_code: data.zip_code,
+      emergency: data.emergency
+    }).toPromise();
+  }
 }
