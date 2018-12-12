@@ -15,8 +15,10 @@ router.get('/', (req, res) => {
     });
 });
 
+
 router.post('/', (req, res) => {
   const { title, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
+
   const parseCustId = parseInt(customer_id);
   const parsePostStatId = parseInt(post_status_id);
   const parsePostPriorId = parseInt(post_priority_id);
@@ -42,6 +44,8 @@ router.post('/', (req, res) => {
     return new Post({
       title,
       customer_id: parseCustId,
+      //post_status_id: parsePostStatId, -- will uncomment when post_statuses table is seeded
+     // post_priority_id: parsePostPriorId, -- will uncomment when post_priorities table is seeded
       photo,
       description,
       city,
@@ -64,5 +68,6 @@ router.post('/', (req, res) => {
       })
   }
 })
+
 
 module.exports = router;
