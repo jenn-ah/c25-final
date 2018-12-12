@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       title,
       customer_id: parseCustId,
       //post_status_id: parsePostStatId, -- will uncomment when post_statuses table is seeded
-     // post_priority_id: parsePostPriorId, -- will uncomment when post_priorities table is seeded
+      // post_priority_id: parsePostPriorId, -- will uncomment when post_priorities table is seeded
       photo,
       description,
       city,

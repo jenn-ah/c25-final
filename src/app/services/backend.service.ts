@@ -146,6 +146,8 @@ customerLogin(username, password){
   })
 }
 
+
+
 vendorLogin(company_name,password){
   const vendorUrl = this.baseUrl + "api/vendors";
   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
