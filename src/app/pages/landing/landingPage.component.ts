@@ -44,20 +44,24 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-     console.log('landing page', typeof(this.username))
     return this.backend.customerLogin(this.username, this.password)
      .then(resp =>{
-       console.log(resp)
-       return this.router.navigate(['/']);
+       return this.router.navigate(['/profile']);
      })
      .catch(err => {
        console.log(err)
      })
   }
 
-  // vendorLogin() {
-  //   return this.backend.vendorLogin(this.company_name, this.password)
-  // }
+  vendorLogin() {
+    return this.backend.vendorLogin(this.company_name, this.password)
+  .then((resp)=> {
+    return this.router.navigate(["/home"]);
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+  }
 
 
 

@@ -12,15 +12,14 @@ export class AuthService {
   ){}
 
   customerLoginCheck(customer){
-    console.log('auth', customer)
     return this.session.setCustomerSession(customer);
        
      }
   
 
-  // vendorLoginCheck(vendor){
-  //     return this.session.setVendorSession(vendor)
-  //   }
+  vendorLoginCheck(vendor){
+      return this.session.setVendorSession(vendor);
+    }
 }
     // .then((vendor)=>{
     //   return this.auth.vendorLoginCheck(vendor, this.company_name, this.password )

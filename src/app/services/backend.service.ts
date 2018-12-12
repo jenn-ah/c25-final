@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-
+import { AuthService } from "../services/auth.service"
 @Injectable({
   providedIn: "root"
 })
@@ -95,20 +95,22 @@ export class BackendService {
 
 constructor(
   private http: HttpClient,
+  private auth: AuthService
 ){}
 
 customerLogin(username, password){
-  console.log('backend service', typeof (username), password)
   const customerUrl = this.baseUrl + "api/login";
-  console.log('backend2',username,password)
   return this.http.post(customerUrl, {username:username, password:password}).toPromise()
   .then((resp)=>{
-    console.log('backend',resp)
+    return this.auth.customerLoginCheck(resp);
   })
 }
 
 vendorLogin(company_name,password){
-  const vendorUrl = this.baseUrl + "api/vendors";
+  const vendorUrl = this.baseUrl + "api/vendors/login";
   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
+.then((resp)=>{
+  return this.auth.vendorLoginCheck(resp);
+})
 }
 }
