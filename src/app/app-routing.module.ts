@@ -7,6 +7,7 @@ import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path:'profile', component: ProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},
+  { path:'error', component: ErrorComponent },
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];
 
