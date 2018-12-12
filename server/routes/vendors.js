@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const { first_name, last_name, company_name, password, email, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
 
+
   if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
   } else if (!validator.isAlpha(last_name)) {
@@ -67,32 +68,6 @@ router.post('/', (req, res) => {
       });
   }
 });
-
-router.post('/', (req, res) => {
-    let { first_name, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
-    const parseZip = parseInt(zip_code);
-    const parsePhone = parseInt(phone_number)
-    return new Vendor({
-        first_name,
-        last_name,
-        company_name,
-        email,
-        phone_number: parsePhone,
-        password,
-        street_address,
-        city,
-        state,
-        zip_code: parseZip,
-        photo,
-        website,
-        description,
-        license_number
-    })
-        .save()
-        .then(() => {
-            console.log('route');
-        })
-})
 
 
 module.exports = router;
