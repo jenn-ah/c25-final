@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '../app/component/header/header.component';
@@ -13,6 +12,7 @@ import { PostsComponent } from '../app/pages/posts/posts.component';
 import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -25,7 +25,8 @@ import { HomeComponent } from '../app/pages/home/home.component';
     PostsComponent,
     CreateComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   
   ],
   imports: [

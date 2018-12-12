@@ -1,17 +1,38 @@
 Create a New Post!
 
 <form class="form">
-    <input type="text" placeholder="title?">
-    <input type="text" placeholder="description?">
-    <input type="text" placeholder="zipcode?">
-    <input type="text" placeholder="price?">
-    <input type="text">
-    <select>
-        <option value="0">Bid?</option>
-        <option value="2">Yes</option>
-        <option value="2">No</option>
-    </select>
-    <input type="text" placeholder="emergency?">
-
-    <button>Submit</button>
+    <div>Title:
+        <input name="Title" type="text" [(ngModel)]="NewPostForm.title" />
+    </div>
+    <div>customer_id:
+        <input name="customer_id" type="text" [(ngModel)]="NewPostForm.customer_id" />
+    </div>
+    <div>post_priority:
+        <input name="post_priority" type="text" [(ngModel)]="NewPostForm.post_priority" />
+    </div>
+    <div>vendor_id:
+        <input name="vendor_id" type="text" [(ngModel)]="NewPostForm.vendor_id" />
+    </div>
+    <div>photo:
+        <input name="photo" type="text" [(ngModel)]="NewPostForm.photo" />
+    </div>
+    <div>description:
+        <input name="description" type="text" [(ngModel)]="NewPostForm.description" />
+    </div>
+    <div>city:
+        <input name="city" type="text" [(ngModel)]="NewPostForm.city" />
+    </div>
+    <div>state:
+        <input name="state" type="text" [(ngModel)]="NewPostForm.state" />
+    </div>
+    <div>zip_code:
+        <input name="zip_code" type="text" [(ngModel)]="NewPostForm.zip_code" />
+    </div>
+    <div>budget:
+        <input name="budget" type="text" [(ngModel)]="NewPostForm.budget" />
+    </div>
+    <div>can_bid:
+        <input name="can_bid" type="text" [(ngModel)]="NewPostForm.can_bid" />
+    </div>
+    <button (click)="createPost()">Submit</button>
 </form>

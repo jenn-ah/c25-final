@@ -1,15 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import {AuthService } from "./auth.service";
-
+import { AuthService } from "../services/auth.service"
 @Injectable({
   providedIn: "root"
 })
 export class BackendService {
-  baseUrl: string = 'http://localhost:4200/';
-  username: string;
-  company_name:string;
-  password: string;
+  baseUrl: string = "http://localhost:4200/";
+  // username: string ="";
+  // company_name:string = "";
+  // password: string = "";
   customer: {
     id: number,
     username: string,
@@ -96,23 +95,62 @@ export class BackendService {
 
 constructor(
   private http: HttpClient,
-  private auth: AuthService,
+  private auth: AuthService
 ){}
 
+  getAllHomeItems() {
+    const url = this.baseUrl + 'api/posts'
+    return this.http.get(url).toPromise()
+  }
+
+
+  register(data) {
+    const userUrl = this.baseUrl + `api/customers`;
+    return this.http
+      .post(userUrl, {
+        username: data.username,
+        password: data.password,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        state: data.state,
+        zip_code: data.zip_code,
+        city: data.city,
+        email: data.email
+      })
+      .toPromise();
+  }
+ 
+  createNewPost(data) {
+    const url = this.baseUrl + "api/posts";
+    return this.http.post(url, {
+      title: data.title,
+      customer_id: data.customer_id,
+      post_priority: data.post_priority,
+      vendor_id: data.vendor_id,
+      photo: data.photo,
+      state: data.state,
+      city: data.city,
+      budget: data.budget,
+      description: data.description,
+      can_bid: data.can_bid,
+      zip_code: data.zip_code,
+    }).toPromise();
+  }
+  
 customerLogin(username, password){
-  console.log('backend service', username, password)
-  const customerUrl = this.baseUrl + "api/customers";
-  return this.http.post(customerUrl, { username: username, password:password}).toPromise()
-  .then(()=>{
-    this.auth.customerLoginCheck(this.customer)
+  const customerUrl = this.baseUrl + "api/login";
+  return this.http.post(customerUrl, {username:username, password:password}).toPromise()
+  .then((resp)=>{
+    return this.auth.customerLoginCheck(resp);
   })
 }
 
 vendorLogin(company_name,password){
-  const vendorUrl = this.baseUrl + "api/vendors";
+  const vendorUrl = this.baseUrl + "api/vendors/login";
   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
-  .then(()=>{
-    this.auth.vendorLoginCheck(this.vendor)
-  })
+.then((resp)=>{
+  return this.auth.vendorLoginCheck(resp);
+})
 }
+
 }

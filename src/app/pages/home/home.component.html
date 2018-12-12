@@ -1,30 +1,16 @@
 <div class="Customer-home">
     <div class="custHome">
-        <div class="home">
-        </div>
-        <div class="cust-cards">
-            <p class="title"> My House Is Tilted </p>
+        <div class="cust-cards" *ngFor="let post of posts">
+            <p class="title"> {{post.title}} </p>
             <img class="img" src="https://www.creativeboom.com/uploads/articles/ee/eeb77227176d8056eeed3c4b6159f7e7510bc56b_1100.jpg">
             <br>
-            description: The Winds are narly<br>
-            city: Waianae<br>
-            state: HI<br>
-            zipcode: 96792<br>
-            budget: $1<br>
-            priority: High<br>
-            created: a day ago<br>
-        </div>
-
-        <div class="cust-cards">
-            <p class="title"> My speaker is broken </p>
-            <img class="img" src="https://i.pinimg.com/originals/4b/0c/61/4b0c61fcf7b761af16ed3aae1234f293.gif"> <br>
-            description: Why won't it play music please help<br>
-            city: Kahala<br>
-            state: HI<br>
-            zipcode: 96816<br>
-            budget: $200<br>
-            priority: Medium<br>
-            created: a week ago<br>
+            description: {{post.description}}<br>
+            city: {{post.city}}<br>
+            state: {{post.state}}<br>
+            zipcode: {{post.zip_code}}<br>
+            budget: {{post.budget}}<br>
+            priority: {{post.priority}}<br>
+            created: {{post.created_at}}<br>
         </div>
 
     </div>
