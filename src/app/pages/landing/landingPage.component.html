@@ -10,7 +10,7 @@
   </form>
   <br>
   <div class="customerRegister">
-    <h2><a *ngIf="!isLoggedIn" routerLink="">New Customer Register</a></h2>
+    <h2><a *ngIf="!isLoggedIn" routerLink="/register">New Customer Register</a></h2>
   </div>
 </div>
 <div *ngIf="isVendor" class="vendor">
@@ -24,7 +24,7 @@
   </form>
   <br>
   <div class="vendorRegister">
-    <h2><a *ngIf="!isLoggedIn" routerLink="">New Vendor Register</a></h2>
+    <h2><a *ngIf="!isLoggedIn" routerLink="/register/vendor">New Vendor Register</a></h2>
   </div>
 </div>
 </div>
