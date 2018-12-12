@@ -47,8 +47,8 @@ router.post('/', (req, res) => {
     return new Post({
       title,
       customer_id: parseCustId,
-      //post_status_id: parsePostStatId, -- will uncomment when post_statuses table is seeded
-     // post_priority_id: parsePostPriorId, -- will uncomment when post_priorities table is seeded
+      post_status_id: parsePostStatId,
+      post_priority_id: parsePostPriorId,
       photo,
       description,
       city,
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
       .save()
       .then(post => {
         return post.refresh({
-          withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId', 'vendorId']
+          withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
         });
       })
       .then(post => {
