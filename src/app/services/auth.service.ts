@@ -13,7 +13,6 @@ export class AuthService {
   ) { }
 
   register(data) {
-    console.log('succesful')
     return this.backend.register(data)
     //should look more like a login.
   }
@@ -26,8 +25,3 @@ export class AuthService {
       return this.session.setVendorSession(vendor)
     }
 }
-    // .then((vendor)=>{
-    //   return this.auth.vendorLoginCheck(vendor, this.company_name, this.password )
-    
-    // })
-    

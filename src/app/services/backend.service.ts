@@ -105,7 +105,6 @@ constructor(
 
 
   register(data) {
-    console.log('this is data', data);
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
       .post(userUrl, {
@@ -122,7 +121,6 @@ constructor(
   }
  
   createNewPost(data) {
-    console.log('post data', data)
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
@@ -138,20 +136,5 @@ constructor(
       zip_code: data.zip_code,
     }).toPromise();
   }
-// customerLogin(username, password){
-//   console.log('backend service', username, password)
-//   const customerUrl = this.baseUrl + "api/customers";
-//   return this.http.post(customerUrl, { username: username, password:password}).toPromise()
-//   .then(()=>{
-//     this.auth.customerLoginCheck(this.customer)
-//   })
-// }
 
-// vendorLogin(company_name,password){
-//   const vendorUrl = this.baseUrl + "api/vendors";
-//   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
-//   .then(()=>{
-//     this.auth.vendorLoginCheck(this.vendor)
-//   })
-// }
 }

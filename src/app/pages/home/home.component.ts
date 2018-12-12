@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
 
         this.backend.getAllHomeItems()
         .then((data) => {
-            console.log('this is data', data)
             this.posts = data
         }) 
         .catch((err) => { console.log(err) })

@@ -43,11 +43,9 @@ export class CreateComponent {
         return this.backend
             .createNewPost(this.NewPostForm)
             .then(() => {
-                console.log('then', this.NewPostForm)
                 return this.router.navigate(['/home']);
             })
             .catch(err => {
-                console.log('catch', this.NewPostForm)
                 return this.router.navigate(['/error']);
             });
     }
