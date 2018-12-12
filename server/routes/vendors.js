@@ -10,10 +10,8 @@ router.get('/smoke', (req, res) => {
 
 router.post('/', (req, res) => {
     let { first_name, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
-    console.log(req.body)
     const parseZip = parseInt(zip_code);
     const parsePhone = parseInt(phone_number)
-    console.log('parse',parsePhone, parseZip)
     return new Vendor({
         first_name,
         last_name,

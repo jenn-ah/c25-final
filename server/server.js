@@ -57,7 +57,7 @@ app.post(`/api/vendors/login`, (req, res) => {
       }
     })
     .catch(err=>{
-      console.log(err)
+      return res.send('Username or password is incorrect')
     })
   })
   
