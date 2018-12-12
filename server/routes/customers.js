@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
+const bcrypt = require('bcryptjs');
+
+const saltRounds = 12;
 
 router.get('/smoke', (req, res)=>{
   console.log('router', req.header)
@@ -42,6 +45,7 @@ router.post('/', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
   } else {
 
+    
     return new Customer({
       first_name,
       last_name,
