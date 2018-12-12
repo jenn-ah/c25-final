@@ -1,4 +1,4 @@
-const knex = require('../../db/knex');
+const knex = require('../knex');
 const bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('registry');
 

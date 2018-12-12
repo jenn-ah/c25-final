@@ -14,11 +14,11 @@ class Post extends bookshelf.Model {
   }
 
   postStatusId() {
-    return this.hasOne('PostStatus', 'post_status_id');
+    return this.hasOne('PostStatus', 'id');
   }
 
   postPriorityId() {
-    return this.hasOne('PostPriority', 'post_priority_id');
+    return this.hasOne('PostPriority', 'id');
   }
 }
 
