@@ -10,7 +10,7 @@ const postsRouter = require('./routes/posts');
 const vendorsRouter = require('./routes/vendors');
 
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
