@@ -8,16 +8,13 @@ const customersRouter = require('./routes/customers');
 const postsRouter = require('./routes/posts');
 const vendorsRouter = require('./routes/vendors');
 
-
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/vendors', vendorsRouter);
-
 
 app.post(`/api/vendors`, (req, res) => {
     let ={company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number }=req.body

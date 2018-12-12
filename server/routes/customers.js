@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
-  console.log('this is req.body', req.body);
+
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
@@ -50,8 +50,7 @@ router.post('/', (req, res) => {
     })
       .save()
       .then(customer => {
-        const newCustomer = customer.toJSON()
-        return res.send(newCustomer);
+        return res.json(customer);
       })
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });

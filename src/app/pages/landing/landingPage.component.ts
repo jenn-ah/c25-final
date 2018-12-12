@@ -38,13 +38,13 @@ export class LandingPageComponent implements OnInit {
     return this.vendorLoginPressed = true;
   }
 
-  customerLogin() {
-     return this.backend.customerLogin(this.loginForm.username, this.loginForm.password)
-  }
+  // customerLogin() {
+  //    return this.backend.customerLogin(this.loginForm.username, this.loginForm.password)
+  // }
 
-  vendorLogin(){
-    return this.backend.vendorLogin(this.loginForm.company_name, this.loginForm.password)
-  }
+  // vendorLogin(){
+  //   return this.backend.vendorLogin(this.loginForm.company_name, this.loginForm.password)
+  // }
 
   
 
