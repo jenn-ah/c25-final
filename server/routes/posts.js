@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../db/Models/Post');
+const Category = require('../db/Models/Category');
+const PostStatus = require('../db/Models/PostStatus');
+const PostPriority = require('../db/Models/PostPriority');
 const validator = require('validator');
 
 router.get('/', (req, res) => {
   return Post.fetchAll({
-    withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId', 'vendorId']
+    withRelated: ['customerId', 'postStatusId', 'postPriorityId'] //add category_id once setup
   })
     .then(posts => {
       return res.json(posts);
