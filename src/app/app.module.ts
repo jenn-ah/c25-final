@@ -15,6 +15,7 @@ import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { RegisterVendorComponent } from './pages/registerVendor/registerVendor.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ErrorComponent } from './pages/error/error.component';
     ProfileComponent,
     HomeComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    RegisterVendorComponent
   
   ],
   imports: [
