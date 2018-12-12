@@ -10,9 +10,9 @@ const postsRouter = require('./routes/posts');
 const vendorsRouter = require('./routes/vendors');
 
 const bodyParser = require('body-parser');
-//const bcrypt = require('bcrypt');
-//const passport = require('passport');
-//const LocalStrategy = require('passport-local');
+// const bcrypt = require('bcrypt');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
 app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({ extended: true }));

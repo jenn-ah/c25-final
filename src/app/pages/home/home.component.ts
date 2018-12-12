@@ -13,10 +13,12 @@ export class HomeComponent implements OnInit {
     constructor(private backend: BackendService, private router: Router) {
 
         this.backend.getAllHomeItems()
-        .then((data) => {
-            this.posts = data
-        }) 
-        .catch((err) => { console.log(err) })
+            .then((data) => {
+                this.posts = data
+            })
+            .catch((err) => {
+                return this.router.navigate(['/error']);
+            })
     }
     ngOnInit() { }
 

@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
 router.post('/', (req, res) => {
   const { title, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
 
