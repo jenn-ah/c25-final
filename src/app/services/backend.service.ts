@@ -1,15 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import {AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class BackendService {
-  baseUrl: string = 'http://localhost:4200/';
-  username: string;
-  company_name:string;
-  password: string;
+  baseUrl: string = "http://localhost:4200/";
+  // username: string ="";
+  // company_name:string = "";
+  // password: string = "";
   customer: {
     id: number,
     username: string,
@@ -96,23 +95,20 @@ export class BackendService {
 
 constructor(
   private http: HttpClient,
-  private auth: AuthService,
 ){}
 
 customerLogin(username, password){
-  console.log('backend service', username, password)
-  const customerUrl = this.baseUrl + "api/customers";
-  return this.http.post(customerUrl, { username: username, password:password}).toPromise()
-  .then(()=>{
-    this.auth.customerLoginCheck(this.customer)
+  console.log('backend service', typeof (username), password)
+  const customerUrl = this.baseUrl + "api/login";
+  console.log('backend2',username,password)
+  return this.http.post(customerUrl, {username:username, password:password}).toPromise()
+  .then((resp)=>{
+    console.log('backend',resp)
   })
 }
 
 vendorLogin(company_name,password){
   const vendorUrl = this.baseUrl + "api/vendors";
   return this.http.post(vendorUrl, {company_name:company_name, password:password}).toPromise()
-  .then(()=>{
-    this.auth.vendorLoginCheck(this.vendor)
-  })
 }
 }

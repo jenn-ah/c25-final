@@ -3,6 +3,10 @@ const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 
+router.get('/smoke', (req, res)=>{
+  console.log('router', req.header)
+  res.send('smoke test for users route');
+})
 
 router.get('/', (req, res) => {
   return Customer.fetchAll()
@@ -16,6 +20,7 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
+  console.log('wrong path')
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
 
   const parseZipcode = parseInt(zip_code);

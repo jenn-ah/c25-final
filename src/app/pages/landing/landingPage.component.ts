@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../../app/services/backend.service';
-
+import { Router } from '@angular/router';
 @Component({
   templateUrl: './landingPage.component.html',
   styleUrls: ['./landingPage.component.scss']
@@ -12,19 +12,24 @@ export class LandingPageComponent implements OnInit {
   vendorLoginPressed: boolean = false;
   isCustomer: boolean = true;
   isVendor: boolean = true;
-  loginForm:{
-  username: string,
-  company_name: string,
-  password: string
-  } = {
-    username:"",
-    company_name:'',
-    password:''
-  };
+  // loginForm:{
+  // username: string,
+  // company_name: string,
+  // password: string
+  // } = {
+  //   username:"",
+  //   company_name:'',
+  //   password:''
+  // };
+  username: string = "";
+  password: string = "";
+  company_name: string = "";
 
   constructor(
     private backend: BackendService,
-  ) { }
+      // private auth: AuthService,
+       private router: Router, 
+    ) { }
 
   ngOnInit() { };
 
@@ -39,13 +44,21 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-     return this.backend.customerLogin(this.loginForm.username, this.loginForm.password)
+     console.log('landing page', typeof(this.username))
+    return this.backend.customerLogin(this.username, this.password)
+     .then(resp =>{
+       console.log(resp)
+       return this.router.navigate(['/']);
+     })
+     .catch(err => {
+       console.log(err)
+     })
   }
 
-  vendorLogin(){
-    return this.backend.vendorLogin(this.loginForm.company_name, this.loginForm.password)
-  }
+  // vendorLogin() {
+  //   return this.backend.vendorLogin(this.company_name, this.password)
+  // }
 
-  
+
 
 }
