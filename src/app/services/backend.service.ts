@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
-import {AuthService } from "./auth.service";
+
 
 @Injectable({
   providedIn: "root"
@@ -95,10 +95,48 @@ export class BackendService {
  };
 
 constructor(
-  private http: HttpClient,
-  private auth: AuthService,
+  private http: HttpClient
 ){}
 
+  getAllHomeItems() {
+    const url = this.baseUrl + 'api/posts'
+    return this.http.get(url).toPromise()
+  }
+
+
+  register(data) {
+    const userUrl = this.baseUrl + `api/customers`;
+    return this.http
+      .post(userUrl, {
+        username: data.username,
+        password: data.password,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        state: data.state,
+        zip_code: data.zip_code,
+        city: data.city,
+        email: data.email
+      })
+      .toPromise();
+  }
+ 
+  createNewPost(data) {
+    const url = this.baseUrl + "api/posts";
+    return this.http.post(url, {
+      title: data.title,
+      customer_id: data.customer_id,
+      post_priority: data.post_priority,
+      vendor_id: data.vendor_id,
+      photo: data.photo,
+      state: data.state,
+      city: data.city,
+      budget: data.budget,
+      description: data.description,
+      can_bid: data.can_bid,
+      zip_code: data.zip_code,
+    }).toPromise();
+  }
+  
 customerLogin(username, password){
   console.log('backend service', username, password)
   const customerUrl = this.baseUrl + "api/customers";
@@ -115,4 +153,5 @@ vendorLogin(company_name,password){
     this.auth.vendorLoginCheck(this.vendor)
   })
 }
+
 }

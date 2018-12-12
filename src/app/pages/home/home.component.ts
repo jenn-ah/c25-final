@@ -8,11 +8,17 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
+    posts: object;
 
     constructor(private backend: BackendService, private router: Router) {
 
+        this.backend.getAllHomeItems()
+        .then((data) => {
+            this.posts = data
+        }) 
+        .catch((err) => { console.log(err) })
     }
-
     ngOnInit() { }
+
 
 }
