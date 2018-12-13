@@ -14,10 +14,9 @@ router.get('/smoke', (req, res) => {
     res.send('smoke test for vendors route');
 })
 
-router.post('/api/vendors/register', (req, res) => {
+router.post('/register', (req, res) => {
     let { first_name, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
     const parseZip = parseInt(zip_code);
-    console.log(parseZip);
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         return new Vendor({
@@ -37,9 +36,12 @@ router.post('/api/vendors/register', (req, res) => {
           license_number
         })
           .save()
-          .then(() => {
-            console.log('route');
+          .then(vendor => {
+            return res.json(vendor);
           })
+          .catch(err => {
+            return res.status(500).json({ message: err.message, code: err.code });
+          });
       })
     })
   })

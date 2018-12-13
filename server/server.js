@@ -109,5 +109,5 @@ app.post('/api/customer/login', passport.authenticate('local', {failureRedirect:
 
 
 app.listen(PORT, () => {
-  process.stdout.write(`Server listening on port: ${PORT}`);
+  process.console.log(`Server listening on port: ${PORT}`);
 });
