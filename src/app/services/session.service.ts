@@ -80,4 +80,12 @@ vendor:{
     this.vendor.zip_code = vendor.zip_code,
     localStorage.setItem('vendor', JSON.stringify(this.vendor))
   }
+
+  getIsLoggedIn() {
+    return this.customer.isLoggedIn;
+}
+
+  getIsVendorLoggedIn(){
+    return this.vendor.isLoggedIn;
+  }
 }
