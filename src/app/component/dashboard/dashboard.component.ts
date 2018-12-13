@@ -14,7 +14,11 @@ customer: any;
    
     }
     isLoggedIn() {
-        return this.session.setCustomerSession(this.customer);
+        return this.session.getIsLoggedIn();
+    }
+
+    isVendorLoggedIn() {
+        return this.session.getIsVendorLoggedIn();
     }
 
     ngOnInit() { }
