@@ -12,9 +12,9 @@ const vendorsRouter = require('./routes/vendors');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const redis = require('connect-redis');
 const session = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+const redis = require('connect-redis')(session);
 
 const saltRounds = 12;
 
@@ -113,6 +113,10 @@ app.post(`/api/vendors/login`, (req, res) => {
       return res.send('Username or password is incorrect')
     })
   })
+  app.post('/api/login', passport.authenticate('local',{
+    successRedirect: '/home',
+    failureRedirect: '',
+  }));
   
 app.get('/smoke', (req, res)=>{
   res.send('smoke test')

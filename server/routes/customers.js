@@ -3,6 +3,10 @@ const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const redis = require('connect-redis')(session);
 
 const saltRounds = 12;
 
@@ -43,7 +47,10 @@ router.post('/', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isNumeric(zip_code)) {
     return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
-  } else {
+  }
+
+   
+  else {
 
     
     return new Customer({
