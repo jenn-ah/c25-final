@@ -153,4 +153,25 @@ vendorLogin(company_name,password){
 })
 }
 
+vendorReg(data){
+  const vendorRegUrl = this.baseUrl + 'api/vendors/register';
+  return this.http.post(vendorRegUrl,{
+    company_name:data.company_name,
+    first_name: data.first_name,
+    last_name: data.last_name,
+    email: data.email,
+    password: data.password,
+    street_address: data.street_address,
+    city: data.city,
+    state: data.state,
+    zip_code: data.zip_code,
+    photo: data.photo,
+    website: data.website,
+    description: data.description,
+    phone_number: data.phone_number,
+    license_number: data.license_number
+  }).toPromise();
+  
+}
+
 }
