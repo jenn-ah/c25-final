@@ -52,21 +52,13 @@ app.post(`/api/vendors/login`, (req, res) => {
         return res.status(401).json({ message: `Username or password incorrect` })
       } else {
         const customer = data.toJSON();
-        return res.send(customer)
+        return res.send(customer);
       }
     })
     .catch(err=>{
-      return res.send('Username or password is incorrect')
-    })
-  })
-  
-app.get('/smoke', (req, res)=>{
-  res.send('smoke test')
-})
-
-
-
-
+      return res.send('Username or password is incorrect');
+    });
+  });
 
 
 app.listen(PORT, () => {

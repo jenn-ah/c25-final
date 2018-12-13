@@ -10,7 +10,7 @@ class Post extends bookshelf.Model {
   }
 
   categoryId() {
-    return this.hasOne('Category', 'category_id');
+    return this.hasOne('Category', 'id');
   }
 
   postStatusId() {
