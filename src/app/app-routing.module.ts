@@ -7,12 +7,8 @@ import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
-<<<<<<< HEAD
 import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.component';
-=======
 import { ErrorComponent } from './pages/error/error.component';
-import { RegisterVendorComponent } from './pages/registerVendor/registerVendor.component'
->>>>>>> development
 
 
 const routes: Routes = [
@@ -23,12 +19,8 @@ const routes: Routes = [
   { path:'profile', component: ProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},
-<<<<<<< HEAD
   { path: 'vendorRegister', component: VendorRegisterComponent},
-=======
-  { path:'register/vendor', component: RegisterVendorComponent },
   { path:'error', component: ErrorComponent },
->>>>>>> development
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];
 
