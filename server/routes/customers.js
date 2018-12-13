@@ -15,20 +15,22 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const getId = parseInt(req.params.id);
-  const userId = req.user.id;
+  const getId = req.params.id;
+ // const userId = req.user.id;
 
-  if (userId !== getId) {
-    return res.status(400).json({ status: Error, message: `Unable to get ${getId}` });
-  } else {
-    return new Customer({ id: getId })
+  // if (userId !== getId) {
+  //   return res.status(400).json({ status: Error, message: `Unable to get ${getId}` });
+  // } 
+  // else {
+    return new Customer()
+      .where({ id: getId })
       .fetch({
         require: true,
         columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
       })
       .then(customer => {
         if (!customer) {
-          res.status(400).json({ message: `User ID ${getId} not found.` });
+          res.status(400).json({ message: `User not found.` });
         } else {
           const custObj = customer.serialize();
           return res.json(custObj);
@@ -37,7 +39,7 @@ router.get('/:id', (req, res) => {
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });
       });
-  }
+  // }
 });
 
 router.post('/', (req, res) => {
@@ -86,11 +88,11 @@ router.post('/', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = parseInt(req.params.id);
-  const userId = req.user.id;
+  // const userId = req.user.id;
 
-  if (userId !== getId) {
-    return res.status(400).json({ status: Error, message: `Unable to edit ${getId}` });
-  } else {
+  // if (userId !== getId) {
+  //   return res.status(400).json({ status: Error, message: `Unable to edit ${getId}` });
+  // } else {
     return new Customer({ id: getId })
       .fetch({
         require: true,
@@ -102,8 +104,8 @@ router.get('/:id/edit', (req, res) => {
       })
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });
-      })
-  }
+      });
+  // }
 });
 
 
