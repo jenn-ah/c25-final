@@ -91,7 +91,6 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
-  //add user validation
 
   return new Post({ id: getId })
     .fetch({
@@ -109,7 +108,6 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id/edit', (req, res) => {
   const getId = req.params.id;
-  //add user validation
 
   const { title, description, city, state, zip_code, budget, can_bid } = req.body;
 

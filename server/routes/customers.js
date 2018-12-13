@@ -16,30 +16,24 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
- // const userId = req.user.id;
 
-  // if (userId !== getId) {
-  //   return res.status(400).json({ status: Error, message: `Unable to get ${getId}` });
-  // } 
-  // else {
-    return new Customer()
-      .where({ id: getId })
-      .fetch({
-        require: true,
-        columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
-      })
-      .then(customer => {
-        if (!customer) {
-          res.status(400).json({ message: `User not found.` });
-        } else {
-          const custObj = customer.serialize();
-          return res.json(custObj);
-        }
-      })
-      .catch(err => {
-        return res.status(500).json({ message: err.message, code: err.code });
-      });
-  // }
+  return new Customer()
+    .where({ id: getId })
+    .fetch({
+      require: true,
+      columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
+    })
+    .then(customer => {
+      if (!customer) {
+        res.status(400).json({ message: `User not found.` });
+      } else {
+        const custObj = customer.serialize();
+        return res.json(custObj);
+      }
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
 });
 
 router.post('/', (req, res) => {
@@ -88,35 +82,28 @@ router.post('/', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = parseInt(req.params.id);
-  // const userId = req.user.id;
 
-  // if (userId !== getId) {
-  //   return res.status(400).json({ status: Error, message: `Unable to edit ${getId}` });
-  // } else {
-    return new Customer({ id: getId })
-      .fetch({
-        require: true,
-        columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
-      })
-      .then(customer => {
-        const custObj = customer.serialize();
-        return res.json(custObj);
-      })
-      .catch(err => {
-        return res.status(500).json({ message: err.message, code: err.code });
-      });
-  // }
+  return new Customer({ id: getId })
+    .fetch({
+      require: true,
+      columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
+    })
+    .then(customer => {
+      const custObj = customer.serialize();
+      return res.json(custObj);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
 });
 
 
 router.put('/:id/edit', (req, res) => {
   const getId = parseInt(req.params.id);
-  const userId = req.user.id;
+
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
-  if (userId !== getId) {
-    return res.status(400).json({ status: Error, message: `Unable to edit ${getId}` });
-  } else if (!validator.isAlpha(first_name)) {
+  if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
   } else if (!validator.isAlpha(last_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid last name' });
@@ -131,7 +118,7 @@ router.put('/:id/edit', (req, res) => {
   } else if (!validator.isNumeric(zip_code)) {
     return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
   } else {
-    return new Customer({ id: userId })
+    return new Customer({ id: getId })
       .fetch({ require: true })
       .then(customer => {
         customer.save({

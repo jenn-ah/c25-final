@@ -72,7 +72,6 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
-  //add validations here
 
   return new Vendor()
     .where({ id: getId })
@@ -96,7 +95,6 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
-  //add user validations
 
   return new Vendor({ id: getId })
     .fetch({
@@ -116,7 +114,6 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id/edit', (req, res) => {
   const getId = req.params.id;
 
-  //add user validation
   const { first_name, last_name, company_name, email, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
 
   if (!validator.isAlpha(first_name)) {
