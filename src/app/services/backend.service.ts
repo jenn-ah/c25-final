@@ -138,9 +138,10 @@ constructor(
   }
   
 customerLogin(username, password){
-  const customerUrl = this.baseUrl + "api/login";
+  const customerUrl = this.baseUrl + "api/customer/login";
   return this.http.post(customerUrl, {username:username, password:password}).toPromise()
   .then((resp)=>{
+    console.log(resp)
     return this.auth.customerLoginCheck(resp);
   })
 }
