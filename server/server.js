@@ -24,15 +24,17 @@ app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/vendors', vendorsRouter);
 
+
 app.use(session({
   store: new redis({
-    url: 'redis://redis-server:6379',
+    url: process.env.REDIS_URL,
     logErrors: true
   }),
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());
