@@ -71,6 +71,24 @@ router.post('/', (req, res) => {
   }
 });
 
+
+router.get('/:id', (req, res) => {
+  const getId = req.params.id;
+
+  return new Post({ id: getId })
+    .fetch({
+      require: true,
+      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+    })
+    .then(post => {
+      const postObj = post.serialize();
+      return res.json(postObj);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
   //add user validation
