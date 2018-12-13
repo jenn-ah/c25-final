@@ -88,4 +88,17 @@ vendor:{
   getIsVendorLoggedIn(){
     return this.vendor.isLoggedIn;
   }
+
+  clearSession() {
+    this.customer.id = undefined;
+    this.vendor.id = undefined;
+    this.customer.username = '';
+    this.vendor.company_name = '';
+    this.customer.isLoggedIn = false;
+    this.vendor.isLoggedIn = false;
+
+    localStorage.removeItem('customer');
+    localStorage.removeItem('vendor');
+}
+
 }
