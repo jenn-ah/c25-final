@@ -69,7 +69,82 @@ router.post('/', (req, res) => {
         return res.status(500).json({ message: err.message, code: err.code })
       })
   }
-})
+});
+
+
+router.get('/:id', (req, res) => {
+  const getId = req.params.id;
+
+  return new Post({ id: getId })
+    .fetch({
+      require: true,
+      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+    })
+    .then(post => {
+      const postObj = post.serialize();
+      return res.json(postObj);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+router.get('/:id/edit', (req, res) => {
+  const getId = req.params.id;
+
+  return new Post({ id: getId })
+    .fetch({
+      require: true,
+      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+    })
+    .then(post => {
+      const postObj = post.serialize();
+      return res.json(postObj);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+router.put('/:id/edit', (req, res) => {
+  const getId = req.params.id;
+
+  const { title, description, city, state, zip_code, budget, can_bid } = req.body;
+
+  if (validator.isEmpty(title)) {
+    return res.status(400).json({ status: Error, message: 'Invalid title' });
+  } else if (validator.isEmpty(description)) {
+    return res.status(400).json({ status: Error, message: 'Invalid description' });
+  } else if (validator.isEmpty(city)) {
+    return res.status(400).json({ status: Error, message: 'Invalid city' });
+  } else if (!validator.isAlpha(state) && (state.length !== 2)) {
+    return res.status(400).json({ status: Error, message: 'Invalid state' });
+  } else if (!validator.isNumeric(zip_code) && (zip_code.length !== 5)) {
+    return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
+  } else if (!validator.isNumeric(budget)) {
+    return res.status(400).json({ status: Error, message: 'Invalid input for budget' });
+  } else if (!validator.isBoolean(can_bid)) {
+    return res.status(400).json({ status: Error, message: 'Invalid input' });
+  } else {
+    return new Post({ id: getId })
+      .fetch({ require: true })
+      .then(post => {
+        post.save({
+          title,
+          description,
+          city,
+          state,
+          zip_code,
+          budget,
+          can_bid
+        })
+        return res.json({ message: `Information has been updated for Post #${post.id}` });
+      })
+      .catch(err => {
+        return res.status(500).json({ message: err.message, code: err.code });
+      });
+  }
+});
 
 
 module.exports = router;
