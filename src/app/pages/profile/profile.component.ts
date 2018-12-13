@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
+import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,18 @@ import { Router } from '@angular/router';
 })
 
 export class ProfileComponent implements OnInit {
-
-    constructor(private backend: BackendService, private router: Router) {
+    isLoggedIn: boolean = false;
+    loginPressed: boolean = false;
+    constructor(private backend: BackendService, private router: Router, private session: SessionService) {
 
     }
 
     ngOnInit() { }
 
+    logout(){
+        this.session.clearSession()
+        this.isLoggedIn = false;
+        this.loginPressed = false;
+        return this.router.navigate([''])
+     }
 }
