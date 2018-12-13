@@ -15,6 +15,7 @@ import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { RegisterVendorComponent } from './pages/registerVendor/registerVendor.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { RegisterVendorComponent } from './pages/registerVendor/registerVendor.c
     HomeComponent,
     RegisterComponent,
     ErrorComponent,
-    RegisterVendorComponent
+    RegisterVendorComponent,
+    JobsComponent
   
   ],
   imports: [
