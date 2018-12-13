@@ -3,7 +3,6 @@ const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 
-
 router.get('/', (req, res) => {
   return Vendor.fetchAll()
     .then(vendors => {
@@ -14,10 +13,8 @@ router.get('/', (req, res) => {
     });
 });
 
-
 router.post('/', (req, res) => {
   const { first_name, last_name, company_name, password, email, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
-
 
   if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
