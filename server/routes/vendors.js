@@ -10,9 +10,16 @@ const redis = require('connect-redis')(session);
 
 const saltRounds = 12;
 
-router.get('/smoke', (req, res) => {
-    res.send('smoke test for vendors route');
-})
+router.get('/', (req, res) => {
+  return Vendor.fetchAll()
+  .then(vendors => {
+    return res.json(vendors);
+  })
+  .catch(err => {
+    return res.status(500).json({ message: err.message, code: err.code });
+  });
+});
+
 
 router.post('/register', (req, res) => {
     let { first_name, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
