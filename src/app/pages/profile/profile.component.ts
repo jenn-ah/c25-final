@@ -11,16 +11,19 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
+    data: any;
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
 
+     
     }
 
     ngOnInit() { }
 
-    logout(){
+
+    logout() {
         this.session.clearSession()
         this.isLoggedIn = false;
         this.loginPressed = false;
         return this.router.navigate([''])
-     }
+    }
 }
