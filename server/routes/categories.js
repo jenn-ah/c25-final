@@ -16,16 +16,14 @@ router.get('/', (req, res) => {
 
 
 router.get('/automotive', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 1 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const automotive = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 1;
-      });
-      return res.send(automotive);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -33,16 +31,14 @@ router.get('/automotive', (req, res) => {
 });
 
 router.get('/electrical', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 2 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const electrical = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 2;
-      });
-      return res.send(electrical);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -50,16 +46,14 @@ router.get('/electrical', (req, res) => {
 });
 
 router.get('/plumbing', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 3 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const plumbing = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 3;
-      });
-      return res.send(plumbing);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -67,16 +61,14 @@ router.get('/plumbing', (req, res) => {
 });
 
 router.get('/landscaping', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 4 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const landscaping = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 4;
-      });
-      return res.send(landscaping);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -84,16 +76,14 @@ router.get('/landscaping', (req, res) => {
 });
 
 router.get('/tailoring', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 5 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const tailoring = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 5;
-      });
-      return res.send(tailoring);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -101,16 +91,14 @@ router.get('/tailoring', (req, res) => {
 });
 
 router.get('/childcare', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 6 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const childCare = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 6;
-      });
-      return res.send(childCare);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -119,16 +107,14 @@ router.get('/childcare', (req, res) => {
 
 
 router.get('/painting', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 7 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const painting = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 7;
-      });
-      return res.send(painting);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -137,16 +123,14 @@ router.get('/painting', (req, res) => {
 
 
 router.get('/carpentry', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 8 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const carpentry = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 8;
-      });
-      return res.send(carpentry);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -154,16 +138,14 @@ router.get('/carpentry', (req, res) => {
 });
 
 router.get('/pressurewash', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 9 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const pressureWash = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 9;
-      });
-      return res.send(pressureWash);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -172,16 +154,14 @@ router.get('/pressurewash', (req, res) => {
 
 
 router.get('/other', (req, res) => {
-  return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+
+  return new Post()
+    .where({ category_id: 10 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
     .then(posts => {
-      const results = posts.toJSON();
-      const other = results.filter(element => {
-        const elemCatId = element.category_id;
-        return elemCatId.id === 10;
-      });
-      return res.send(other);
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
