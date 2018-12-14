@@ -8,7 +8,7 @@ const validator = require('validator');
 
 router.get('/', (req, res) => {
   return Post.fetchAll({
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId'] 
+    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
     .then(posts => {
       return res.json(posts);
@@ -75,16 +75,35 @@ router.post('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
+  
   const getId = req.params.id;
 
   return new Post({ id: getId })
     .fetch({
       require: true,
-      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
+      withRelated: ['customerId']
     })
     .then(post => {
       const postObj = post.serialize();
       return res.json(postObj);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+
+router.get('/all/:id', (req, res) => {
+  const getId = parseInt(req.params.id);
+
+  return new Post()
+    .where({ customer_id: getId })
+    .fetchAll({ 
+      withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
+    })
+    .then(posts => {
+      return res.json(posts);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
