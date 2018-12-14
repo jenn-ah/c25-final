@@ -1,13 +1,21 @@
-<div class="profile">
-    <h3 class="Name"> Name: Shad G </h3>
-    Phone: 1-800-RealG 
-    City: Gomptom 
-    State: GHawaii 
-    Zip Code: G96792 
-    Email: Gemail@Geeemail.com 
-    About: Simple, I'm A G 
+<div class="profile-vendor" *ngIf="vendorLogIn()">
+    <h3 class="Name"> Name: {{ vendor.first_name }} {{ vendor.last_name }} </h3>
+    Company Name: {{ vendor.company_name }} <br>
+    Phone: {{ vendor.phone_number }} <br>
+    City: {{ vendor.city }} <br>
+    State: {{ vendor.state }} <br>
+    Zip Code: {{ vendor.zip_code }} <br>
+    Email: {{ vendor.email }} <br>
 
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>
-      </div>
+    </div>
 </div>
+
+<div class="profile-customer" *ngIf="customerLogIn()">
+    <div class="customer" *ngFor="let cust of customer">
+        <h3 class="name"> Name: {{ cust.first_name }} </h3>
+
+    </div>
+</div>
+

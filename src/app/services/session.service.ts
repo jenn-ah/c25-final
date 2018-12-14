@@ -27,6 +27,8 @@ vendor:{
   id: number,
   first_name: string,
   last_name: string,
+  phone_number: number,
+  email: string,
   company_name:string,
   isLoggedIn: boolean,
   city: string,
@@ -36,6 +38,8 @@ vendor:{
   id:null,
   first_name:"",
   last_name:"",
+  phone_number: null,
+  email: "",
   company_name:"",
   isLoggedIn: false,
   city:"",
@@ -70,9 +74,11 @@ vendor:{
   }
 
   setVendorSession(vendor){
-    this.vendor.id = vendor.id;
+    this.vendor.id = vendor.id,
     this.vendor.first_name = vendor.first_name,
     this.vendor.last_name = vendor.last_name,
+    this.vendor.phone_number = vendor.phone_number,
+    this.vendor.email = vendor.email,
     this.vendor.company_name = vendor.company_name,
     this.vendor.isLoggedIn = true,
     this.vendor.city = vendor.city,
@@ -85,6 +91,13 @@ vendor:{
     return this.customer.isLoggedIn;
 }
 
+getVendor(){
+  return this.vendor
+}
+
+getCustomer(){
+  return this.customer
+}
   getIsVendorLoggedIn(){
     return this.vendor.isLoggedIn;
   }

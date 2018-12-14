@@ -12,13 +12,31 @@ export class ProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
     data: any;
-    constructor(private backend: BackendService, private router: Router, private session: SessionService) {
+    vendor: object;
+    customer: object;
 
-     
+    constructor(private backend: BackendService, private router: Router, private session: SessionService) {
+        this.vendor = this.session.getVendor();
+
+        this.customer = this.session.getCustomer()
+        console.log(this.customer)
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 
+    // getCustomer() {
+    //     this.customer = this.session.getCustomer()
+    //     console.log(this.customer)
+    // }
+
+    customerLogIn() {
+        return this.session.getIsLoggedIn();
+    }
+
+    vendorLogIn() {
+        return this.session.getIsVendorLoggedIn();
+    }
 
     logout() {
         this.session.clearSession()
