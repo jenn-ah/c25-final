@@ -12,22 +12,12 @@ export class LandingPageComponent implements OnInit {
   vendorLoginPressed: boolean = false;
   isCustomer: boolean = true;
   isVendor: boolean = true;
-  // loginForm:{
-  // username: string,
-  // company_name: string,
-  // password: string
-  // } = {
-  //   username:"",
-  //   company_name:'',
-  //   password:''
-  // };
+  
   username: string = "";
   password: string = "";
-  company_name: string = "";
 
   constructor(
     private backend: BackendService,
-      // private auth: AuthService,
        private router: Router, 
     ) { }
 
@@ -49,17 +39,17 @@ export class LandingPageComponent implements OnInit {
        return this.router.navigate(['/home']);
      })
      .catch(err => {
-       console.log(err)
+       return this.router.navigate(['/'])
      })
   }
 
   vendorLogin() {
-    return this.backend.vendorLogin(this.company_name, this.password)
+    return this.backend.vendorLogin(this.username, this.password)
   .then((resp)=> {
     return this.router.navigate(["/home"]);
   })
   .catch((err)=>{
-    console.log(err)
+    return this.router.navigate(['/'])
   })
   }
 
