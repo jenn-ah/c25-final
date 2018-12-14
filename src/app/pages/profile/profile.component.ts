@@ -18,20 +18,9 @@ export class ProfileComponent implements OnInit {
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
         this.vendor = this.session.getVendor();
 
-        this.customer = this.session.getCustomer()
-        console.log(this.customer)
     }
 
     ngOnInit() {
-    }
-
-    // getCustomer() {
-    //     this.customer = this.session.getCustomer()
-    //     console.log(this.customer)
-    // }
-
-    customerLogIn() {
-        return this.session.getIsLoggedIn();
     }
 
     vendorLogIn() {

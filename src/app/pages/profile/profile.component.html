@@ -11,11 +11,3 @@
         <button class="logout"><a (click)="logout()">Logout</a></button>
     </div>
 </div>
-
-<div class="profile-customer" *ngIf="customerLogIn()">
-    <div class="customer" *ngFor="let cust of customer">
-        <h3 class="name"> Name: {{ cust.first_name }} </h3>
-
-    </div>
-</div>
-
