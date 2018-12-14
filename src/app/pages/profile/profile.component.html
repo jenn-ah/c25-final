@@ -1,11 +1,11 @@
 <div class="profile-vendor" *ngIf="vendorLogIn()">
     <h3 class="Name"> Name: {{ vendor.first_name }} {{ vendor.last_name }} </h3>
-    Company Name: {{ vendor.company_name }} <br>
-    Phone: {{ vendor.phone_number }} <br>
-    City: {{ vendor.city }} <br>
-    State: {{ vendor.state }} <br>
-    Zip Code: {{ vendor.zip_code }} <br>
-    Email: {{ vendor.email }} <br>
+    Company Name: {{ vendor.company_name }}
+    Phone: {{ vendor.phone_number }}
+    City: {{ vendor.city }}
+    State: {{ vendor.state }}
+    Zip Code: {{ vendor.zip_code }}
+    Email: {{ vendor.email }}
 
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>
