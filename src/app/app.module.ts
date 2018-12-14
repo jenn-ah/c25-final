@@ -13,6 +13,7 @@ import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
@@ -30,9 +31,11 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
     ProfileComponent,
     HomeComponent,
     RegisterComponent,
+    VendorRegisterComponent,
     ErrorComponent,
     JobsComponent,
     CustomerProfileComponent
+  
   ],
   imports: [
     BrowserModule,

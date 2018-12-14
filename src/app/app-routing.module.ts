@@ -7,6 +7,7 @@ import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
 import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},
   { path:'jobs', component: JobsComponent },
+  { path: 'vendorRegister', component: VendorRegisterComponent},
   { path:'error', component: ErrorComponent },
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];

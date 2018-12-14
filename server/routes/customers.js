@@ -2,7 +2,18 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
+const bcrypt = require('bcryptjs');
+const session = require('express-session');
 
+<<<<<<< HEAD
+=======
+const saltRounds = 12;
+
+router.get('/smoke', (req, res) => {
+  console.log('router', req.header)
+  res.send('smoke test for users route');
+})
+>>>>>>> bcrypt
 
 router.get('/', (req, res) => {
   return Customer.fetchAll()
@@ -14,6 +25,7 @@ router.get('/', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
 
@@ -36,9 +48,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
+=======
+>>>>>>> bcrypt
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
-
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
@@ -57,25 +70,31 @@ router.post('/', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isNumeric(zip_code)) {
     return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
-  } else {
-
-    return new Customer({
-      first_name,
-      last_name,
-      username,
-      password,
-      email,
-      state,
-      city,
-      zip_code: parseZipcode
-    })
-      .save()
-      .then(customer => {
-        return res.json(customer);
+  }
+  else {
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
+        {
+          return new Customer({
+            first_name,
+            last_name,
+            username,
+            password: hash,
+            email,
+            state,
+            city,
+            zip_code: parseZipcode
+          })
+            .save()
+            .then(customer => {
+              return res.json(customer);
+            })
+            .catch(err => {
+              return res.status(500).json({ message: err.message, code: err.code });
+            });
+        }
       })
-      .catch(err => {
-        return res.status(500).json({ message: err.message, code: err.code });
-      });
+    })
   }
 });
 
