@@ -9,6 +9,7 @@ import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
+  { path:'customer/profile', component: CustomerProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},
   { path:'jobs', component: JobsComponent },

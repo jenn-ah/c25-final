@@ -3,14 +3,14 @@
     border-radius: 10px;
 }
 
-.profile-vendor{
-    text-align: center;
-}
-
 .logout-div{
     position:absolute;
     top:0;
     right:0;
+}
+
+.profile-customer{
+    text-align: center;
 }
 
 .picture{
@@ -21,11 +21,7 @@
     width: 50%;
 }
 
-.info{
-   margin-top: 20px;   
-}
-
-.contact{
-    border: solid lightgrey;
-    border-radius: 10px;
+.post-router{
+    text-decoration: none;
+    color: black;
 }

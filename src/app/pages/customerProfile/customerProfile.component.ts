@@ -4,27 +4,25 @@ import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
 @Component({
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+    templateUrl: './customerProfile.component.html',
+    styleUrls: ['./customerProfile.component.scss']
 })
 
-export class ProfileComponent implements OnInit {
+export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
-    data: any;
-    vendor: object;
     customer: object;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-        this.vendor = this.session.getVendor();
+        this.customer = this.session.getCustomer();
 
     }
 
     ngOnInit() {
     }
 
-    vendorLogIn() {
-        return this.session.getIsVendorLoggedIn();
+    customerLogIn() {
+        return this.session.getIsLoggedIn();
     }
 
     logout() {

@@ -1,13 +1,22 @@
-<div class="profile">
-    <h3 class="Name"> Name: Shad G </h3>
-    Phone: 1-800-RealG 
-    City: Gomptom 
-    State: GHawaii 
-    Zip Code: G96792 
-    Email: Gemail@Geeemail.com 
-    About: Simple, I'm A G 
+<div class="profile-vendor" *ngIf="vendorLogIn()">
+    <h3 class="company-name"> Works For: {{ vendor.company_name }} </h3>
+    <img class="picture" src="https://pbs.twimg.com/profile_images/921495502654341120/0NozWMEF_400x400.jpg">
+    <h3 class="name"> {{ vendor.first_name }} {{ vendor.last_name }} </h3>
+    <div class="info">
+        Website: {{ vendor.website }} <br>
+        Email: {{ vendor.email }} <br>
+        Phone: {{ vendor.phone_number }} <br>
+        About Me: {{ vendor.description }} <br>
+        City: {{ vendor.city }} <br>
+        State: {{ vendor.state }} <br>
+        Zip Code: {{ vendor.zip_code }} <br>
+    </div>
+
+    <div class="contact">
+        <button><a routerLink="/messages"> Contact {{vendor.first_name}} </a></button>
+    </div>
 
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>
-      </div>
+    </div>
 </div>

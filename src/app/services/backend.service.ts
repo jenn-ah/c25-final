@@ -23,6 +23,11 @@ export class BackendService {
     private auth: AuthService
   ) { }
 
+  getVendor(id: number) {
+    const url = this.baseUrl + "api/vendors" + id;
+    return this.http.get(url).toPromise();
+  }
+
   getAllHomeItems() {
     const url = this.baseUrl + 'api/posts'
     return this.http.get(url).toPromise()
