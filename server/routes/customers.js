@@ -4,9 +4,6 @@ const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const redis = require('connect-redis')(session);
 
 const saltRounds = 12;
 
@@ -25,10 +22,8 @@ router.get('/', (req, res) => {
     });
 });
 
-
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
-
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
@@ -50,13 +45,13 @@ router.post('/', (req, res) => {
   }
   else {
     bcrypt.genSalt(saltRounds, function (err, salt) {
-      bcrypt.hash(password, salt, function (err, hash) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
         {
           return new Customer({
             first_name,
             last_name,
             username,
-            password:hash,
+            password: hash,
             email,
             state,
             city,

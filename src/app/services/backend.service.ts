@@ -34,7 +34,6 @@ export class BackendService {
     return this.http.get(url).toPromise()
   }
 
-
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
@@ -73,7 +72,6 @@ export class BackendService {
       .toPromise();
   }
 
-
   createNewPost(data) {
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
@@ -95,15 +93,13 @@ export class BackendService {
     const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
-        console.log(resp)
         return this.auth.customerLoginCheck(resp);
       })
   }
 
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';
-    console.log(vendorUrl)
-    return this.http.post(vendorUrl, { company_name: username, password: password }).toPromise()
+    return this.http.post(vendorUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.vendorLoginCheck(resp);
       })
@@ -127,7 +123,5 @@ export class BackendService {
       phone_number: data.phone_number,
       license_number: data.license_number
     }).toPromise();
-
   }
-
 }

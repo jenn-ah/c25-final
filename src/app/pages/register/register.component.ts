@@ -14,7 +14,7 @@ export class RegisterComponent {
     password: string;
     email: string;
     state: string;
-    zip_code: string;
+    zip_code: number;
     city: string
   } = {
       first_name: '',
@@ -23,7 +23,7 @@ export class RegisterComponent {
       password: '',
       email: '',
       state: '',
-      zip_code: '',
+      zip_code: null,
       city: ''
     };
 

@@ -24,7 +24,6 @@ app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/vendors', vendorsRouter);
 
-
 app.use(session({
   store: new redis({
     url: process.env.REDIS_URL,
@@ -35,27 +34,38 @@ app.use(session({
   saveUninitialized: false
 }));
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser((customer, done) => {
-  done(null, customer.id)
+passport.serializeUser((username, done) => {
+  done(null, username.id)
 });
 
 passport.deserializeUser((username, cb) => {
   return new Customer()
-    .where({ id: username.id })
+    .where({ id: username })
     .fetch()
     .then((username) => {
       if (!username) {
-        cb(null);
+        cb(null, 'pass');
       }
-      cb(null, username.id());
+      cb(null, username);
     });
 });
 
-passport.use('customerLogin', new LocalStrategy((username, password, done) => {
+passport.deserializeUser((username, cb) => {
+  return new Vendor()
+    .where({ id: username })
+    .fetch()
+    .then((username) => {
+      if (!username) {
+        cb(null, 'pass');
+      }
+      cb(null, username);
+    });
+});
+
+passport.use('customerLocal', new LocalStrategy((username, password, done) => {
   new Customer()
     .where({ username })
     .fetch()
@@ -65,10 +75,8 @@ passport.use('customerLogin', new LocalStrategy((username, password, done) => {
       }
       else {
         let customerObj = user.serialize();
-        console.log('passport', customerObj, password)
         bcrypt.compare(password, customerObj.password)
           .then((res) => {
-            console.log(res)
             if (res === true) { return done(null, customerObj); }
             else {
               return done(null, false, { message: `Bad username/password` })
@@ -78,9 +86,9 @@ passport.use('customerLogin', new LocalStrategy((username, password, done) => {
     });
 }));
 
-passport.use('vendorLogin', new LocalStrategy((company_name, password, done) => {
+passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
   new Vendor()
-    .where({ company_name })
+    .where({ username })
     .fetch()
     .then((vendor) => {
       if (!vendor) {
@@ -88,10 +96,8 @@ passport.use('vendorLogin', new LocalStrategy((company_name, password, done) => 
       }
       else {
         let vendorObj = vendor.serialize();
-        console.log('passport', vendorObj, password)
         bcrypt.compare(password, vendorObj.password)
           .then((res) => {
-            console.log(res)
             if (res === true) { return done(null, vendorObj); }
             else {
               return done(null, false, { message: `Bad username/password` })
@@ -101,33 +107,13 @@ passport.use('vendorLogin', new LocalStrategy((company_name, password, done) => 
     });
 }));
 
-
-// app.post(`/api/vendors/login`, (req, res) => {
-//   let = { company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number } = req.body
-//   return new Vendor()
-//     .where({ company_name: company_name, password: password })
-//     .fetch({
-//       columns: ["company_name", "password", "id", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "phone_number", "photo", "website", "description", "license_number"]
-//     })
-//     .then(data => {
-//       if (!data) {
-//         return res.status(401).json({ message: `Company name or password incorrect` })
-//       } else {
-//         const vendor = data.toJSON();
-//         return res.send(vendor);
-//       }
-//     })
-// })
-
-app.post('/api/customer/login', passport.authenticate('customerLogin', {failureRedirect: ''}),
-  function(req, res){
-    console.log(req.body)
+app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
+  function (req, res) {
     return res.send(req.body)
   });
 
-  app.post('/api/vendors/login', passport.authenticate('vendorLogin', {failureRedirect: ''}),
-  function(req, res){
-    console.log(req.body)
+app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
+  function (req, res) {
     return res.send(req.body)
   });
 
