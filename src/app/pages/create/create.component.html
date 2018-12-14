@@ -4,13 +4,13 @@
     <div>Title:
         <input name="Title" type="text" [(ngModel)]="NewPostForm.title" />
     </div>
-    <div>customer_id:
+    <div>customer id:
         <input name="customer_id" type="text" [(ngModel)]="NewPostForm.customer_id" />
     </div>
-    <div>post_priority:
+    <div>post priority:
         <input name="post_priority" type="text" [(ngModel)]="NewPostForm.post_priority" />
     </div>
-    <div>vendor_id:
+    <div>vendor id:
         <input name="vendor_id" type="text" [(ngModel)]="NewPostForm.vendor_id" />
     </div>
     <div>photo:
@@ -25,15 +25,18 @@
     <div>state:
         <input name="state" type="text" [(ngModel)]="NewPostForm.state" />
     </div>
-    <div>zip_code:
+    <div>zipcode:
         <input name="zip_code" type="text" [(ngModel)]="NewPostForm.zip_code" />
     </div>
     <div>budget:
         <input name="budget" type="text" [(ngModel)]="NewPostForm.budget" />
     </div>
-    <div>can_bid:
-        <input name="can_bid" type="text" [(ngModel)]="NewPostForm.can_bid" />
+    <div>can bid:
+        <select>
+            <option value="false">False</option>
+            <option value="true">True</option>
+        </select>
     </div>
-    <button (click)="createPost()">Submit</button>
-    
+    <button class="submit" (click)="createPost()">Submit</button>
+
 </form>
