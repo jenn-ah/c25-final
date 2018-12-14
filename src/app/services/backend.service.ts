@@ -6,9 +6,6 @@ import { AuthService } from "../services/auth.service"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
-  // username: string ="";
-  // company_name:string = "";
-  // password: string = "";
   customer: {
     username: string,
     password: string,
@@ -16,7 +13,13 @@ export class BackendService {
       username: '',
       password: '',
     };
-
+  vendor: {
+    username: string,
+    password: string,
+  } = {
+      username: '',
+      password: ''
+    }
 
   constructor(
     private http: HttpClient,
@@ -32,7 +35,6 @@ export class BackendService {
     const url = this.baseUrl + 'api/posts'
     return this.http.get(url).toPromise()
   }
-
 
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
@@ -56,6 +58,7 @@ export class BackendService {
       .post(userUrl, {
         first_name: data.first_name,
         last_name: data.last_name,
+        username: data.username,
         company_name: data.company_name,
         password: data.password,
         email: data.email,
@@ -71,7 +74,6 @@ export class BackendService {
       })
       .toPromise();
   }
-
 
   createNewPost(data) {
     const url = this.baseUrl + "api/posts";
@@ -91,19 +93,39 @@ export class BackendService {
   }
 
   customerLogin(username, password) {
-    const customerUrl = this.baseUrl + "api/login";
+    const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })
   }
 
-  vendorLogin(company_name, password) {
-    const vendorUrl = this.baseUrl + "api/vendors/login";
-    return this.http.post(vendorUrl, { company_name: company_name, password: password }).toPromise()
+  vendorLogin(username, password) {
+    const vendorUrl = this.baseUrl + 'api/vendors/login';
+    return this.http.post(vendorUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.vendorLoginCheck(resp);
       })
   }
 
+  vendorReg(data) {
+    const vendorRegUrl = this.baseUrl + 'api/vendors/register';
+    return this.http.post(vendorRegUrl, {
+      company_name: data.company_name,
+      username: data.username,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+      street_address: data.street_address,
+      city: data.city,
+      state: data.state,
+      zip_code: data.zip_code,
+      photo: data.photo,
+      website: data.website,
+      description: data.description,
+      phone_number: data.phone_number,
+      license_number: data.license_number
+    }).toPromise();
+  }
 }

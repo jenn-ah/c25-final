@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
+const bcrypt = require('bcryptjs');
+const saltRounds = 12;
 
 
 router.get('/:id', (req, res) => {
@@ -26,9 +28,9 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
-
   const parseZipcode = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
@@ -47,30 +49,37 @@ router.post('/', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isNumeric(zip_code)) {
     return res.status(400).json({ status: Error, message: 'Invalid zipcode' });
-  } else {
-
-    return new Customer({
-      first_name,
-      last_name,
-      username,
-      password,
-      email,
-      state,
-      city,
-      zip_code: parseZipcode
-    })
-      .save()
-      .then(customer => {
-        return res.json(customer);
-      })
-      .catch(err => {
-        return res.status(500).json({ message: err.message, code: err.code });
-      });
   }
+  else {
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
+        {
+          return new Customer({
+            first_name,
+            last_name,
+            username,
+            password: hash,
+            email,
+            state,
+            city,
+            zip_code: parseZipcode
+          })
+            .save()
+            .then(customer => {
+              return res.json(customer);
+            })
+            .catch(err => {
+              return res.status(500).json({ message: err.message, code: err.code });
+            });
+        };
+      });
+    });
+  };
 });
 
 
 router.get('/:id/edit', (req, res) => {
+
   const getId = parseInt(req.params.id);
 
   return new Customer({ id: getId })
@@ -89,8 +98,8 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.put('/:id/edit', (req, res) => {
-  const getId = parseInt(req.params.id);
 
+  const getId = parseInt(req.params.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
   if (!validator.isAlpha(first_name)) {
@@ -124,7 +133,7 @@ router.put('/:id/edit', (req, res) => {
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });
       });
-  }
+  };
 });
 
 
