@@ -43,19 +43,19 @@ passport.serializeUser((customer, done) => {
   done(null, customer.id)
 });
 
-passport.deserializeUser((customerId, cb) => {
+passport.deserializeUser((username, cb) => {
   return new Customer()
-    .where({ id: customerId })
+    .where({ id: username.id })
     .fetch()
-    .then((customer) => {
-      if (!customer) {
+    .then((username) => {
+      if (!username) {
         cb(null);
       }
-      cb(null, customer.serialize());
+      cb(null, username.id());
     });
 });
 
-passport.use(new LocalStrategy((username, password, done) => {
+passport.use('customerLogin', new LocalStrategy((username, password, done) => {
   new Customer()
     .where({ username })
     .fetch()
@@ -78,24 +78,54 @@ passport.use(new LocalStrategy((username, password, done) => {
     });
 }));
 
-app.post(`/api/vendors/login`, (req, res) => {
-  let = { company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number } = req.body
-  return new Vendor()
-    .where({ company_name: company_name, password: password })
-    .fetch({
-      columns: ["company_name", "password", "id", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "phone_number", "photo", "website", "description", "license_number"]
-    })
-    .then(data => {
-      if (!data) {
-        return res.status(401).json({ message: `Company name or password incorrect` })
-      } else {
-        const vendor = data.toJSON();
-        return res.send(vendor);
+passport.use('vendorLogin', new LocalStrategy((company_name, password, done) => {
+  new Vendor()
+    .where({ company_name })
+    .fetch()
+    .then((vendor) => {
+      if (!vendor) {
+        return done(null, false, { message: `Incorrect username/password` });
       }
-    })
-})
+      else {
+        let vendorObj = vendor.serialize();
+        console.log('passport', vendorObj, password)
+        bcrypt.compare(password, vendorObj.password)
+          .then((res) => {
+            console.log(res)
+            if (res === true) { return done(null, vendorObj); }
+            else {
+              return done(null, false, { message: `Bad username/password` })
+            }
+          });
+      }
+    });
+}));
 
-app.post('/api/customer/login', passport.authenticate('local', {failureRedirect: ''}),
+
+// app.post(`/api/vendors/login`, (req, res) => {
+//   let = { company_name, password, id, first_name, last_name, email, street_address, city, state, zip_code, phone_number, photo, website, description, license_number } = req.body
+//   return new Vendor()
+//     .where({ company_name: company_name, password: password })
+//     .fetch({
+//       columns: ["company_name", "password", "id", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "phone_number", "photo", "website", "description", "license_number"]
+//     })
+//     .then(data => {
+//       if (!data) {
+//         return res.status(401).json({ message: `Company name or password incorrect` })
+//       } else {
+//         const vendor = data.toJSON();
+//         return res.send(vendor);
+//       }
+//     })
+// })
+
+app.post('/api/customer/login', passport.authenticate('customerLogin', {failureRedirect: ''}),
+  function(req, res){
+    console.log(req.body)
+    return res.send(req.body)
+  });
+
+  app.post('/api/vendors/login', passport.authenticate('vendorLogin', {failureRedirect: ''}),
   function(req, res){
     console.log(req.body)
     return res.send(req.body)

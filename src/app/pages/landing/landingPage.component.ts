@@ -23,7 +23,6 @@ export class LandingPageComponent implements OnInit {
   // };
   username: string = "";
   password: string = "";
-  company_name: string = "";
 
   constructor(
     private backend: BackendService,
@@ -54,7 +53,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   vendorLogin() {
-    return this.backend.vendorLogin(this.company_name, this.password)
+    return this.backend.vendorLogin(this.username, this.password)
   .then((resp)=> {
     return this.router.navigate(["/home"]);
   })

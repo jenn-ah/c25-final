@@ -16,8 +16,8 @@
 <div *ngIf="isVendor" class="vendor">
   <h2><button  (click)="vendorLoginBtnPress()">Vendor Login</button></h2>
   <form *ngIf="vendorLoginPressed">
-    <label for="company_name">Company Name</label>
-    <input type="text" name="company_name" id="company_name" [(ngModel)]="company_name">
+    <label for="company_name">Username</label>
+    <input type="text" name="username" id="username" [(ngModel)]="username">
     <label for="password">Password</label>
     <input type="text" name="password" id="password" [(ngModel)]="password">
     <button (click)="vendorLogin()">Submit</button>

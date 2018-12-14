@@ -16,7 +16,13 @@ export class BackendService {
       username: '',
       password: '',
     };
-
+  vendor: {
+    username: string,
+    password: string,
+  } = {
+      username: '',
+      password: ''
+    }
 
   constructor(
     private http: HttpClient,
@@ -84,43 +90,44 @@ export class BackendService {
       zip_code: data.zip_code,
     }).toPromise();
   }
-  
-customerLogin(username, password){
-  const customerUrl = this.baseUrl + "api/customer/login";
-  return this.http.post(customerUrl, {username:username, password:password}).toPromise()
-  .then((resp)=>{
-    console.log(resp)
-    return this.auth.customerLoginCheck(resp);
-  })
-}
 
-  vendorLogin(company_name, password) {
-    const vendorUrl = this.baseUrl + "api/vendors/login";
-    return this.http.post(vendorUrl, { company_name: company_name, password: password }).toPromise()
+  customerLogin(username, password) {
+    const customerUrl = this.baseUrl + "api/customer/login";
+    return this.http.post(customerUrl, { username: username, password: password }).toPromise()
+      .then((resp) => {
+        console.log(resp)
+        return this.auth.customerLoginCheck(resp);
+      })
+  }
+
+  vendorLogin(username, password) {
+    const vendorUrl = this.baseUrl + 'api/vendors/login';
+    console.log(vendorUrl)
+    return this.http.post(vendorUrl, { company_name: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.vendorLoginCheck(resp);
       })
   }
 
-vendorReg(data){
-  const vendorRegUrl = this.baseUrl + 'api/vendors/register';
-  return this.http.post(vendorRegUrl,{
-    company_name:data.company_name,
-    first_name: data.first_name,
-    last_name: data.last_name,
-    email: data.email,
-    password: data.password,
-    street_address: data.street_address,
-    city: data.city,
-    state: data.state,
-    zip_code: data.zip_code,
-    photo: data.photo,
-    website: data.website,
-    description: data.description,
-    phone_number: data.phone_number,
-    license_number: data.license_number
-  }).toPromise();
-  
-}
+  vendorReg(data) {
+    const vendorRegUrl = this.baseUrl + 'api/vendors/register';
+    return this.http.post(vendorRegUrl, {
+      company_name: data.company_name,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      email: data.email,
+      password: data.password,
+      street_address: data.street_address,
+      city: data.city,
+      state: data.state,
+      zip_code: data.zip_code,
+      photo: data.photo,
+      website: data.website,
+      description: data.description,
+      phone_number: data.phone_number,
+      license_number: data.license_number
+    }).toPromise();
+
+  }
 
 }
