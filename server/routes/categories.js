@@ -75,7 +75,7 @@ router.get('/landscaping', (req, res) => {
     });
 });
 
-router.get('/tailoring', (req, res) => {
+router.get('/clothing', (req, res) => {
 
   return new Post()
     .where({ category_id: 5 })
@@ -137,7 +137,7 @@ router.get('/carpentry', (req, res) => {
     });
 });
 
-router.get('/pressurewash', (req, res) => {
+router.get('/cleaning', (req, res) => {
 
   return new Post()
     .where({ category_id: 9 })
@@ -153,10 +153,25 @@ router.get('/pressurewash', (req, res) => {
 });
 
 
-router.get('/other', (req, res) => {
+router.get('/food', (req, res) => {
 
   return new Post()
     .where({ category_id: 10 })
+    .fetch({
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    })
+    .then(posts => {
+      return res.json(posts);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+router.get('/other', (req, res) => {
+
+  return new Post()
+    .where({ category_id: 11 })
     .fetch({
       withRelated: ['customerId', 'postStatusId', 'postPriorityId']
     })

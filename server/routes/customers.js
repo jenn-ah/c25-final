@@ -4,16 +4,6 @@ const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 
 
-router.get('/', (req, res) => {
-  return Customer.fetchAll()
-    .then(customers => {
-      return res.json(customers);
-    })
-    .catch(err => {
-      return res.status(500).json({ message: err.message, code: err.code });
-    });
-});
-
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
 

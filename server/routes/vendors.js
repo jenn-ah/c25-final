@@ -3,15 +3,6 @@ const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 
-router.get('/', (req, res) => {
-  return Vendor.fetchAll()
-    .then(vendors => {
-      return res.json(vendors);
-    })
-    .catch(err => {
-      return res.status(500).json({ message: err.message, code: err.code });
-    });
-});
 
 router.post('/', (req, res) => {
   const { first_name, last_name, company_name, password, email, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
