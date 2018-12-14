@@ -15,6 +15,7 @@ import { HomeComponent } from '../app/pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
+import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { JobsComponent } from './pages/jobs/jobs.component';
     HomeComponent,
     RegisterComponent,
     ErrorComponent,
-    JobsComponent
+    JobsComponent,
+    CustomerProfileComponent
   ],
   imports: [
     BrowserModule,
