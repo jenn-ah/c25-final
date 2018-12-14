@@ -3,7 +3,6 @@ const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
 
 const saltRounds = 12;
 
@@ -18,13 +17,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-    let { first_name, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
+    let { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
     const parseZip = parseInt(zip_code);
     bcrypt.genSalt(saltRounds, function (err, salt) {
       bcrypt.hash(password, salt, function (err, hash) {
         return new Vendor({
           first_name,
           last_name,
+          username,
           company_name,
           email,
           phone_number,

@@ -6,9 +6,6 @@ import { AuthService } from "../services/auth.service"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
-  // username: string ="";
-  // company_name:string = "";
-  // password: string = "";
   customer: {
     username: string,
     password: string,
@@ -56,6 +53,7 @@ export class BackendService {
       .post(userUrl, {
         first_name: data.first_name,
         last_name: data.last_name,
+        username: data.username,
         company_name: data.company_name,
         password: data.password,
         email: data.email,
@@ -109,6 +107,7 @@ export class BackendService {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
     return this.http.post(vendorRegUrl, {
       company_name: data.company_name,
+      username: data.username,
       first_name: data.first_name,
       last_name: data.last_name,
       email: data.email,
