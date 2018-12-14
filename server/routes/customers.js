@@ -3,17 +3,13 @@ const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
 
-<<<<<<< HEAD
-=======
 const saltRounds = 12;
 
 router.get('/smoke', (req, res) => {
   console.log('router', req.header)
   res.send('smoke test for users route');
 })
->>>>>>> bcrypt
 
 router.get('/', (req, res) => {
   return Customer.fetchAll()
@@ -25,7 +21,6 @@ router.get('/', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
 
@@ -48,8 +43,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-=======
->>>>>>> bcrypt
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
   const parseZipcode = parseInt(zip_code);
