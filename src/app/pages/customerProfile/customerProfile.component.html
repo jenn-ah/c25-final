@@ -1,0 +1,10 @@
+<div class="profile-customer" *ngIf="customerLogIn()">
+    <h3 class="Name"> Name: {{ customer.first_name }} {{ customer.last_name }} </h3>
+    City: {{ customer.city }}
+    State: {{ customer.state }}
+    Zip Code: {{ customer.zip_code }}
+
+    <div class="logout-div">
+        <button class="logout"><a (click)="logout()">Logout</a></button>
+    </div>
+</div>
