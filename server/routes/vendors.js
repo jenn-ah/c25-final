@@ -8,7 +8,7 @@ const saltRounds = 12;
 
 router.post('/register', (req, res) => {
 
-  const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
+  const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
   const parseZip = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isAlpha(state) && (state.length !== 2)) {
     return res.status(400).json({ status: Error, message: 'Invalid state' });
-  } else if (!validator.isNumeric(zip_code) && (zip_code.length !== 5)) {
+  } else if (validator.isEmpty(zip_code) && (zip_code.length !== 5)) {
     return res.status(400).json({ status: Error, message: 'Invalid zip code' });
   } else if (!validator.isURL(website)) {
     return res.status(400).json({ status: Error, message: 'Invalid website' });

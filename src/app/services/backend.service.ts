@@ -52,28 +52,6 @@ export class BackendService {
       .toPromise();
   }
 
-  registerVendor(data) {
-    const userUrl = this.baseUrl + `api/vendors`;
-    return this.http
-      .post(userUrl, {
-        first_name: data.first_name,
-        last_name: data.last_name,
-        username: data.username,
-        company_name: data.company_name,
-        password: data.password,
-        email: data.email,
-        street_address: data.street_address,
-        city: data.city,
-        state: data.state,
-        zip_code: data.zip_code,
-        photo: data.photo,
-        website: data.website,
-        description: data.description,
-        phone_number: data.phone_number,
-        license_number: data.license_number
-      })
-      .toPromise();
-  }
 
   createNewPost(data) {
     const url = this.baseUrl + "api/posts";
