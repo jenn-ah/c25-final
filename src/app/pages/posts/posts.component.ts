@@ -48,6 +48,6 @@ post:{
     ngOnInit() { }
 
     showPosts(){
-        
+        return 
     }
 }
