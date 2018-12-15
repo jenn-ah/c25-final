@@ -3,24 +3,18 @@ const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 const bcrypt = require('bcryptjs');
-
 const saltRounds = 12;
 
-router.get('/', (req, res) => {
-  return Vendor.fetchAll()
-    .then(vendors => {
-      return res.json(vendors);
-    })
-    .catch(err => {
-      return res.status(500).json({ message: err.message, code: err.code });
-    });
-});
 
-router.post('/', (req, res) => {
-  const { first_name, last_name, company_name, password, email, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
+router.post('/register', (req, res) => {
+
+  const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
+  const parseZip = parseInt(zip_code);
 
   if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
+  } else if (!validator.isAlphanumeric(username)) {
+    return res.status(400).json({ status: Error, message: 'Invalid username' });
   } else if (!validator.isAlpha(last_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid last name' });
   } else if (!validator.isAscii(password)) {
@@ -42,61 +36,36 @@ router.post('/', (req, res) => {
   } else if (validator.isEmpty(phone_number)) {
     return res.status(400).json({ status: Error, message: 'Invalid phone number' });
   } else {
-
-    return new Vendor({
-      first_name,
-      last_name,
-      company_name,
-      password,
-      email,
-      street_address,
-      city,
-      state,
-      zip_code,
-      photo,
-      website,
-      description,
-      phone_number,
-      license_number
-    })
-      .save()
-      .then(vendor => {
-        return res.json(vendor);
-      })
-  }
-})
-router.post('/register', (req, res) => {
-  let { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
-  const parseZip = parseInt(zip_code);
-  bcrypt.genSalt(saltRounds, function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
-      return new Vendor({
-        first_name,
-        last_name,
-        username,
-        company_name,
-        email,
-        phone_number,
-        password: hash,
-        street_address,
-        city,
-        state,
-        zip_code: parseZip,
-        photo,
-        website,
-        description,
-        license_number
-      })
-        .save()
-        .then(vendor => {
-          return res.json(vendor);
+    bcrypt.genSalt(saltRounds, function (err, salt) {
+      bcrypt.hash(password, salt, function (err, hash) {
+        return new Vendor({
+          first_name,
+          last_name,
+          username,
+          company_name,
+          email,
+          phone_number,
+          password: hash,
+          street_address,
+          city,
+          state,
+          zip_code: parseZip,
+          photo,
+          website,
+          description,
+          license_number
         })
-        .catch(err => {
-          return res.status(500).json({ message: err.message, code: err.code });
-        });
-    })
-  })
-})
+          .save()
+          .then(vendor => {
+            return res.json(vendor);
+          })
+          .catch(err => {
+            return res.status(500).json({ message: err.message, code: err.code });
+          });
+      });
+    });
+  };
+});
 
 router.get('/:id', (req, res) => {
   const getId = req.params.id;

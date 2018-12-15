@@ -3,24 +3,8 @@ const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
-
 const saltRounds = 12;
 
-router.get('/smoke', (req, res) => {
-  console.log('router', req.header)
-  res.send('smoke test for users route');
-})
-
-router.get('/', (req, res) => {
-  return Customer.fetchAll()
-    .then(customers => {
-      return res.json(customers);
-    })
-    .catch(err => {
-      return res.status(500).json({ message: err.message, code: err.code });
-    });
-});
 
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
@@ -86,14 +70,15 @@ router.post('/', (req, res) => {
             .catch(err => {
               return res.status(500).json({ message: err.message, code: err.code });
             });
-        }
-      })
-    })
-  }
+        };
+      });
+    });
+  };
 });
 
 
 router.get('/:id/edit', (req, res) => {
+
   const getId = parseInt(req.params.id);
 
   return new Customer({ id: getId })
@@ -112,8 +97,8 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.put('/:id/edit', (req, res) => {
-  const getId = parseInt(req.params.id);
 
+  const getId = parseInt(req.params.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
   if (!validator.isAlpha(first_name)) {
@@ -147,7 +132,7 @@ router.put('/:id/edit', (req, res) => {
       .catch(err => {
         return res.status(500).json({ message: err.message, code: err.code });
       });
-  }
+  };
 });
 
 
