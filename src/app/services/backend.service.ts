@@ -80,6 +80,7 @@ export class BackendService {
     return this.http.post(url, {
       title: data.title,
       customer_id: data.customer_id,
+      post_status_id: data.post_status_id,
       post_priority: data.post_priority,
       vendor_id: data.vendor_id,
       photo: data.photo,
@@ -112,6 +113,7 @@ export class BackendService {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
     return this.http.post(vendorRegUrl, {
       company_name: data.company_name,
+      category_id:data.category_id,
       username: data.username,
       first_name: data.first_name,
       last_name: data.last_name,
