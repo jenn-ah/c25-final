@@ -43,7 +43,7 @@ passport.serializeUser((username, done) => {
 
 passport.deserializeUser((username, cb) => {
   return new Customer()
-    .where({ id: username })
+    .where({ username: username })
     .fetch()
     .then((username) => {
       if (!username) {
@@ -59,7 +59,7 @@ passport.deserializeUser((username, cb) => {
     .fetch()
     .then((username) => {
       if (!username) {
-        cb(null, 'pass');
+        cb(null, 'done');
       }
       cb(null, username);
     });
@@ -108,13 +108,14 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 }));
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
-  function (req, res) {
-    return res.send(req.body)
-  });
+  function(req, res){
+    return res.send(req.user)
+  }
+  );
 
 app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
   function (req, res) {
-    return res.send(req.body)
+    return res.send(req.user)
   });
 
 
