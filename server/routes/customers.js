@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
 router.post('/', (req, res) => {
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
   const parseZipcode = parseInt(zip_code);

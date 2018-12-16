@@ -12,6 +12,7 @@ export class CreateComponent {
         title: string;
         customer_id: number;
         post_priority: number;
+        post_status_id:number;
         vendor_id: number;
         photo: string;
         city: string;
@@ -25,6 +26,7 @@ export class CreateComponent {
             title: '',
             customer_id: null,
             post_priority: null,
+            post_status_id:null,
             vendor_id: null,
             photo: null,
             city: '',

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, category_id, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
+  const { title, category_id,  customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
 
   const parseCustId = parseInt(customer_id);
   const parseCatId = parseInt(category_id);
@@ -27,6 +27,11 @@ router.post('/', (req, res) => {
   const parsePostPriorId = parseInt(post_priority_id);
   const parseBudget = parseInt(budget);
   const parseZipcode = parseInt(zip_code);
+  const parseCat = parseInt(category_id);
+
+console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPriorId, parseCat)
+
+
 
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });

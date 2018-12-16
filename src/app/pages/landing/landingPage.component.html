@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-<div class="landingPage">
-  <div *ngIf="isCustomer" class="customer">
-    <h2><button (click)="customerLoginBtnPress()">Customer Login</button></h2>
-    <form *ngIf="customerLoginPressed">
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" [(ngModel)]="username">
-      <label for="password">Password</label>
-      <input type="text" name="password" id="password" [(ngModel)]="password">
-      <button (click)="customerLogin()">Submit</button>
-    </form>
-    <br>
-    <div class="customerRegister">
-      <h2><a *ngIf="!isLoggedIn" routerLink="/register">New Customer Register</a></h2>
-    </div>
-  </div>
-  <div *ngIf="isVendor" class="vendor">
-    <h2><button (click)="vendorLoginBtnPress()">Vendor Login</button></h2>
-    <form *ngIf="vendorLoginPressed">
-      <label for="company_name">Company Name</label>
-      <input type="text" name="company_name" id="company_name" [(ngModel)]="company_name">
-      <label for="password">Password</label>
-      <input type="text" name="password" id="password" [(ngModel)]="password">
-      <button (click)="vendorLogin()">Submit</button>
-    </form>
-    <br>
-    <div class="vendorRegister">
-      <h2><a *ngIf="!isLoggedIn" routerLink="/register/vendor">New Vendor Register</a></h2>
-    </div>
-=======
 <div class="landingPage" >
 <div *ngIf="isCustomer" class="customer">
   <h2><button (click)="customerLoginBtnPress()">Customer Login</button></h2>
@@ -55,6 +25,5 @@
   <br>
   <div class="vendorRegister">
     <h2><a *ngIf="!isLoggedIn" routerLink="vendorRegister">New Vendor Register</a></h2>
->>>>>>> bcrypt
   </div>
 </div>
