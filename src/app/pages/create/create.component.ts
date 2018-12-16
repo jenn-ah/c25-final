@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
 import { Router } from '@angular/router';
+import { SessionService } from '../../services/session.service'
 
 @Component({
     templateUrl: './create.component.html',
@@ -8,9 +9,11 @@ import { Router } from '@angular/router';
 })
 
 export class CreateComponent {
+
     NewPostForm: {
         title: string;
         customer_id: number;
+        category_id: number;
         post_priority: number;
         post_status_id:number;
         vendor_id: number;
@@ -18,13 +21,14 @@ export class CreateComponent {
         city: string;
         state: string;
         budget: number;
-        emergency: string;
+        emergency: number;
         description: string;
         zip_code: string;
-        can_bid: boolean
+        can_bid: boolean;
     } = {
             title: '',
-            customer_id: null,
+            customer_id: this.session.getCustomer().id,
+            category_id:null,
             post_priority: null,
             post_status_id:null,
             vendor_id: null,
@@ -32,18 +36,21 @@ export class CreateComponent {
             city: '',
             state: '',
             budget: null,
-            emergency: '',
+            emergency: null,
             description: '',
             zip_code: '',
-            can_bid: false
+            can_bid: null,
         };
 
-    constructor(private backend: BackendService, private router: Router) { }
+    constructor(private backend: BackendService, 
+        private router: Router,
+        private session: SessionService) {
+         }
 
     createPost() {
         event.preventDefault();
         return this.backend
-            .createNewPost(this.NewPostForm)
+            .createNewPost(this.NewPostForm, this.session.getCustomer())
             .then(() => {
                 return this.router.navigate(['/home']);
             })

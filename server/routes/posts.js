@@ -19,20 +19,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, category_id,  customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
-
-  const parseCustId = parseInt(customer_id);
-  const parseCatId = parseInt(category_id);
-  const parsePostStatId = parseInt(post_status_id);
-  const parsePostPriorId = parseInt(post_priority_id);
-  const parseBudget = parseInt(budget);
+  const { title, customer_id, category_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
   const parseZipcode = parseInt(zip_code);
-  const parseCat = parseInt(category_id);
-
-console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPriorId, parseCat)
-
-
-
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {
@@ -48,19 +36,18 @@ console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPr
   } else if (!validator.isBoolean(can_bid)) {
     return res.status(400).json({ status: Error, message: 'Invalid input' });
   } else {
-
     return new Post({
       title,
-      customer_id: parseCustId,
-      category_id: parseCatId,
-      post_status_id: parsePostStatId,
-      post_priority_id: parsePostPriorId,
+      customer_id,
+      category_id, //parseCatId,
+      post_status_id, //parsePostStatId,
+      post_priority_id, //parsePostPriorId,
       photo,
       description,
       city,
       state,
       zip_code: parseZipcode,
-      budget: parseBudget,
+      budget, //parseBudget,
       can_bid
     })
       .save()
@@ -78,9 +65,8 @@ console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPr
   }
 });
 
-
 router.get('/:id', (req, res) => {
-  
+
   const getId = req.params.id;
 
   return new Post({ id: getId })
@@ -98,13 +84,12 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
 router.get('/all/:id', (req, res) => {
   const getId = parseInt(req.params.id);
 
   return new Post()
     .where({ customer_id: getId })
-    .fetchAll({ 
+    .fetchAll({
       withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
     })
     .then(posts => {

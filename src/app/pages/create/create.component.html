@@ -1,12 +1,13 @@
 <h2>Create a New Post!</h2>
 
-<form class="form">
-    <div>Title:
+<form name="NewPostForm">
+    <div class="title">
+        <label for="title">Title:</label>
         <input name="title" type="text" [(ngModel)]="NewPostForm.title" />
     </div>
     <div class="category_id">
         <label for="category_id">Category</label>
-        <select name="category" id="category">
+        <select name="category_id" id="category_id" [(ngModel)]="NewPostForm.category_id">
             <option value="1">Automotive</option>
             <option value="2">Electrical</option>
             <option value="3">Plumbing</option>
@@ -19,8 +20,12 @@
             <option value="10">Other</option>
         </select>
     </div>
-    <div>username:
-        <input name="username" type="text" [(ngModel)]="NewPostForm.username" />
+    
+    <div class="post_status">
+        <label for="post_status_id">Post Status:</label>
+        <select name="post_status_id" [(ngModel)]="NewPostForm.post_status_id">
+            <option value="1">Open</option>
+        </select>
     </div>
     <div class="post_priority">
         <label for="post_priority">Priority</label>
@@ -28,35 +33,36 @@
             <option value="1">Open</option>
             <option value="2">Emergency</option>
         </select>
-    </div>
-    <!-- <div>vendor_id:
-        <input name="vendor_id" type="text" [(ngModel)]="NewPostForm.vendor_id" />
-    </div> -->
-    <div>photo:
+    <div name="photo">
+       <label for="photo">Photo:</label> 
         <input name="photo" type="text" [(ngModel)]="NewPostForm.photo" />
     </div>
-    <div>description:
+    <div name="description">
+        <label for="description">Description:</label>
         <input name="description" type="text" [(ngModel)]="NewPostForm.description" />
     </div>
-    <div>city:
+    <div name="city">
+        <label for="city">City:</label>
         <input name="city" type="text" [(ngModel)]="NewPostForm.city" />
     </div>
-    <div>state:
+    <div name="state" >
+        <label for="state">State:</label>
         <input name="state" type="text" [(ngModel)]="NewPostForm.state" />
     </div>
-    <div>zip_code:
+    <div name="zip_code">
+        <label for="zip_code">Zip Code:</label>
         <input name="zip_code" type="text" [(ngModel)]="NewPostForm.zip_code" />
     </div>
-    <div>budget:
+    <div name="budget">
+        <label for="budget">Budget</label>
         <input name="budget" type="text" [(ngModel)]="NewPostForm.budget" />
     </div>
     <div class="can_bid">
         <label for="can_bid">Bid Available</label>
         <select name="can_bid" id="can_bid" [(ngModel)]="NewPostForm.can_bid">
-            <option value="true">true</option>
-            <option value="false">false</option>
+            <option value=true>true</option>
+            <option value=false>false</option>
         </select>
     </div>
     <button (click)="createPost()">Submit</button>
 
-</form>

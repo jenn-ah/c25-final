@@ -1,29 +1,37 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
 import { AuthService } from "../services/auth.service"
+import { SessionService } from "../services/session.service"
+
+
 @Injectable({
   providedIn: "root"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
   customer: {
+    id:number,
     username: string,
     password: string,
   } = {
+    id:null,
       username: '',
       password: '',
     };
   vendor: {
+    id:number,
     username: string,
     password: string,
   } = {
+    id:null,
       username: '',
       password: ''
     }
 
   constructor(
     private http: HttpClient,
-    private auth: AuthService
+    private auth: AuthService,
+    private session: SessionService
   ) { }
 
   getVendor(id: number) {
@@ -52,12 +60,13 @@ export class BackendService {
       .toPromise();
   }
 
-  
-  createNewPost(data) {
+  createNewPost(data,customer) {
     const url = this.baseUrl + "api/posts";
+console.log(data, customer)
     return this.http.post(url, {
       title: data.title,
-      customer_id: data.customer_id,
+      customer_id: customer.id,
+      category_id:data.category_id,
       post_status_id: data.post_status_id,
       post_priority: data.post_priority,
       vendor_id: data.vendor_id,
@@ -68,13 +77,20 @@ export class BackendService {
       description: data.description,
       can_bid: data.can_bid,
       zip_code: data.zip_code,
-    }).toPromise();
+    }).toPromise()
+
+  }
+
+  getPostByCustomer(username) {
+    const getMyPosts = this.baseUrl + 'api/posts';
+    return this.http.post(getMyPosts, { username: username })
   }
 
   customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
+        console.log('resp',resp)
         return this.auth.customerLoginCheck(resp);
       })
   }
@@ -91,7 +107,7 @@ export class BackendService {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
     return this.http.post(vendorRegUrl, {
       company_name: data.company_name,
-      category_id:data.category_id,
+      category_id: data.category_id,
       username: data.username,
       first_name: data.first_name,
       last_name: data.last_name,
