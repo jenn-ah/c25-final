@@ -50,6 +50,5 @@ post:{
 
     ngOnInit() { }
 
-    showPosts(){
-    }
+    
 }
