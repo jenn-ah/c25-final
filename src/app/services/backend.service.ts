@@ -6,6 +6,8 @@ import { AuthService } from "../services/auth.service"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
+  id: number;
+
   customer: {
     username: string,
     password: string,
@@ -52,7 +54,7 @@ export class BackendService {
       .toPromise();
   }
 
-  
+
   createNewPost(data) {
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
@@ -71,6 +73,7 @@ export class BackendService {
     }).toPromise();
   }
 
+
   customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password }).toPromise()
@@ -78,6 +81,13 @@ export class BackendService {
         return this.auth.customerLoginCheck(resp);
       })
   }
+
+
+  editCustomer(data) {
+    const url = this.baseUrl + 'api/customers/2/edit';
+    return this.http.put(url, data).toPromise();
+  }
+
 
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';
@@ -91,7 +101,7 @@ export class BackendService {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
     return this.http.post(vendorRegUrl, {
       company_name: data.company_name,
-      category_id:data.category_id,
+      category_id: data.category_id,
       username: data.username,
       first_name: data.first_name,
       last_name: data.last_name,

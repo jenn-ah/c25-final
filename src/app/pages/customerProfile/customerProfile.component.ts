@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
+    editClicked: boolean = true;
     customer: object;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
@@ -32,4 +33,5 @@ export class CustomerProfileComponent implements OnInit {
         this.loginPressed = false;
         return this.router.navigate([''])
     }
+
 }

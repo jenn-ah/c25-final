@@ -11,6 +11,7 @@ import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.c
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
+  { path:'edit', component: EditComponent},
   { path:'customer/profile', component: CustomerProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},
