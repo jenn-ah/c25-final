@@ -33,4 +33,8 @@ export class ProfileComponent implements OnInit {
         this.loginPressed = false;
         return this.router.navigate([''])
     }
+
+    edit() {
+        console.log('now in edit mode')
+    }
 }

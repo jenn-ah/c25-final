@@ -19,8 +19,8 @@ router.get('/automotive', (req, res) => {
 
   return new Post()
     .where({ category_id: 1 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -34,8 +34,8 @@ router.get('/electrical', (req, res) => {
 
   return new Post()
     .where({ category_id: 2 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -49,8 +49,8 @@ router.get('/plumbing', (req, res) => {
 
   return new Post()
     .where({ category_id: 3 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -64,8 +64,8 @@ router.get('/landscaping', (req, res) => {
 
   return new Post()
     .where({ category_id: 4 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -75,12 +75,12 @@ router.get('/landscaping', (req, res) => {
     });
 });
 
-router.get('/tailoring', (req, res) => {
+router.get('/clothing', (req, res) => {
 
   return new Post()
     .where({ category_id: 5 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -94,8 +94,8 @@ router.get('/childcare', (req, res) => {
 
   return new Post()
     .where({ category_id: 6 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -110,8 +110,8 @@ router.get('/painting', (req, res) => {
 
   return new Post()
     .where({ category_id: 7 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -126,8 +126,8 @@ router.get('/carpentry', (req, res) => {
 
   return new Post()
     .where({ category_id: 8 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -137,12 +137,12 @@ router.get('/carpentry', (req, res) => {
     });
 });
 
-router.get('/pressurewash', (req, res) => {
+router.get('/cleaning', (req, res) => {
 
   return new Post()
     .where({ category_id: 9 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
@@ -152,13 +152,28 @@ router.get('/pressurewash', (req, res) => {
     });
 });
 
+
+router.get('/food', (req, res) => {
+
+  return new Post()
+    .where({ category_id: 10 })
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
+    })
+    .then(posts => {
+      return res.json(posts);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
 
 router.get('/other', (req, res) => {
 
   return new Post()
-    .where({ category_id: 10 })
-    .fetch({
-      withRelated: ['customerId', 'postStatusId', 'postPriorityId']
+    .where({ category_id: 11 })
+    .fetchAll({
+      withRelated: ['postStatusId', 'postPriorityId']
     })
     .then(posts => {
       return res.json(posts);
