@@ -15,6 +15,7 @@ export class CustomerProfileComponent implements OnInit {
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
         this.customer = this.session.getCustomer();
+        console.log(this.customer)
 
     }
 

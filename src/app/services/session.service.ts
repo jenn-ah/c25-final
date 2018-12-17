@@ -10,6 +10,7 @@ export class SessionService{
     last_name: string,
     username:string,
     isLoggedIn: boolean,
+    email: string,
     city: string,
     state: string,
     zip_code: number,
@@ -19,6 +20,7 @@ export class SessionService{
     last_name: '',
     username:'',
     isLoggedIn:false,
+    email: "",
     city: "",
     state: "",
     zip_code: null,
@@ -70,6 +72,7 @@ vendor:{
     this.customer.first_name = customer.first_name;
     this.customer.last_name = customer.last_name;
     this.customer.username = customer.username;
+    this.customer.email = customer.email;
     this.customer.isLoggedIn = true;
     this.customer.city = customer.city;
     this.customer.state = customer.state;

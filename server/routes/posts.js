@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, category_id,  customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
+  const { title, category_id, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
 
   const parseCustId = parseInt(customer_id);
   const parseCatId = parseInt(category_id);
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
   const parseZipcode = parseInt(zip_code);
   const parseCat = parseInt(category_id);
 
-console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPriorId, parseCat)
+  console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPriorId, parseCat)
 
 
 
@@ -80,7 +80,7 @@ console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPr
 
 
 router.get('/:id', (req, res) => {
-  
+
   const getId = req.params.id;
 
   return new Post({ id: getId })
@@ -104,7 +104,7 @@ router.get('/all/:id', (req, res) => {
 
   return new Post()
     .where({ customer_id: getId })
-    .fetchAll({ 
+    .fetchAll({
       withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
     })
     .then(posts => {

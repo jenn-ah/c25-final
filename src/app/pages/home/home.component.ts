@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
         this.backend.getAllHomeItems()
             .then((data) => {
                 this.posts = data
+                console.log(this.posts)
             })
             .catch((err) => {
                 return this.router.navigate(['/error']);
