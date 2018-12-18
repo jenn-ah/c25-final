@@ -19,6 +19,7 @@ const redis = require('connect-redis')(session);
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
@@ -59,7 +60,7 @@ passport.deserializeUser((username, cb) => {
     .fetch()
     .then((username) => {
       if (!username) {
-        cb(null, 'pass');
+        cb(null, 'done');
       }
       cb(null, username);
     });
@@ -107,14 +108,15 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
     });
 }));
 
-app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '/error' }),
-  function (req, res) {
-    return res.send(req.body)
-  });
+app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
+  function(req, res){
+     return res.send(req.user)
+  }
+  );
 
 app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
   function (req, res) {
-    return res.send(req.body)
+    return res.send(req.user)
   });
 
 

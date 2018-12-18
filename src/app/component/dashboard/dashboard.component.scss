@@ -1,8 +1,9 @@
 .dashboard{
-    position: fixed;
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
     bottom: 10px;
     width: 100%;
-    display: inline;
     text-align: center;
     background-color: white;
     border: 1px solid lightgrey;
