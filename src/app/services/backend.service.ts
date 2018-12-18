@@ -78,7 +78,7 @@ export class BackendService {
   }
 
 
-  customerLogin(username, password, first_name, last_name ) {
+  customerLogin(username, password, first_name, last_name) {
     const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password, first_name: first_name, last_name: last_name }).toPromise()
       .then((resp) => {
@@ -86,16 +86,30 @@ export class BackendService {
       })
   }
 
-  getCustomer(){
+  getCustomer() {
     const url = this.baseUrl + 'api/customers/2'
     return this.http.get(url).toPromise()
   }
 
+  // editCustomer(data) {
+  //   const url = this.baseUrl + `api/customers/2/edit`;
+  //   console.log('this is data', data)
+  //   return this.http.put(url, data).toPromise();
+  // }
   editCustomer(data) {
-    const url = this.baseUrl + 'api/customers/2/edit';
-    return this.http.put(url, data).toPromise();
+    const userUrl = this.baseUrl + `api/customers/2/edit`;
+    return this.http
+      .put(userUrl, {
+        username: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        state: data.state,
+        zip_code: data.zip_code,
+        city: data.city,
+        email: data.email
+      })
+      .toPromise();
   }
-
 
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';

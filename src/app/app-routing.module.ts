@@ -20,7 +20,7 @@ const routes: Routes = [
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
-  { path:'edit', component: EditComponent},
+  { path:'edit/:id', component: EditComponent},
   { path:'customer/profile', component: CustomerProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},

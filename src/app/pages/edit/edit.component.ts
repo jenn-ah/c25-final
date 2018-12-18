@@ -9,17 +9,41 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
-    data: any;
+    data: {
+        username: string,
+        first_name: string,
+        last_name: string,
+        email: string,
+        state: string
+        city: string,
+        zip_code: number,
+    } = {
+            username: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            state: '',
+            city: '',
+            zip_code: null
+        }
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
 
     }
 
-    ngOnInit() {  }
+    ngOnInit() { }
 
-    edit(data){
-        this.backend.editCustomer(data)
-        console.log('this new data', data)
+    edit() {
+        console.log('this is data fr fr', this.data)
+        event.preventDefault();
+        return this.backend
+            .editCustomer(this.data)
+            .then(() => {
+                return this.router.navigate(['/profile']);
+            })
+            .catch(err => {
+                return this.router.navigate(['/error']);
+            });
     }
 
 }
