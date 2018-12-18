@@ -10,20 +10,20 @@ import { SessionService } from "../services/session.service"
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
   customer: {
-    id:number,
+    id: number,
     username: string,
     password: string,
   } = {
-    id:null,
+      id: null,
       username: '',
       password: '',
     };
   vendor: {
-    id:number,
+    id: number,
     username: string,
     password: string,
   } = {
-    id:null,
+      id: null,
       username: '',
       password: ''
     }
@@ -33,6 +33,11 @@ export class BackendService {
     private auth: AuthService,
     private session: SessionService
   ) { }
+
+  fetchPost(param) {
+    const searchUrl = this.baseUrl + `api/posts/${param}/edit`
+    return this.http.get(searchUrl).toPromise()
+  }
 
   getVendor(id: number) {
     const url = this.baseUrl + "api/vendors" + id;
@@ -60,13 +65,12 @@ export class BackendService {
       .toPromise();
   }
 
-  createNewPost(data,customer) {
+  createNewPost(data, customer) {
     const url = this.baseUrl + "api/posts";
-console.log(data, customer)
     return this.http.post(url, {
       title: data.title,
       customer_id: customer.id,
-      category_id:data.category_id,
+      category_id: data.category_id,
       post_status_id: data.post_status_id,
       post_priority: data.post_priority,
       vendor_id: data.vendor_id,
@@ -78,7 +82,6 @@ console.log(data, customer)
       can_bid: data.can_bid,
       zip_code: data.zip_code,
     }).toPromise()
-
   }
 
   getPostByCustomer(username) {
@@ -90,7 +93,6 @@ console.log(data, customer)
     const customerUrl = this.baseUrl + "api/customer/login";
     return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
-        console.log('resp',resp)
         return this.auth.customerLoginCheck(resp);
       })
   }
@@ -124,4 +126,5 @@ console.log(data, customer)
       license_number: data.license_number
     }).toPromise();
   }
+
 }

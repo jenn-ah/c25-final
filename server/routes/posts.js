@@ -7,6 +7,7 @@ const PostPriority = require('../db/Models/PostPriority');
 const validator = require('validator');
 
 router.get('/', (req, res) => {
+
   return Post.fetchAll({
     withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
@@ -50,6 +51,7 @@ router.post('/', (req, res) => {
       budget, //parseBudget,
       can_bid
     })
+
       .save()
       .then(post => {
         return post.refresh({
@@ -67,13 +69,12 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
-  const getId = req.params.id;
-
-  return new Post({ id: getId })
+  const getId = req.params;
+  return new Post({ title: getId } || { id: getId })
     .fetch({
       require: true,
-      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
-      withRelated: ['customerId']
+      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
       const postObj = post.serialize();
@@ -102,11 +103,11 @@ router.get('/all/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
-
   return new Post({ id: getId })
     .fetch({
       require: true,
-      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
       const postObj = post.serialize();

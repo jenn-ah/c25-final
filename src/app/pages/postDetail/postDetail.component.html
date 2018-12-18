@@ -1,0 +1,18 @@
+<div id="postDetailView">
+
+<h2>{{post.title}}</h2>
+<div name="postStatus"><b>Post Status:</b>{{post.post_status_id}}</div>
+<div name="postPriority"><b>Post Priority:</b>{{post.post_priority_id}}</div>
+<img name="img" src={{post.photo}}>
+<div name="description"><b>Description:</b>{{post.description}}</div>
+<div name="customer"><b>Customer Name:</b>{{post.customerId.first_name}}</div> 
+<div name="city"><b>City:</b>{{post.city}}</div>
+<div name="state"><b>State:</b>{{post.state}}</div>
+<div name="zipCode"><b>Zip Code:</b>{{post.zip_code}}</div>
+<div name="budget" ><b>Budget:</b> ${{post.budget}}</div>
+<div name="bidStatus" ><b>Email:</b>{{post.customerId.email}}</div>
+<div name="createdAt"><b>Up Loaded Date:</b>{{post.created_at}}</div>
+</div>
+<div name="buttonDiv" >
+<button (click)="editPost()">Edit Post</button>
+</div>

@@ -19,6 +19,7 @@ const redis = require('connect-redis')(session);
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
@@ -109,7 +110,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function(req, res){
-    return res.send(req.user)
+     return res.send(req.user) //utility.hasAdminAccess())
   }
   );
 

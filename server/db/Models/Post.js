@@ -6,7 +6,7 @@ class Post extends bookshelf.Model {
   get hasTimestamps() { return true; }
 
   customerId() {
-    return this.belongsTo('Customer', 'id');
+    return this.belongsTo('Customer', 'customer_id', 'id')
   }
 
   categoryId() {

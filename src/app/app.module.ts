@@ -17,6 +17,7 @@ import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.c
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
+import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 
 
 @NgModule({
@@ -34,8 +35,8 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
     VendorRegisterComponent,
     ErrorComponent,
     JobsComponent,
-    CustomerProfileComponent
-  
+    CustomerProfileComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,

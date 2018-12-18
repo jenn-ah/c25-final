@@ -5,7 +5,7 @@ class Customer extends bookshelf.Model {
   get hasTimestamps() { return true; }
 
 post_id(){
-  return this.hasMany('Post', 'id')
+  return this.hasMany('Post', 'customer_id','id')
 }
 }
 
