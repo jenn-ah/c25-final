@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 
 export class HomeComponent implements OnInit {
     posts: object;
+    currentPosts: object;
 
     constructor(private backend: BackendService, private router: Router) {
 
@@ -23,5 +24,11 @@ export class HomeComponent implements OnInit {
     }
     ngOnInit() { }
 
+    filter(){
+        this.backend.getAllHomeItems()
+        .then((data) => {
+            this.currentPosts = data
+        })
+    }
 
 }

@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 
 export class JobsComponent implements OnInit {
     posts: any;
+    currentPosts: any;
+    waitingPosts: any;
+    finishedPosts: any;
 
     constructor(private backend: BackendService, private router: Router) {
 
@@ -22,5 +25,7 @@ export class JobsComponent implements OnInit {
             });
 
     }
+
+
     ngOnInit() { }
 }
