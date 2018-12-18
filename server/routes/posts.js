@@ -40,15 +40,15 @@ router.post('/', (req, res) => {
     return new Post({
       title,
       customer_id,
-      category_id, //parseCatId,
-      post_status_id, //parsePostStatId,
-      post_priority_id, //parsePostPriorId,
+      category_id, 
+      post_status_id, 
+      post_priority_id, 
       photo,
       description,
       city,
       state,
       zip_code: parseZipcode,
-      budget, //parseBudget,
+      budget, 
       can_bid
     })
 

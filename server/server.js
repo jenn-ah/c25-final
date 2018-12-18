@@ -110,7 +110,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function(req, res){
-     return res.send(req.user) //utility.hasAdminAccess())
+     return res.send(req.user)
   }
   );
 

@@ -10,7 +10,6 @@ router.post('/register', (req, res) => {
 
   const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
   const parseZip = parseInt(zip_code);
-console.log(req.body)
   if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
   } else if (!validator.isAlphanumeric(username)) {
