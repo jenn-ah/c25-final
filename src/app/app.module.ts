@@ -19,6 +19,7 @@ import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
+import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 
 
 @NgModule({
@@ -38,8 +39,8 @@ import { EditVendorComponent } from './pages/editVendor/editVendor.component';
     JobsComponent,
     CustomerProfileComponent,
     EditComponent,
-    EditVendorComponent
-  
+    EditVendorComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,

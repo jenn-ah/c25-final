@@ -46,7 +46,6 @@ export class EditVendorComponent implements OnInit {
     ngOnInit() { }
 
     editVendor() {
-        console.log('this is data fr fr', this.data)
         event.preventDefault();
         return this.backend
             .editVendor(this.data, this.id)

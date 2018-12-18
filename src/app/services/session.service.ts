@@ -78,6 +78,7 @@ export class SessionService {
     this.customer.state = customer.state;
     this.customer.zip_code = customer.zip_code;
     localStorage.setItem('customer', JSON.stringify(this.customer))
+
   }
 
   setVendorSession(vendor) {

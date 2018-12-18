@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http"
 import { AuthService } from "../services/auth.service"
+import { SessionService } from "../services/session.service"
+
+
 @Injectable({
   providedIn: "root"
 })
@@ -9,29 +12,38 @@ export class BackendService {
   id: number;
 
   customer: {
+    id: number,
     username: string,
     password: string,
     first_name: string,
     last_name: string
   } = {
+      id: null,
       username: '',
       password: '',
       first_name: '',
       last_name: ''
     };
   vendor: {
+    id: number,
     username: string,
     password: string,
   } = {
+      id: null,
       username: '',
       password: ''
     }
 
   constructor(
     private http: HttpClient,
-    private auth: AuthService
+    private auth: AuthService,
+    private session: SessionService
   ) { }
 
+  fetchPost(param) {
+    const searchUrl = this.baseUrl + `api/posts/${param}/edit`
+    return this.http.get(searchUrl).toPromise()
+  }
 
   getAllHomeItems() {
     const url = this.baseUrl + 'api/posts'
@@ -54,12 +66,12 @@ export class BackendService {
       .toPromise();
   }
 
-
-  createNewPost(data) {
+  createNewPost(data, customer) {
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
-      customer_id: data.customer_id,
+      customer_id: customer.id,
+      category_id: data.category_id,
       post_status_id: data.post_status_id,
       post_priority: data.post_priority,
       vendor_id: data.vendor_id,
@@ -70,7 +82,12 @@ export class BackendService {
       description: data.description,
       can_bid: data.can_bid,
       zip_code: data.zip_code,
-    }).toPromise();
+    }).toPromise()
+  }
+
+  getPostByCustomer(username) {
+    const getMyPosts = this.baseUrl + 'api/posts';
+    return this.http.post(getMyPosts, { username: username })
   }
 
 
@@ -159,4 +176,5 @@ export class BackendService {
       license_number: data.license_number
     }).toPromise();
   }
+
 }

@@ -1,4 +1,4 @@
-<div class="header" *ngIf=loggedIn>
+<div class="header">
 <div class="categories">
   <h2><a routerLink="" *ngIf="isLoggedIn">Categories</a></h2>
   <select name="categories" id="categories">
@@ -17,7 +17,7 @@
 <div class="search">
   <form>
     <label for="search">Search</label>
-    <input type="text" name="search"  id="search" (input)="searchBar()" [(ngModel)]="search">
+    <input type="text" name="search"  id="search" [(ngModel)]="search">
     <button (click)="postSearch()">Submit</button>
   </form>
 </div>
