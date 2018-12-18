@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class EditVendorComponent implements OnInit {
 
     data: {
-        username: string;
         first_name: string;
         last_name: string;
         company_name: string;
@@ -26,7 +25,6 @@ export class EditVendorComponent implements OnInit {
         phone_number: number;
         license_number: number;
       } = {
-          username: "",
           first_name: "",
           last_name: "",
           company_name: "",

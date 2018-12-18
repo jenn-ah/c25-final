@@ -102,7 +102,7 @@ export class BackendService {
       .toPromise();
   }
   
-  
+
   getVendor() {
     const url = this.baseUrl + "api/vendors/2";
     return this.http.get(url).toPromise();
@@ -113,7 +113,6 @@ export class BackendService {
     const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
     return this.http
       .put(vendorUrl, {
-        username: vendor.username,
         first_name: vendor.first_name,
         last_name: vendor.last_name,
         phone_number: vendor.phone_number,
@@ -121,10 +120,12 @@ export class BackendService {
         website: vendor.website,
         description: vendor.description,
         company_name: vendor.company_name,
-        isLoggedIn: true,
         city: vendor.city,
         state: vendor.state,
+        street_address: vendor.street_address,
         zip_code: vendor.zip_code,
+        photo: vendor.photo,
+        license_number: vendor.license_number
       })
       .toPromise();
   }
