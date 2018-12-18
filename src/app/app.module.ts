@@ -18,6 +18,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EditComponent } from './pages/edit/edit.component';
     ErrorComponent,
     JobsComponent,
     CustomerProfileComponent,
-    EditComponent
+    EditComponent,
+    EditVendorComponent
   
   ],
   imports: [

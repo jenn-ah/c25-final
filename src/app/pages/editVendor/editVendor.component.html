@@ -1,0 +1,48 @@
+<form>
+
+    <div>Company Name:
+        <input name="company_name" type="text" [(ngModel)]="data.company_name" />
+    </div>
+    <div>first_name:
+        <input name="first_name" type="text" [(ngModel)]="data.first_name" />
+    </div>
+    <div>last_name:
+        <input name="last_name" type="text" [(ngModel)]="data.last_name" />
+    </div>
+    <div>password:
+        <input name="password" type="text" [(ngModel)]="data.password" />
+    </div>
+    <div>email:
+        <input name="email" type="text" [(ngModel)]="data.email" />
+    </div>
+    <div>Website:
+        <input name="website" type="text" [(ngModel)]="data.website" />
+    </div>
+    <div>Phone Number:
+        <input name="phone_number" type="text" [(ngModel)]="data.phone_number" />
+    </div>
+    <div>Street Address:
+        <input name="street_address" type="text" [(ngModel)]="data.street_address" />
+    </div>
+    <div>state:
+        <input name="state" type="text" [(ngModel)]="data.state" />
+    </div>
+    <div>city:
+        <input name="city" type="text" [(ngModel)]="data.city" />
+    </div>
+    <div>zip_code:
+        <input name="zip_code" type="text" [(ngModel)]="data.zip_code" />
+    </div>
+    <div>Photo:
+        <input name="photo" type="text" [(ngModel)]="data.photo" />
+    </div>
+    <div>Describe Yourself:
+        <input name="description" type="text" [(ngModel)]="data.description" />
+    </div>
+    <div>License Number:
+        <input name="license_number" type="text" [(ngModel)]="data.license_number" />
+    </div>
+
+    <button (click)="editVendor()">Submit</button>
+
+</form>

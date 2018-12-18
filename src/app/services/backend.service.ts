@@ -106,6 +106,26 @@ export class BackendService {
       .toPromise();
   }
 
+  editVendor(vendor) {
+    const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
+    return this.http
+      .put(vendorUrl, {
+        username: vendor.username, 
+        first_name: vendor.first_name,
+        last_name: vendor.last_name,
+        phone_number: vendor.phone_number,
+        email: vendor.email,
+        website: vendor.website,
+        description: vendor.description,
+        company_name: vendor.company_name,
+        isLoggedIn: true,
+        city: vendor.city,
+        state: vendor.state,
+        zip_code: vendor.zip_code,
+      })
+      .toPromise();
+  }
+
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';
     return this.http.post(vendorUrl, { username: username, password: password }).toPromise()

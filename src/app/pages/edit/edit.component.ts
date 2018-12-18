@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
-    
+
     data: {
         username: string,
         first_name: string,
@@ -34,7 +34,8 @@ export class EditComponent implements OnInit {
 
     ngOnInit() { }
 
-    edit() {
+
+    editCustomer() {
         console.log('this is data fr fr', this.data)
         event.preventDefault();
         return this.backend
