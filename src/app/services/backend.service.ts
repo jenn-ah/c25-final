@@ -32,8 +32,8 @@ export class BackendService {
     private auth: AuthService
   ) { }
 
-  getVendor(id: number) {
-    const url = this.baseUrl + "api/vendors" + id;
+  getVendor() {
+    const url = this.baseUrl + "api/vendors/2";
     return this.http.get(url).toPromise();
   }
 
@@ -87,15 +87,10 @@ export class BackendService {
   }
 
   getCustomer() {
-    const url = this.baseUrl + 'api/customers/2'
+    const url = this.baseUrl + `api/customers/2`
     return this.http.get(url).toPromise()
   }
 
-  // editCustomer(data) {
-  //   const url = this.baseUrl + `api/customers/2/edit`;
-  //   console.log('this is data', data)
-  //   return this.http.put(url, data).toPromise();
-  // }
   editCustomer(data) {
     const userUrl = this.baseUrl + `api/customers/2/edit`;
     return this.http

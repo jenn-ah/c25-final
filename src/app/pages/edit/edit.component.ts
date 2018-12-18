@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
+    
     data: {
         username: string,
         first_name: string,
@@ -39,7 +40,7 @@ export class EditComponent implements OnInit {
         return this.backend
             .editCustomer(this.data)
             .then(() => {
-                return this.router.navigate(['/profile']);
+                return this.router.navigate(['/home']);
             })
             .catch(err => {
                 return this.router.navigate(['/error']);
