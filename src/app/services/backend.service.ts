@@ -32,10 +32,6 @@ export class BackendService {
     private auth: AuthService
   ) { }
 
-  getVendor() {
-    const url = this.baseUrl + "api/vendors/2";
-    return this.http.get(url).toPromise();
-  }
 
   getAllHomeItems() {
     const url = this.baseUrl + 'api/posts'
@@ -105,12 +101,19 @@ export class BackendService {
       })
       .toPromise();
   }
+  
+  
+  getVendor() {
+    const url = this.baseUrl + "api/vendors/2";
+    return this.http.get(url).toPromise();
+  }
+
 
   editVendor(vendor) {
     const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
     return this.http
       .put(vendorUrl, {
-        username: vendor.username, 
+        username: vendor.username,
         first_name: vendor.first_name,
         last_name: vendor.last_name,
         phone_number: vendor.phone_number,

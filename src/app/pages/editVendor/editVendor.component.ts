@@ -14,32 +14,30 @@ export class EditVendorComponent implements OnInit {
         first_name: string;
         last_name: string;
         company_name: string;
-        password: string;
         email: string;
         street_address: string;
         city: string;
         state: string;
-        zip_code: string;
+        zip_code: number;
         photo: string;
         website: string;
         description: string;
-        phone_number: string;
-        license_number: string;
+        phone_number: number;
+        license_number: number;
       } = {
           first_name: "",
           last_name: "",
           company_name: "",
-          password: "",
           email: "",
           street_address: "",
           city: "",
           state: "",
-          zip_code:"",
+          zip_code: null,
           photo: "",
           website: "",
           description: "",
-          phone_number: "",
-          license_number: ""
+          phone_number: null,
+          license_number: null
         }
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
