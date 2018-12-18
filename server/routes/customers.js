@@ -97,7 +97,6 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.put('/:id/edit', (req, res) => {
-
   const getId = parseInt(req.params.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
@@ -122,6 +121,7 @@ router.put('/:id/edit', (req, res) => {
         customer.save({
           first_name,
           last_name,
+          username,
           email,
           state,
           city,

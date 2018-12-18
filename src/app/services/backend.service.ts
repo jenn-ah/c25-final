@@ -9,14 +9,20 @@ import { SessionService } from "../services/session.service"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
+  id: number;
+
   customer: {
     id: number,
     username: string,
     password: string,
+    first_name: string,
+    last_name: string
   } = {
       id: null,
       username: '',
       password: '',
+      first_name: '',
+      last_name: ''
     };
   vendor: {
     id: number,
@@ -37,11 +43,6 @@ export class BackendService {
   fetchPost(param) {
     const searchUrl = this.baseUrl + `api/posts/${param}/edit`
     return this.http.get(searchUrl).toPromise()
-  }
-
-  getVendor(id: number) {
-    const url = this.baseUrl + "api/vendors" + id;
-    return this.http.get(url).toPromise();
   }
 
   getAllHomeItems() {
@@ -89,12 +90,61 @@ export class BackendService {
     return this.http.post(getMyPosts, { username: username })
   }
 
-  customerLogin(username, password) {
+
+  customerLogin(username, password, first_name, last_name) {
     const customerUrl = this.baseUrl + "api/customer/login";
-    return this.http.post(customerUrl, { username: username, password: password }).toPromise()
+    return this.http.post(customerUrl, { username: username, password: password, first_name: first_name, last_name: last_name }).toPromise()
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })
+  }
+
+  getCustomer() {
+    const url = this.baseUrl + `api/customers/2`
+    return this.http.get(url).toPromise()
+  }
+
+  editCustomer(data) {
+    const userUrl = this.baseUrl + `api/customers/2/edit`;
+    return this.http
+      .put(userUrl, {
+        username: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        state: data.state,
+        zip_code: data.zip_code,
+        city: data.city,
+        email: data.email
+      })
+      .toPromise();
+  }
+
+
+  getVendor() {
+    const url = this.baseUrl + `api/vendors/2`;
+    return this.http.get(url).toPromise();
+  }
+
+
+  editVendor(vendor, id) {
+    const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
+    return this.http
+      .put(vendorUrl, {
+        first_name: vendor.first_name,
+        last_name: vendor.last_name,
+        phone_number: vendor.phone_number,
+        email: vendor.email,
+        website: vendor.website,
+        description: vendor.description,
+        company_name: vendor.company_name,
+        city: vendor.city,
+        state: vendor.state,
+        street_address: vendor.street_address,
+        zip_code: vendor.zip_code,
+        photo: vendor.photo,
+        license_number: vendor.license_number
+      })
+      .toPromise();
   }
 
   vendorLogin(username, password) {

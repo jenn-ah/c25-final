@@ -16,8 +16,13 @@ export class ProfileComponent implements OnInit {
     customer: object;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-        this.vendor = this.session.getVendor();
-
+        this.backend.getVendor()
+        .then((data) => {
+            this.vendor = data
+        })
+        .catch((err) => {
+            return this.router.navigate(['/error']);
+        })
     }
 
     ngOnInit() {

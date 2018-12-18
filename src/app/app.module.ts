@@ -17,6 +17,8 @@ import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.c
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 
 
@@ -36,6 +38,8 @@ import { PostDetailComponent } from './pages/postDetail/postDetail.component';
     ErrorComponent,
     JobsComponent,
     CustomerProfileComponent,
+    EditComponent,
+    EditVendorComponent,
     PostDetailComponent,
   ],
   imports: [

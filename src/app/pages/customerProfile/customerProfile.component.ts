@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../services/backend.service";
+import { BackendService } from '../../services/backend.service'
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,18 @@ import { Router } from '@angular/router';
 export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
+    editClicked: boolean = true;
     customer: object;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-        this.customer = this.session.getCustomer();
 
+        this.backend.getCustomer()
+            .then((data) => {
+                this.customer = data
+            })
+            .catch((err) => {
+                return this.router.navigate(['/error']);
+            })
     }
 
     ngOnInit() {
@@ -31,4 +38,5 @@ export class CustomerProfileComponent implements OnInit {
         this.loginPressed = false;
         return this.router.navigate([''])
     }
+
 }

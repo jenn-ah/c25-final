@@ -56,7 +56,7 @@ passport.deserializeUser((username, cb) => {
 
 passport.deserializeUser((username, cb) => {
   return new Vendor()
-    .where({ id: username })
+    .where({ username: username })
     .fetch()
     .then((username) => {
       if (!username) {

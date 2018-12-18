@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
     isAuthorized:boolean;
     hasAdminAccess:boolean;
     id:number;
-    post:object;
     constructor(private backend: BackendService, private router: Router) {
 
         this.backend.getAllHomeItems()

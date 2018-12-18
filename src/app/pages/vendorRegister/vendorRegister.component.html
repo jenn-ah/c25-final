@@ -1,4 +1,7 @@
 <form>
+  <div>Username:
+    <input name="username" type="text" [(ngModel)]="newVendorForm.username" />
+  </div>
   <div>Company Name:
     <input name="company_name" type="text" [(ngModel)]="newVendorForm.company_name" />
   </div>
@@ -18,8 +21,8 @@
     <input name="email" type="text" [(ngModel)]="newVendorForm.email" />
   </div>
   <div>Website:
-      <input name="website" type="text" [(ngModel)]="newVendorForm.website" />
-    </div>
+    <input name="website" type="text" [(ngModel)]="newVendorForm.website" />
+  </div>
   <div>Phone Number:
     <input name="phone_number" type="text" [(ngModel)]="newVendorForm.phone_number" />
   </div>
@@ -39,11 +42,11 @@
     <input name="photo" type="text" [(ngModel)]="newVendorForm.photo" />
   </div>
   <div>Describe Yourself:
-      <input name="description" type="text" [(ngModel)]="newVendorForm.description" />
-    </div>
-    <div>License Number:
-        <input name="license_number" type="text" [(ngModel)]="newVendorForm.license_number" />
-      </div>
+    <input name="description" type="text" [(ngModel)]="newVendorForm.description" />
+  </div>
+  <div>License Number:
+    <input name="license_number" type="text" [(ngModel)]="newVendorForm.license_number" />
+  </div>
   <button (click)="createNewVendor()"> Submit </button>
 
 </form>
