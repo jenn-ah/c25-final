@@ -24,32 +24,32 @@ export class EditVendorComponent implements OnInit {
         description: string;
         phone_number: number;
         license_number: number;
-      } = {
-          first_name: "",
-          last_name: "",
-          company_name: "",
-          email: "",
-          street_address: "",
-          city: "",
-          state: "",
-          zip_code: null,
-          photo: "",
-          website: "",
-          description: "",
-          phone_number: null,
-          license_number: null
+    } = {
+            first_name: "",
+            last_name: "",
+            company_name: "",
+            email: "",
+            street_address: "",
+            city: "",
+            state: "",
+            zip_code: null,
+            photo: "",
+            website: "",
+            description: "",
+            phone_number: null,
+            license_number: null
         }
+    id: number = null;
 
-    constructor(private backend: BackendService, private router: Router, private session: SessionService) {  }
+    constructor(private backend: BackendService, private router: Router, private session: SessionService) { }
 
     ngOnInit() { }
-
 
     editVendor() {
         console.log('this is data fr fr', this.data)
         event.preventDefault();
         return this.backend
-            .editVendor(this.data)
+            .editVendor(this.data, this.id)
             .then(() => {
                 return this.router.navigate(['/home']);
             })

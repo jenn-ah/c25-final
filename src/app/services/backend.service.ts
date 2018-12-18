@@ -101,15 +101,15 @@ export class BackendService {
       })
       .toPromise();
   }
-  
+
 
   getVendor() {
-    const url = this.baseUrl + "api/vendors/2";
+    const url = this.baseUrl + `api/vendors/2`;
     return this.http.get(url).toPromise();
   }
 
 
-  editVendor(vendor) {
+  editVendor(vendor, id) {
     const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
     return this.http
       .put(vendorUrl, {

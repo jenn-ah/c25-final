@@ -1,8 +1,11 @@
 <h2> All of your Jobs </h2> 
-
+<div *ngFor="let post of posts">
+    {{ post | json }}
+</div>
+<!-- 
 <h3 class="current"> Current Jobs </h3> 
 <div class="cust-cards">
-    <h4 class="title"> My speaker is broken </h4>
+    <h4 class="title"> {{My speaker is broken}} </h4>
     <img class="img" src="https://i.pinimg.com/originals/4b/0c/61/4b0c61fcf7b761af16ed3aae1234f293.gif"> 
     description: Why won't it play music please help
     city: Kahala
@@ -37,4 +40,4 @@
         budget: $200
         priority: Medium
         created: a week ago
-    </div> 
+    </div>  -->
