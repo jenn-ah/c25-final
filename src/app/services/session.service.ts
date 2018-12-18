@@ -101,11 +101,11 @@ export class SessionService {
   }
 
   getVendor() {
-    return this.vendor
+    return this.vendor;
   }
 
   getCustomer() {
-    return this.customer
+    return this.customer;
   }
   getIsVendorLoggedIn() {
     return this.vendor.isLoggedIn;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../services/backend.service";
+import { BackendService } from '../../services/backend.service'
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 
@@ -13,11 +13,20 @@ export class CustomerProfileComponent implements OnInit {
     loginPressed: boolean = false;
     editClicked: boolean = true;
     customer: object;
+    // username: string;
+    // password: string;
+    // first_name: string;
+    // last_name: string;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-        this.customer = this.session.getCustomer();
-        console.log(this.customer)
 
+        this.backend.getCustomer()
+            .then((data) => {
+                this.customer = data
+            })
+            .catch((err) => {
+                return this.router.navigate(['/error']);
+            })
     }
 
     ngOnInit() {

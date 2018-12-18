@@ -11,9 +11,13 @@ export class BackendService {
   customer: {
     username: string,
     password: string,
+    first_name: string,
+    last_name: string
   } = {
       username: '',
       password: '',
+      first_name: '',
+      last_name: ''
     };
   vendor: {
     username: string,
@@ -74,14 +78,18 @@ export class BackendService {
   }
 
 
-  customerLogin(username, password) {
+  customerLogin(username, password, first_name, last_name ) {
     const customerUrl = this.baseUrl + "api/customer/login";
-    return this.http.post(customerUrl, { username: username, password: password }).toPromise()
+    return this.http.post(customerUrl, { username: username, password: password, first_name: first_name, last_name: last_name }).toPromise()
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })
   }
 
+  getCustomer(){
+    const url = this.baseUrl + 'api/customers/2'
+    return this.http.get(url).toPromise()
+  }
 
   editCustomer(data) {
     const url = this.baseUrl + 'api/customers/2/edit';
