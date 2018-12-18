@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 
 export class JobsComponent implements OnInit {
-    posts: any;
+    posts: object;
 
     constructor(private backend: BackendService, private router: Router) {
 
