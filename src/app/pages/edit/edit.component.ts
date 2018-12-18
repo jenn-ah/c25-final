@@ -36,7 +36,6 @@ export class EditComponent implements OnInit {
 
 
     editCustomer() {
-        console.log('this is data fr fr', this.data)
         event.preventDefault();
         return this.backend
             .editCustomer(this.data)

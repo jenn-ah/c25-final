@@ -97,7 +97,6 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.put('/:id/edit', (req, res) => {
-  console.log(req.body)
   const getId = parseInt(req.params.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 

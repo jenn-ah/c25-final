@@ -29,10 +29,6 @@ router.post('/', (req, res) => {
   const parseZipcode = parseInt(zip_code);
   const parseCat = parseInt(category_id);
 
-  console.log(parseBudget, parseCustId, parsePostStatId, parseZipcode, parsePostPriorId, parseCat)
-
-
-
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {

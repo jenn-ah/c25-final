@@ -13,10 +13,6 @@ export class CustomerProfileComponent implements OnInit {
     loginPressed: boolean = false;
     editClicked: boolean = true;
     customer: object;
-    // username: string;
-    // password: string;
-    // first_name: string;
-    // last_name: string;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
 

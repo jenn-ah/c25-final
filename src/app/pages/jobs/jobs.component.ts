@@ -15,7 +15,6 @@ export class JobsComponent implements OnInit {
         this.backend.getAllHomeItems()
             .then((data) => {
                 this.posts = data
-                console.log('this is the posts', this.posts)
             })
             .catch(err => {
                 return this.router.navigate(['/error']);
