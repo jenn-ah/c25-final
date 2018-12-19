@@ -36,7 +36,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-    return this.backend.customerLogin(this.username, this.password, this.first_name, this.last_name)
+    return this.backend.customerLogin(this.username, this.password)
      .then(resp =>{
        return this.router.navigate(['/home']);
      })

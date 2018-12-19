@@ -91,9 +91,9 @@ export class BackendService {
   }
 
 
-  customerLogin(username, password, first_name, last_name) {
+  customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
-    return this.http.post(customerUrl, { username: username, password: password, first_name: first_name, last_name: last_name }).toPromise()
+    return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })

@@ -110,6 +110,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function(req, res){
+    console.log('req user', req.user);
      return res.send(req.user)
   }
   );
