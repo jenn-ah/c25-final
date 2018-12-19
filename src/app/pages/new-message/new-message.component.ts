@@ -14,18 +14,17 @@ export class NewMessageComponent {
   message: string;
   data: any;
 
-  constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) { 
-          this.backend.getCustomer()
-          .then((data) => {
-            this.user = data
-            console.log(this.user)
-          })
-          .catch((err)=>{console.log(err)})
-
+  constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) {
+    this.backend.getCustomer()
+      .then((data) => {
+        this.user = data
+        console.log(this.user)
+      })
+      .catch((err) => { console.log(err) })
   }
 
   newMessage(text: string, user: string): void {
-    this.messageService.send({text: text, user: user});
+    this.messageService.send({ text: text, user: user });
     this.message = '';
   }
 
