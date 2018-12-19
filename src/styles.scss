@@ -40,30 +40,26 @@ input[type=text]:focus, input[type=password]:focus {
 
 //iPhone 6/7/8+
 @media only screen and (max-device-width: 414px) {
-  
   img {
-    width: 414px;
+    width: 100%;
+    height: auto;
   }
 }
 
 
 //GalaxyS5
 @media only screen and (max-device-width: 360px) {
-  body {
-    background: blue;
-  }
   img {
-    width: 360px;
+    width: 100%;
+    height: auto;
   }
 }
 
 
  //desktop
 @media only screen and (min-device-width: 768px) {
-  // body {
-  //   // background: lightblue;
-  // }
   img {
-    width: 480px;
+    width: 100%;
+    height: auto;
   }
 }
