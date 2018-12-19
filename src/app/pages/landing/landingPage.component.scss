@@ -1,77 +1,103 @@
  
- .landingPage {
+.landingPage {
     background-image: url('../../../img/blur-bg.jpg');
     filter: contrast(0.9) brightness(.9);
     width: 415px;
     height: 737px;
     overflow: hidden;
     margin-right: -10px;
+    color: white;
   }
   
-  .bg {
+.bg {
     display: inline-block;
   }
 
-  a {
+a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 10pt;
+    text-transform: uppercase;
     color: white;
   }
 
 div {
   display: flex;
-  flex-flow: row wrap;
   align-items: center;
   }
 
-  .customerLogin {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+.customerLogin {
+    display: block;
+    width: 414px;
     color: white;
-    align-content: center;
-  }
-
-  .customerLoginNext {
-    color: white;
-  }
-
-  .customerRegister {
     text-align: center;
-    color: white;
   }
 
-  .vendorLogin {
-    margin-left: 10px;
-    margin-right: auto;
-    color: white;
+.customerLoginNext {
+  justify-content: center;
+  color: white;
+  text-align: center;
   }
 
-  .custBtn {
+.vendorLogin {
+    display: block;
+    width: 414px;
+    color: white;
+    text-align: center;
+  }
+
+  .vendorLoginNext {
+    justify-content: center;
+    color: white;
+    text-align: center;
+    }
+
+.custBtn {
+    border: none;
+    border-radius: 0%;
     font-size: 30px;
     padding: 16px;
-    border-radius: 8px;
-    width: 180px;
+    width: 100%;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
   }
 
-  .custBtn:hover {
+.custBtn:hover {
+    border: none;
+    border-radius: 0%;
     background-color: white;
     color: black;
   }
 
-  .vendorBtn {
+.vendorBtn {
+    border: none;
+    border-radius: 0%;
     font-size: 30px;
     padding: 16px;
-    border-radius: 8px;
-    width: 180px;
+    width: 100%;
     -webkit-transition-duration: 0.2s;
     transition-duration: 0.2s;
   }
 
-  input[type=text], input[type=password] {
-    text-align: center;
-    color: white;
-    width: 350px;
+  .vendorBtn:hover {
+    border: none;
+    border-radius: 0%;
+    background-color: white;
+    color: black;
   }
+
+  .submitBtn {
+    font-size: 14pt;
+    text-transform: uppercase;
+    background-color: transparent;
+  }
+
+input[type=text], input[type=password] {
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    width: 235px;
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid white;
+  }
+

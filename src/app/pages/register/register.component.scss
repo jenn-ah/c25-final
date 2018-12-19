@@ -1,5 +1,5 @@
 .bg {
-  background-image: url('../../../img/3833.jpg');
+  background-image: url('../../../img/blur-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -15,7 +15,7 @@
   margin-top: 5px;
   margin-bottom: 20px;
   text-align: center;
-  color: darkslategray;
+  color: dimgrey;
 }
 
 input[type=text], input[type=password] {
@@ -45,4 +45,5 @@ input[type=text], input[type=password] {
 
 .submitBtn {
   text-align: center;
+  background-color: transparent;
 }
