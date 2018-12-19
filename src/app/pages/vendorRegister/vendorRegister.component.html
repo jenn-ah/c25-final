@@ -1,49 +1,65 @@
-<form>
-  <div>Username:
-    <input name="username" type="text" [(ngModel)]="newVendorForm.username" />
-  </div>
-  <div>Company Name:
-    <input name="company_name" type="text" [(ngModel)]="newVendorForm.company_name" />
-  </div>
-  <div>First Name:
-    <input name="first_name" type="text" [(ngModel)]="newVendorForm.first_name" />
-  </div>
-  <div>Last Name:
-    <input name="last_name" type="text" [(ngModel)]="newVendorForm.last_name" />
-  </div>
-  <div>Password:
-    <input name="password" type="password" [(ngModel)]="newVendorForm.password" />
-  </div>
-  <div>Email:
-    <input name="email" type="text" [(ngModel)]="newVendorForm.email" />
-  </div>
-  <div>Phone Number:
-    <input name="phone_number" type="text" [(ngModel)]="newVendorForm.phone_number" />
-  </div>
-  <div>Website:
-    <input name="website" type="text" [(ngModel)]="newVendorForm.website" />
-  </div>
-  <div>Street Address:
-    <input name="address" type="text" [(ngModel)]="newVendorForm.street_address" />
-  </div>
-  <div>State:
-    <input name="state" type="text" [(ngModel)]="newVendorForm.state" />
-  </div>
-  <div>City:
-    <input name="city" type="text" [(ngModel)]="newVendorForm.city" />
-  </div>
-  <div>Zipcode:
-    <input name="zip_code" type="text" [(ngModel)]="newVendorForm.zip_code" />
-  </div>
-  <div>Photo:
-    <input name="photo" type="text" [(ngModel)]="newVendorForm.photo" />
-  </div>
-  <div>Company Description:
-      <input name="description" type="text" [(ngModel)]="newVendorForm.description" />
-    </div>
-    <div>Contractor's License#
-        <input name="license_number" type="text" [(ngModel)]="newVendorForm.license_number" />
-      </div>
-  <button (click)="createNewVendor()"> Submit </button>
+<div class="bg">
+  <div class="vendorForm">
+    <form>
+      <h3 class="vendorRegTitle">
+        PLEASE COMPLETE FORM BELOW
+        <br>
+         TO JOIN AS A VENDOR
+      </h3>
 
-</form>
+      <input name="username" placeholder="Enter Username" type="text" [(ngModel)]="newVendorForm.username" />
+      <br>
+
+      <input name="company_name" placeholder="Company Name" type="text" [(ngModel)]="newVendorForm.company_name" />
+      <br>
+
+      <input name="first_name" placeholder="Contact's First Name" type="text" [(ngModel)]="newVendorForm.first_name" />
+      <br>
+
+
+      <input name="last_name" placeholder="Contact's Last Name" type="text" [(ngModel)]="newVendorForm.last_name" />
+      <br>
+
+      <input name="password" placeholder="Enter Password" type="password" [(ngModel)]="newVendorForm.password" />
+      <br>
+
+
+      <input name="email" placeholder="Email Address" type="text" [(ngModel)]="newVendorForm.email" />
+      <br>
+
+
+      <input name="phone_number" placeholder="Phone Number" type="text" [(ngModel)]="newVendorForm.phone_number" />
+      <br>
+
+
+      <input name="website" placeholder="Company Website" type="text" [(ngModel)]="newVendorForm.website" />
+      <br>
+
+      <input name="address" placeholder="Company Address" type="text" [(ngModel)]="newVendorForm.street_address" />
+      <br>
+
+      <input name="state" placeholder="State Abbreviation" type="text" [(ngModel)]="newVendorForm.state" />
+      <br>
+
+      <input name="city" placeholder="City" type="text" [(ngModel)]="newVendorForm.city" />
+      <br>
+
+      <input name="zip_code" placeholder="Zipcode" type="text" [(ngModel)]="newVendorForm.zip_code" />
+      <br>
+
+      <input name="photo" placeholder="Photo Link" type="text" [(ngModel)]="newVendorForm.photo" />
+      <br>
+
+      <input name="description" placeholder="Short Company Description" type="text" [(ngModel)]="newVendorForm.description" />
+      <br>
+
+      <input name="license_number" placeholder="Contractor's License#" type="text" [(ngModel)]="newVendorForm.license_number" />
+      <br>
+      <br>
+      <div class="submitBtn">
+        <button (click)="createNewVendor()"> Submit </button>
+      </div>
+
+    </form>
+  </div>
+</div>

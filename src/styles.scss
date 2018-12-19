@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin-left: 0px;
+  margin-top: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard {
+  position: fixed;
+  
+}
+
+button {
+  background-color: #555555;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 16px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  text-decoration: none;
+}
+
+//iPhone 6/7/8+
+@media only screen and (max-device-width: 414px) {
+  
+  img {
+    width: 414px;
+  }
+}
+
+
+//GalaxyS5
+@media only screen and (max-device-width: 360px) {
+  body {
+    background: blue;
+  }
+  img {
+    width: 360px;
+  }
+}
+
+
+ //desktop
+@media only screen and (min-device-width: 768px) {
+  // body {
+  //   // background: lightblue;
+  // }
+  img {
+    width: 480px;
+  }
+}

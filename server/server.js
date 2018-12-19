@@ -43,7 +43,7 @@ passport.serializeUser((username, done) => {
 
 passport.deserializeUser((username, cb) => {
   return new Customer()
-    .where({ id: username })
+    .where({ username: username })
     .fetch()
     .then((username) => {
       if (!username) {

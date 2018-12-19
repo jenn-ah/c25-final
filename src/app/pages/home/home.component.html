@@ -1,15 +1,15 @@
 <div class="Customer-home">
-    <div class="custHome">
-        <div class="cust-cards" *ngFor="let post of posts">
-            <h4 class="title"> {{post.title}} </h4>
-            <img class="img" src="https://www.creativeboom.com/uploads/articles/ee/eeb77227176d8056eeed3c4b6159f7e7510bc56b_1100.jpg">
-            description: {{post.description}}
-            city: {{post.city}}
-            state: {{post.state}}
-            zipcode: {{post.zip_code}}
-            budget: {{post.budget}}
-            priority: {{post.postPriorityId.type}}
-            created: {{post.created_at}}
-        </div>
-
+  <div class="custHome">
+    <div class="cust-cards" *ngFor="let post of posts">
+      <img class="img" src={{post.photo}}>
+      <div class="title"> {{post.title}} </div>
+      {{post.description}}
+      City: {{post.city}}
+      State: {{post.state}}
+      Zipcode: {{post.zip_code}}
+      Budget: ${{post.budget}}
+      Priority: {{post.postPriorityId.type}}
+      Created: {{post.created_at}}
     </div>
+
+  </div>
