@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LandingPageComponent } from '../app/pages/landing/landingPage.component'
-import { MessageComponent } from '../app/pages/message/message.component';
+import { LandingPageComponent } from '../app/pages/landing/landingPage.component';
+
 import { PostsComponent } from '../app/pages/posts/posts.component';
 import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
@@ -14,12 +14,14 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
 import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
+import { MessagesComponent } from './pages/message/message.component';
+
 
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
   { path: 'postDetail/:id', component: PostDetailComponent},
-  { path:'messages', component: MessageComponent},
+  { path:'messages', component: MessagesComponent},
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
@@ -36,6 +38,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }

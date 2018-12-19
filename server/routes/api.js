@@ -11,7 +11,6 @@ const pusher = new Pusher({
 let messages = [];
 
 router.get('/messages', (req, res) => {
-  console.log('request', req)
   res.send('all good');
 });
 

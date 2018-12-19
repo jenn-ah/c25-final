@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from "../../services/backend.service";
-import { Router } from '@angular/router';
+import { Message } from '../../message.service';
+import { MessageService } from '../../message.service';
 
 @Component({
-    templateUrl: './message.component.html',
-    styleUrls: ['./message.component.scss']
+  selector: 'app-messages',
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.scss']
 })
+export class MessagesComponent implements OnInit {
+  messages: Array<Message>;
 
-export class MessageComponent implements OnInit {
+  constructor(
+    private messageService: MessageService,
+  ) {
+    this.messages = [];
+  }
 
-    constructor(private backend: BackendService, private router: Router) {
+  ngOnInit() {
+    this.messageService.messagesStream
+      .subscribe(this.newMessageEventHandler.bind(this));
+  }
 
-    }
-
-    ngOnInit() { }
-
+  private newMessageEventHandler(event: Message): void {
+    this.messages.push(event);
+  }
 }
