@@ -1,7 +1,7 @@
 <div class="new-message-component"  *ngIf="isLoggedIn()">
   <div class="field">
     <label for="user">Username</label>
-    <div> {{ user.username }}</div>
+    <div> {{ customer.username }}</div>
     <!-- <input id="user" type="text" [(ngModel)]="user"> -->
   </div>
   <div class="field">
@@ -23,7 +23,7 @@
 <div class="new-message-component"  *ngIf="isVendorLoggedIn()">
     <div class="field">
         <label for="user">Username</label>
-        <div> AnnieL </div>
+        <div> {{ user }} </div>
         <!-- <input id="user" type="text" [(ngModel)]="user"> -->
       </div>
       <div class="field">
@@ -39,5 +39,5 @@
         </select>
       </div>
     
-      <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
+      <button (click)="newMessageVendor(message, user)" class="btn btn-default">Send</button>
   </div>
