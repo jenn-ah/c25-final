@@ -1,7 +1,7 @@
 <div class="messages-component">
         <div class="messages">
           <div class="message" *ngFor="let message of messages">
-            <b>{{ message.user }}</b>: {{ message.text }}
+            <b>{{ message.user.username }}</b>: {{ message.text }}
           </div>
         </div>
       
