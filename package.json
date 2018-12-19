@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server/server.js", 
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -37,6 +37,7 @@
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
     "pg": "^7.7.1",
+    "pusher": "^2.2.0",
     "redis": "^2.8.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

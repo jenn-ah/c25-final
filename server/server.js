@@ -1,4 +1,6 @@
 const express = require('express');
+const http = require('http');
+const api = require('./routes/api');
 const app = express();
 const PORT = process.env.EXPRESS_HOST_PORT || 8989;
 const Customer = require("./db/Models/Customer");
@@ -24,6 +26,12 @@ app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/vendors', vendorsRouter);
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next();
+});
+app.use('/api', api);
 
 app.use(session({
   store: new redis({
@@ -109,22 +117,17 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 }));
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
-  function(req, res){
-     return res.send(req.user)
+  function (req, res) {
+    return res.send(req.user)
   }
-  );
+);
 
 app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
   function (req, res) {
     return res.send(req.user)
   });
 
-
-
-
-
-
-
+const server = http.createServer(app);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
