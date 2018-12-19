@@ -30,11 +30,11 @@ export class NewMessageComponent {
 
   isLoggedIn() {
     return this.session.getIsLoggedIn();
-}
+  }
 
-isVendorLoggedIn() {
+  isVendorLoggedIn() {
     return this.session.getIsVendorLoggedIn();
-}
+  }
 
 
 }

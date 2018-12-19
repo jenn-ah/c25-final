@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../../message.service';
 import { MessageService } from '../../message.service';
+import { SessionService } from 'src/app/services/session.service';
+
 
 @Component({
     selector: 'app-messages',
@@ -12,6 +14,7 @@ export class MessagesComponent implements OnInit {
 
     constructor(
         private messageService: MessageService,
+        private session: SessionService
     ) {
         this.messages = [];
     }
@@ -23,5 +26,12 @@ export class MessagesComponent implements OnInit {
 
     private newMessageEventHandler(event: Message): void {
         this.messages.push(event);
+    }
+    isLoggedIn() {
+        return this.session.getIsLoggedIn();
+    }
+    
+    isVendorLoggedIn() {
+        return this.session.getIsVendorLoggedIn();
     }
 }
