@@ -7,6 +7,7 @@ const PostPriority = require('../db/Models/PostPriority');
 const validator = require('validator');
 
 router.get('/', (req, res) => {
+
   return Post.fetchAll({
     withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
@@ -19,15 +20,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { title, category_id, customer_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
-
-  const parseCustId = parseInt(customer_id);
-  const parseCatId = parseInt(category_id);
-  const parsePostStatId = parseInt(post_status_id);
-  const parsePostPriorId = parseInt(post_priority_id);
-  const parseBudget = parseInt(budget);
+  const { title, customer_id, category_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
   const parseZipcode = parseInt(zip_code);
-
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {
@@ -43,21 +37,21 @@ router.post('/', (req, res) => {
   } else if (!validator.isBoolean(can_bid)) {
     return res.status(400).json({ status: Error, message: 'Invalid input' });
   } else {
-
     return new Post({
       title,
-      customer_id: parseCustId,
-      category_id: parseCatId,
-      post_status_id: parsePostStatId,
-      post_priority_id: parsePostPriorId,
+      customer_id,
+      category_id, 
+      post_status_id, 
+      post_priority_id, 
       photo,
       description,
       city,
       state,
       zip_code: parseZipcode,
-      budget: parseBudget,
+      budget, 
       can_bid
     })
+
       .save()
       .then(post => {
         return post.refresh({
@@ -73,16 +67,14 @@ router.post('/', (req, res) => {
   }
 });
 
-
 router.get('/:id', (req, res) => {
-  
-  const getId = req.params.id;
 
-  return new Post({ id: getId })
+  const getId = req.params;
+  return new Post({ title: getId } || { id: getId })
     .fetch({
       require: true,
-      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
-      withRelated: ['customerId']
+      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
       const postObj = post.serialize();
@@ -93,13 +85,12 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
 router.get('/all/:id', (req, res) => {
   const getId = parseInt(req.params.id);
 
   return new Post()
     .where({ customer_id: getId })
-    .fetchAll({ 
+    .fetchAll({
       withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
     })
     .then(posts => {
@@ -112,11 +103,11 @@ router.get('/all/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
-
   return new Post({ id: getId })
     .fetch({
       require: true,
-      columns: ['id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid']
+      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+      withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
       const postObj = post.serialize();

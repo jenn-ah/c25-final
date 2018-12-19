@@ -14,6 +14,8 @@ export class LandingPageComponent implements OnInit {
   isVendor: boolean = true;
   
   username: string = "";
+  first_name: string = "";
+  last_name: string = "";
   password: string = "";
 
   constructor(
@@ -34,7 +36,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   customerLogin() {
-    return this.backend.customerLogin(this.username, this.password)
+    return this.backend.customerLogin(this.username, this.password, this.first_name, this.last_name)
      .then(resp =>{
        return this.router.navigate(['/home']);
      })

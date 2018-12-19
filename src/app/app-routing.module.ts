@@ -11,14 +11,20 @@ import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.c
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { EditVendorComponent } from './pages/editVendor/editVendor.component';
+import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
+  { path: 'postDetail/:id', component: PostDetailComponent},
   { path:'messages', component: MessageComponent},
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
+  { path:'edit', component: EditComponent},
+  { path:'edit/vendor', component: EditVendorComponent},
   { path:'customer/profile', component: CustomerProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},

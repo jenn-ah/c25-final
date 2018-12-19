@@ -1,0 +1,27 @@
+
+<form>
+    <div class="form">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="username" [(ngModel)]="data.username">
+
+        <label for="first_name">first name</label>
+        <input type="text" name="first_name" id="first_name" placeholder="first name" [(ngModel)]="data.first_name">
+
+        <label for="last_name">last name</label>
+        <input type="text" name="last_name" id="last_name" placeholder="last name" [(ngModel)]="data.last_name">
+
+        <label for="email">email</label>
+        <input type="text" name="email" id="email" placeholder="email" [(ngModel)]="data.email">
+
+        <label for="state">state</label>
+        <input type="text" name="state" id="state" placeholder="state" [(ngModel)]="data.state">
+
+        <label for="city">city</label>
+        <input type="text" name="city" id="city" placeholder="city" [(ngModel)]="data.city">
+
+        <label for="zip_code">zip_code</label>
+        <input type="text" name="zip_code" id="zip_code" placeholder="zipcode" [(ngModel)]="data.zip_code">
+    </div>
+
+    <button (click)="editCustomer()">Submit</button>
+</form>
