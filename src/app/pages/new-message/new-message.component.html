@@ -1,4 +1,4 @@
-<div class="new-message-component">
+<div class="new-message-component"  *ngIf="isLoggedIn()">
   <div class="field">
     <label for="user">Username</label>
     <div> {{ user.username }}</div>
@@ -9,5 +9,35 @@
     <input id="message" [(ngModel)]="message">
   </div>
 
+  <div>
+    <label for="channel">Channel</label>
+    <select>
+      <option value="vender">Vendor</option>
+      <option value="customer">Customer</option>
+    </select>
+  </div>
+
   <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
 </div>
+
+<div class="new-message-component"  *ngIf="isVendorLoggedIn()">
+    <div class="field">
+        <label for="user">Username</label>
+        <div> AnnieL </div>
+        <!-- <input id="user" type="text" [(ngModel)]="user"> -->
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <input id="message" [(ngModel)]="message">
+      </div>
+    
+      <div>
+        <label for="channel">Channel</label>
+        <select>
+          <option value="vender">Customer</option>
+          <option value="customer">Vendor</option>
+        </select>
+      </div>
+    
+      <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
+  </div>

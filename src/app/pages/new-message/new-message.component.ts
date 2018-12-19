@@ -28,4 +28,13 @@ export class NewMessageComponent {
     this.message = '';
   }
 
+  isLoggedIn() {
+    return this.session.getIsLoggedIn();
+}
+
+isVendorLoggedIn() {
+    return this.session.getIsVendorLoggedIn();
+}
+
+
 }
