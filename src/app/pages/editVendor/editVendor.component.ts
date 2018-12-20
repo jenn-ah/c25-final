@@ -49,8 +49,6 @@ export class EditVendorComponent implements OnInit {
         private route: ActivatedRoute) {
         this.vendor = this.session.getVendor()
         this.id = this.vendor.id
-        console.log('this.data', this.data)
-        console.log('current id', this.id)
     }
 
     ngOnInit() { }

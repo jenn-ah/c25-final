@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
+    id: any;
+    customer: any;
 
     data: {
         username: string,
@@ -29,7 +31,8 @@ export class EditComponent implements OnInit {
         }
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-
+        this.customer = this.session.getCustomer()
+        this.id = this.customer.id
     }
 
     ngOnInit() { }
@@ -38,9 +41,9 @@ export class EditComponent implements OnInit {
     editCustomer() {
         event.preventDefault();
         return this.backend
-            .editCustomer(this.data)
+            .editCustomer(this.data, this.id)
             .then(() => {
-                return this.router.navigate(['/home']);
+                return this.router.navigate(['/']);
             })
             .catch(err => {
                 return this.router.navigate(['/error']);
