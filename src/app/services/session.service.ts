@@ -27,6 +27,7 @@ export class SessionService {
     }
   vendor: {
     id: number,
+    username: string,
     first_name: string,
     last_name: string,
     phone_number: number,
@@ -40,6 +41,7 @@ export class SessionService {
     zip_code: number
   } = {
       id: null,
+      username: "",
       first_name: "",
       last_name: "",
       phone_number: null,
@@ -83,6 +85,7 @@ export class SessionService {
 
   setVendorSession(vendor) {
     this.vendor.id = vendor.id,
+    this.vendor.username = vendor.username
       this.vendor.first_name = vendor.first_name,
       this.vendor.last_name = vendor.last_name,
       this.vendor.phone_number = vendor.phone_number,

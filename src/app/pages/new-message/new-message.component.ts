@@ -10,23 +10,16 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./new-message.component.scss']
 })
 export class NewMessageComponent {
-  user: {
-    username: string;
-  } = {
-      username: "annieL",
-    };
-  // user: any;
-
+  vendor: any;
   customer: any;
   message: string;
   data: any;
 
   constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) {
-    this.backend.getCustomer()
-      .then((data) => {
-        this.customer = data
-      })
-      .catch((err) => { console.log(err) })
+    this.customer = this.session.getCustomer()
+    this.vendor = this.session.getVendor()
+    console.log('customer', this.customer)
+    console.log('vendor', this.vendor)
   }
 
   newMessage(text: string, user: string): void {
@@ -35,7 +28,7 @@ export class NewMessageComponent {
   }
 
   newMessageVendor(text: string, user: string): void {
-    this.messageService.send({ text: text, user: this.user });
+    this.messageService.send({ text: text, user: this.vendor });
     this.message = '';
   }
 
