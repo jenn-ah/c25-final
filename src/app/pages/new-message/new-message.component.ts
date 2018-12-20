@@ -16,6 +16,7 @@ export class NewMessageComponent {
       username: "annieL",
     };
 
+
   customer: any;
   message: string;
   data: any;

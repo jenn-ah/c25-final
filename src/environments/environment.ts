@@ -4,7 +4,7 @@
 
 export const environment = {
   pusher: {
-    key: '3397df7b343c3c05e778',
+    key: 'xxxxxxxxxxxxxxxxxxxx',
   }
 };
 

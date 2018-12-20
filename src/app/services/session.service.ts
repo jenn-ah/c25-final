@@ -67,11 +67,6 @@ export class SessionService {
     }
   }
 
-  setSession(customer, vendor){
-    this.customer.first_name = customer.first_name;
-    this.vendor.first_name = vendor.first_name;
-  }
-
   setCustomerSession(customer) {
     this.customer.id = customer.id;
     this.customer.first_name = customer.first_name;
