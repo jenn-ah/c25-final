@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
     posts: object;
     post: object;
-   
-    isAuthorized:boolean;
-    hasAdminAccess:boolean;
-    id:number;
+
+    isAuthorized: boolean;
+    hasAdminAccess: boolean;
+    id: number;
     constructor(private backend: BackendService, private router: Router) {
 
         this.backend.getAllHomeItems()
@@ -26,12 +26,12 @@ export class HomeComponent implements OnInit {
     }
     ngOnInit() { }
 
-    fetchPostDetail(id){
-     return this.backend.fetchPost(id)
-     .then((resp)=>{
-         this.post = resp
-         return this.router.navigate(['/postDetail/id', this.post])
-     });
+    fetchPostDetail(id) {
+        return this.backend.fetchPost(id)
+            .then((resp) => {
+                this.post = resp
+                return this.router.navigate(['/postDetail/id', this.post])
+            });
     }
 
 }

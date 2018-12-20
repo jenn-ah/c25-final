@@ -2,9 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+require('dotenv').config()
+
+const IAM_PUSHER_KEY = process.env.pusher_key
 export const environment = {
   pusher: {
-    key: 'xxxxxxxxxxxxxxxxxxxx',
+    key: IAM_PUSHER_KEY,
   }
 };
 
