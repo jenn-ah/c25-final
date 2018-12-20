@@ -99,8 +99,9 @@ export class BackendService {
       })
   }
 
-  getCustomer() {
-    const url = this.baseUrl + `api/customers/2`
+  getCustomer(id) {
+    console.log("id", id)
+    const url = this.baseUrl + `api/customers/${id}`;
     return this.http.get(url).toPromise()
   }
 
@@ -120,8 +121,9 @@ export class BackendService {
   }
 
 
-  getVendor() {
-    const url = this.baseUrl + `api/vendors/2`;
+  getVendor(id) {
+    console.log("id:", id)
+    const url = this.baseUrl + `api/vendors/${id}`;
     return this.http.get(url).toPromise();
   }
 
