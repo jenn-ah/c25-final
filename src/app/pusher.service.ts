@@ -12,7 +12,7 @@ export class PusherService {
   }
 
   initializePusher(): void {
-    this.pusher = new Pusher(environment.pusher.key, { authEndpoint: '/pusher/auth' });
+    this.pusher = new Pusher(environment.pusher.key, { authEndpoint: 'http://localhost:8989/pusher/auth' });
     this.messagesChannel = this.pusher.subscribe('private-all-messages');
   }
 }
