@@ -8,12 +8,12 @@
     <app-new-message></app-new-message>
 </div>
 
+
 <div class="messages-component" *ngIf="isVendorLoggedIn()">
-        <div class="messages">
-            <div class="message" *ngFor="let message of messages">
-                <b>{{ message.user }}</b>: {{ message.text }}
-            </div>
+    <div class="messages">
+        <div class="message" *ngFor="let message of messages">
+            <b> {{ message.user.username }}</b>: {{ message.text }}
         </div>
-    
-        <app-new-message></app-new-message>
     </div>
+    <app-new-message></app-new-message>
+</div>

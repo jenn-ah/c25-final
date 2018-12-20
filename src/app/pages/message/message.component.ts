@@ -21,17 +21,19 @@ export class MessagesComponent implements OnInit {
 
     ngOnInit() {
         this.messageService.messagesStream
-            .subscribe(this.newMessageEventHandler.bind(this));
+            .subscribe(this.newMessageEventHandler.bind(this))
     }
 
     private newMessageEventHandler(event: Message): void {
         this.messages.push(event);
     }
+
     isLoggedIn() {
         return this.session.getIsLoggedIn();
     }
-    
+
     isVendorLoggedIn() {
         return this.session.getIsVendorLoggedIn();
     }
+
 }
