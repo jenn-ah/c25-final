@@ -46,7 +46,7 @@ export class LandingPageComponent implements OnInit {
   vendorLogin() {
     return this.backend.vendorLogin(this.username, this.password)
   .then((resp)=> {
-    return this.router.navigate(["/home"]);
+    return this.router.navigate(['/home']);
   })
   .catch((err)=>{
     return this.router.navigate(['/'])

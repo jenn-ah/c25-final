@@ -5,7 +5,8 @@
     <div name="post" >
         <h4 class="title"> {{post.title}} </h4>
         <h5 class="category_id">Category:{{post.category_id}}</h5>
-        <img class="img" src="{{post.photo}}">
+        <input type="hidden" name="id" [(ngModel)]="id" value="{{post.id}}">
+        <img class="img" name="photo" (click)="fetchPostDetail(post.id)" src="{{post.photo}}">
         <div class="description"> description: {{post.description}}</div>
         <div class="city"> city: {{post.city}} </div>
         <div class="state"> state: {{post.state}} </div>

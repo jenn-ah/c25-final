@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
     templateUrl: './home.component.html',
@@ -47,7 +47,10 @@ export class HomeComponent implements OnInit {
     hasAdminAccess:boolean;
     id:number;
     //post:object;
-    constructor(private backend: BackendService, private router: Router) {
+    constructor(
+        private backend: BackendService, 
+        private router: Router,
+        private route: ActivatedRoute) {
 
         this.backend.getAllHomeItems()
             .then((data) => {
@@ -60,6 +63,8 @@ export class HomeComponent implements OnInit {
     ngOnInit() { }
 
     fetchPostDetail(id){
+        //let postId = this.route.snapshot.paramMap.get('id');
+        console.log(id)
      return this.backend.fetchPost(id)
      .then((resp)=>{
          this.post = resp

@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Customer = require('../db/Models/Customer');
+const Post = require('../db/Models/Post');
+const Category = require('../db/Models/Category')
 const bcrypt = require('bcryptjs');
 const saltRounds = 12;
 

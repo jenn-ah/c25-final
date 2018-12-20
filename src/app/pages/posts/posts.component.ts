@@ -57,12 +57,20 @@ post:{
       .then((resp) => {
           console.log(resp)
           this.posts = resp;
-        return 
+        return this.posts
       })
     //   .catch((err) => {
     //     return this.router.navigate(['/home'])
     //   })
     }
 
-    
+    fetchPostDetail(id){
+        //let postId = this.route.snapshot.paramMap.get('id');
+        console.log(id)
+     return this.backend.fetchPost(id)
+     .then((resp)=>{
+         this.post = resp
+         return this.router.navigate(['/postDetail/id', this.post])
+     });
+    }
 }

@@ -14,7 +14,7 @@ class Post extends bookshelf.Model {
   }
 
   postStatusId() {
-    return this.hasOne('PostStatus', 'id');
+    return this.belongsTo('PostStatus', 'post_status-id', 'id');
   }
 
   postPriorityId() {

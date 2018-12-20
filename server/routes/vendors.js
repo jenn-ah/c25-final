@@ -3,6 +3,7 @@ const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 const bcrypt = require('bcryptjs');
+const Post = require('../db/Models/Post')
 const saltRounds = 12;
 
 

@@ -47,6 +47,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   postSearch() {
+   console.log(this.search)
     return this.backend.fetchPost(this.search)
       .then((resp) => {
         this.search = '';

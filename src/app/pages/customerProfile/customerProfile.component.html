@@ -4,7 +4,7 @@
     City: {{ customer.city }} <br>
     State: {{ customer.state }} <br>
     Zip Code: {{ customer.zip_code }} <br>
-   <a class="post-router" routerLink="/posts"> {{customer.first_name}} Posts!  </a>
+   <a class="post-router" routerLink='/posts/{{customer.id}}'> {{customer.first_name}} Posts!  </a>
 
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>

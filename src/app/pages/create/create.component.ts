@@ -14,7 +14,7 @@ export class CreateComponent {
         title: string;
         customer_id: number;
         category_id: number;
-        post_priority: number;
+        post_priority_id: number;
         post_status_id:number;
         vendor_id: number;
         photo: string;
@@ -29,7 +29,7 @@ export class CreateComponent {
             title: '',
             customer_id: this.session.getCustomer().id,
             category_id:null,
-            post_priority: null,
+            post_priority_id: null,
             post_status_id:null,
             vendor_id: null,
             photo: null,
@@ -49,12 +49,15 @@ export class CreateComponent {
 
     createPost() {
         event.preventDefault();
+        console.log(this.NewPostForm, this.session.getCustomer())
         return this.backend
             .createNewPost(this.NewPostForm, this.session.getCustomer())
-            .then(() => {
+            .then((resp) => {
+                console.log(resp)
                 return this.router.navigate(['/home']);
             })
             .catch(err => {
+                console.log(err)
                 return this.router.navigate(['/error']);
             });
     }
