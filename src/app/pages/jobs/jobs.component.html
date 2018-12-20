@@ -1,4 +1,15 @@
-<h2> All of your Jobs </h2> 
-<div *ngFor="let post of posts">
-    {{ post | json }}
+
+<div class="jobs" *ngFor="let job of jobs">
+  <div name="job">
+    <h4 class="title"> {{job.postId.title}} </h4>
+    <img class="img" src="{{job.postId.photo}}">
+    <div class="description">{{job.postId.description}}</div>
+    <div class="city"> city: {{job.postId.city}} </div>
+    <div class="state"> state: {{job.postId.state}} </div>
+    <div class="zip_code">zipcode: {{job.postId.zip_code}} </div>
+    <div class="price"> ${{job.postId.price}} </div>
+    <div class="priotity_id">{{job.postId.priority_id}}</div>
+    <div class="post_status"> status: {{job.postId.status}} </div>
+    <div class="created_at"> created: {{job.postId.created_at}}</div>
+  </div>
 </div>

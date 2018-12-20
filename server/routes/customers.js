@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
     })
     .then(customer => {
       if (!customer) {
-        res.status(400).json({ message: `User not found.` });
+        return res.status(400).json({ message: `User not found.` });
       } else {
         const custObj = customer.serialize();
         return res.json(custObj);

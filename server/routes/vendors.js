@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
+const VendorPost = require('../db/Models/VendorPost');
 const bcrypt = require('bcryptjs');
 const saltRounds = 12;
 
@@ -66,6 +67,28 @@ router.post('/register', (req, res) => {
   };
 });
 
+
+router.get('/jobs/:id', (req, res) => {
+
+  const vendorId = parseInt(req.params.id);
+
+  //validation
+  return new VendorPost({ vendor_id: vendorId })
+    .fetchAll({
+      require: true,
+      columns: ['id', 'post_id', 'vendor_id'],
+      withRelated: ['vendorId', 'postId']
+    })
+    .then(jobs => {
+      const results = jobs.toJSON();
+      return res.json(results);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
 
@@ -82,6 +105,27 @@ router.get('/:id', (req, res) => {
         const vendorObj = vendor.serialize();
         return res.json(vendorObj);
       }
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+
+router.post('/jobs', (req, res) => {
+  //setup validation
+
+  const { post_id, vendor_id } = req.body;
+  const parsedPostId = parseInt(post_id);
+  const parsedVendorId = parseInt(vendor_id);
+
+  return new VendorPost({
+    post_id: parsedPostId,
+    vendor_id: parsedVendorId
+  })
+    .save()
+    .then(job => {
+      return res.json(job);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });

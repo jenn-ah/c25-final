@@ -50,6 +50,12 @@ export class BackendService {
     return this.http.get(url).toPromise()
   }
 
+  getVendorJobs() {
+    const vendorId = this.session.getVendorId();
+    const url = this.baseUrl + `api/vendors/jobs/${vendorId}`;
+    return this.http.get(url).toPromise();
+  }
+
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
@@ -100,11 +106,13 @@ export class BackendService {
       })
   }
 
+  //REMOVE HARDCODED!!!!!!!!!
   getCustomer() {
     const url = this.baseUrl + `api/customers/2`
     return this.http.get(url).toPromise()
   }
 
+   //REMOVE HARDCODED!!!!!!!!!
   editCustomer(data) {
     const userUrl = this.baseUrl + `api/customers/2/edit`;
     return this.http
@@ -121,14 +129,17 @@ export class BackendService {
   }
 
 
-  getVendor() {
-    const url = this.baseUrl + `api/vendors/2`;
-    return this.http.get(url).toPromise();
+  getVendor(vendId) {
+    const url = this.baseUrl + `api/vendors/${vendId}`;
+    return this.http.post(url, { id: vendId }).toPromise()
+      .then((resp) => {
+        console.log('gv resp', resp);
+      })
   }
 
 
-  editVendor(vendor, id) {
-    const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
+  editVendor(vendor, vendId) {
+    const vendorUrl = this.baseUrl + `api/vendors/${vendId}/edit`;
     return this.http
       .put(vendorUrl, {
         first_name: vendor.first_name,

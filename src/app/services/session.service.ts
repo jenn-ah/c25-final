@@ -105,6 +105,10 @@ export class SessionService {
     return this.vendor;
   }
 
+  getVendorId() {
+    return this.vendor.id;
+  }
+
   getCustomer() {
     return this.customer;
   }
