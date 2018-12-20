@@ -1,4 +1,19 @@
 <h2> All of your Jobs </h2> 
 <div *ngFor="let post of posts">
+    <h3 class="current"> Current Jobs </h3> 
+    <div class="cust-cards">
+        <h4 class="title"> {{ post.title }} </h4>
+        <img class="img" src="{{ post.photo }}"> 
+        description: {{ post.description }} <br>
+        priority: {{ post.postPriorityId.type }} <br>
+        status: {{ post.postStatusId.type }} <br>
+        category: {{ post.categoryId.name }} <br>
+        budget: {{ post.budget }} <br>
+        state: {{ post.state }} <br>
+        city: {{ post.city }} <br>
+        zipcode: {{ post.zip_code }} <br>
+        bidding: {{ post.can_bid }} <br>
+        created at: {{ post.created_at }} <br>
+</div>
     {{ post | json }}
 </div>

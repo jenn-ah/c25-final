@@ -21,5 +21,7 @@ export class JobsComponent implements OnInit {
             });
 
     }
+
+
     ngOnInit() { }
 }

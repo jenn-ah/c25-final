@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 
 export class HomeComponent implements OnInit {
     posts: object;
+  
     post:{
         id: number,
         title: string,
         username:string,
         description: string,
         photo: string,
-        post_status: string,
-        post_priority: string,
+        post_status_id: number,
+        post_priority_id: number,
         city: string,
         state: string,
         zip_code: string,
@@ -24,15 +25,16 @@ export class HomeComponent implements OnInit {
         customer_id:number,
         customerId:string,
         can_bid: boolean,
-        budget: number
+        budget: number,
+        category_id: number,
       } = {
         id:-1,
         title:'',
         description:'',
         username:'',
         photo:'',
-        post_status:'',
-        post_priority:'',
+        post_status_id: null,
+        post_priority_id: null,
         city:'',
         state:'',
         zip_code:'',
@@ -40,8 +42,10 @@ export class HomeComponent implements OnInit {
         customer_id:null,
         customerId:null,
         can_bid:false,
-        budget:null
+        budget:null,
+        category_id: null,
       }
+      
     isAuthorized:boolean;
     hasAdminAccess:boolean;
     id:number;
