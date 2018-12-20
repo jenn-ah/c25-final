@@ -107,7 +107,6 @@ export class BackendService {
   ) { }
 
   fetchPost(param) {
-    console.log(param)
     const searchUrl = this.baseUrl + `api/posts/`+param;
     return this.http.get(searchUrl).toPromise()
     .then((resp)=>{
@@ -143,7 +142,6 @@ export class BackendService {
 
   createNewPost(data, customer) {
     const url = this.baseUrl + "api/posts";
-    console.log(data, customer)
     return this.http.post(url, {
       title: data.title,
       customer_id: data.customer_id,

@@ -63,8 +63,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() { }
 
     fetchPostDetail(id){
-        //let postId = this.route.snapshot.paramMap.get('id');
-        console.log(id)
      return this.backend.fetchPost(id)
      .then((resp)=>{
          this.post = resp

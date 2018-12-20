@@ -49,15 +49,12 @@ export class CreateComponent {
 
     createPost() {
         event.preventDefault();
-        console.log(this.NewPostForm, this.session.getCustomer())
         return this.backend
             .createNewPost(this.NewPostForm, this.session.getCustomer())
             .then((resp) => {
-                console.log(resp)
                 return this.router.navigate(['/home']);
             })
             .catch(err => {
-                console.log(err)
                 return this.router.navigate(['/error']);
             });
     }

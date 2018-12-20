@@ -12,18 +12,15 @@ router.get('/', (req, res) => {
     withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
     .then(posts => {
-      console.log(posts)
       return res.json(posts);
     })
     .catch(err => {
-      console.log('post route',err)
       return res.status(500).json({ message: err.message, code: err.code });
     });
 });
 
 router.get('/search/:param', (req, res)=>{
   const searchParams = req.params
-  console.log('search',searchParams.param)
    return new Post()
   .where({ title: searchParams.param })
   .fetch({
@@ -33,11 +30,9 @@ router.get('/search/:param', (req, res)=>{
   })
   .then(post => {
     const postObj = post.serialize();
-    console.log('post search',postObj)
     return res.json(postObj);
   })
   .catch(err => {
-    console.log('err',err)
     return res.status(500).json({ message: err.message, code: err.code });
   });
   
@@ -77,7 +72,6 @@ router.post('/', (req, res) => {
     })
       .save()
       .then(post => {
-        console.log('post',post)
         return post.refresh({
           columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
           withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
@@ -93,7 +87,6 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-console.log('search params',req.body)
   const getId = req.params.id;
   return new Post({ id: getId })
     .fetch({
@@ -103,7 +96,6 @@ console.log('search params',req.body)
     })
     .then(post => {
       const postObj = post.serialize();
-      console.log('post search',postObj)
       return res.json(postObj);
     })
     .catch(err => {
@@ -113,7 +105,6 @@ console.log('search params',req.body)
 
 router.get('/all/:id', (req, res) => {
   const getId = parseInt(req.params.id);
-  console.log('post search',getId)
   return new Post()
     .where({ customer_id: getId })
     .fetchAll({
@@ -187,7 +178,6 @@ router.put('/:id/edit', (req, res) => {
 
 router.get('/categories/:id', (req, res)=>{
   const catId = parseInt(req.params.id);
-  console.log('posts route, reqparams', req.params)
   return new Post()
   .where({category_id:catId})
   .fetchAll({
@@ -196,7 +186,6 @@ router.get('/categories/:id', (req, res)=>{
   })
   .then(posts => {
     const results = posts.toJSON();
-    console.log('results', results)
     return res.json(results);
   })
 })

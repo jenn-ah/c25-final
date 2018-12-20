@@ -18,7 +18,6 @@ posts:any;
     private postService: PostService
     ) { 
       let catergoryId = this.route.snapshot.paramMap.get('event');
-      console.log(catergoryId);
       
       this.postService.getCategory(catergoryId)
       .then((resp)=>{
@@ -29,10 +28,3 @@ posts:any;
     ngOnInit() {
     }
   }
-  // let postId = this.route.snapshot.paramMap.getAll('resp');
-  // console.log('this post id snap', postId)
-  // this.backend.getCategory(postId)
-  //   .then((resp) => {
-    //     console.log(resp)
-    //     return this.posts = resp;
-  // })

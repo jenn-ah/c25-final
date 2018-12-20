@@ -52,10 +52,8 @@ post:{
 
     ngOnInit() { 
         let postId = this.route.snapshot.paramMap.get('id');
-        console.log(postId)
     this.backend.getPostByCustomer(postId)
       .then((resp) => {
-          console.log(resp)
           this.posts = resp;
         return this.posts
       })
@@ -66,7 +64,6 @@ post:{
 
     fetchPostDetail(id){
         //let postId = this.route.snapshot.paramMap.get('id');
-        console.log(id)
      return this.backend.fetchPost(id)
      .then((resp)=>{
          this.post = resp

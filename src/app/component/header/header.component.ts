@@ -27,17 +27,6 @@ export class HeaderComponent implements OnInit {
   };
   search: string;
   filter: Object[] = [];
-  // categories:[{id:1, category:"Automotive"},
-  //              {id:2, category:"Electrical"},
-  //              {id:3, category:"Plumbing"},
-  //              {id:4, category:"Landscaping"},
-  //              {id:5, category:"Tayloring"},
-  //              {id:6, category:"Childcare"},
-  //              {id:7, category:"Painting"},
-  //              {id:8, category:"Carpentry"},
-  //              {id:9, category:"Pressure Washing"},
-  //              {id:10, category:"Other"}];
-
 
   constructor(
     private backend: BackendService,
@@ -47,17 +36,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   postSearch() {
-   console.log(this.search)
     return this.backend.fetchPost(this.search)
       .then((resp) => {
         this.search = '';
-        console.log(resp)
         return this.router.navigate(['/posts/resp', resp]);
       })
   }
 
 categoriesEvent(event){
-  console.log('this cat event', event)
   return this.router.navigate(['/categoryPostPage',event]);
 }
 

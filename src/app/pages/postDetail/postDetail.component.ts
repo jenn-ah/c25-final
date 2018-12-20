@@ -51,9 +51,7 @@ export class PostDetailComponent implements OnInit {
     let postId = this.route.snapshot.paramMap.get('id');
     this.backend.fetchPost(postId)
       .then((resp) => {
-        console.log(this.post=resp)
         return this.post = resp;
-  
       })
       .catch((err) => {
         return this.router.navigate(['/home'])

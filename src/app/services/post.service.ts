@@ -15,9 +15,7 @@ export class PostService{
   }
 
   getCategory(category){
-    console.log('post service cat', category)
     const fetchCategory = this.baseUrl + `api/posts/categories/${category}`
-    console.log('fetchcat', fetchCategory);
     return this.http.get(fetchCategory).toPromise();
   }
 
