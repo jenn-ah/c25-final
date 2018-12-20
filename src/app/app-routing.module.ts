@@ -26,7 +26,7 @@ const routes: Routes = [
   { path:'create', component: CreateComponent},
   { path:'profile/:id', component: ProfileComponent},
   { path:'edit', component: EditComponent},
-  { path:'edit/vendor', component: EditVendorComponent},
+  { path:'vendor/:id/edit', component: EditVendorComponent},
   { path:'customer/profile/:id', component: CustomerProfileComponent},
   { path:'home', component: HomeComponent},
   { path:'register', component: RegisterComponent},

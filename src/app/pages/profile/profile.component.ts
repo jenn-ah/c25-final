@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
     vendor: any;
     correctVendor: boolean = false;
 
+
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
         private route: ActivatedRoute) {
         this.vendor = this.session.getVendor()

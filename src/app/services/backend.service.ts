@@ -129,7 +129,7 @@ export class BackendService {
 
 
   editVendor(vendor, id) {
-    const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
+    const vendorUrl = this.baseUrl + `api/vendors/${id}/edit`;
     return this.http
       .put(vendorUrl, {
         first_name: vendor.first_name,

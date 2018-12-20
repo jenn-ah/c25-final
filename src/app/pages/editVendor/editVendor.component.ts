@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './editVendor.component.html',
@@ -9,6 +10,10 @@ import { Router } from '@angular/router';
 })
 
 export class EditVendorComponent implements OnInit {
+    urlId: string;
+    vendor: any;
+    correctVendor: boolean = false;
+    id: any;
 
     data: {
         first_name: string;
@@ -39,9 +44,14 @@ export class EditVendorComponent implements OnInit {
             phone_number: null,
             license_number: null
         }
-    id: number = null;
 
-    constructor(private backend: BackendService, private router: Router, private session: SessionService) { }
+    constructor(private backend: BackendService, private router: Router, private session: SessionService,
+        private route: ActivatedRoute) {
+        this.vendor = this.session.getVendor()
+        this.id = this.vendor.id
+        console.log('this.data', this.data)
+        console.log('current id', this.id)
+    }
 
     ngOnInit() { }
 
@@ -50,7 +60,7 @@ export class EditVendorComponent implements OnInit {
         return this.backend
             .editVendor(this.data, this.id)
             .then(() => {
-                return this.router.navigate(['/home']);
+                return this.router.navigate(['/']);
             })
             .catch(err => {
                 return this.router.navigate(['/error']);
