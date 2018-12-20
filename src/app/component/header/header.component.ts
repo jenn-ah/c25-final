@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service'
 import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service'
 
 @Component({
   selector: 'app-header',
@@ -26,10 +27,22 @@ export class HeaderComponent implements OnInit {
   };
   search: string;
   filter: Object[] = [];
+  // categories:[{id:1, category:"Automotive"},
+  //              {id:2, category:"Electrical"},
+  //              {id:3, category:"Plumbing"},
+  //              {id:4, category:"Landscaping"},
+  //              {id:5, category:"Tayloring"},
+  //              {id:6, category:"Childcare"},
+  //              {id:7, category:"Painting"},
+  //              {id:8, category:"Carpentry"},
+  //              {id:9, category:"Pressure Washing"},
+  //              {id:10, category:"Other"}];
+
 
   constructor(
     private backend: BackendService,
-    private router: Router
+    private router: Router,
+    private postService: PostService
   ) { }
   ngOnInit() { }
 
@@ -37,7 +50,15 @@ export class HeaderComponent implements OnInit {
     return this.backend.fetchPost(this.search)
       .then((resp) => {
         this.search = '';
-        return this.router.navigate(['postDetail/:resp.id']);
+        console.log(resp)
+        return this.router.navigate(['/posts/resp', resp]);
       })
   }
+
+categoriesEvent(event){
+  console.log('this cat event', event)
+  return this.router.navigate(['/categoryPostPage',event]);
+}
+
+
 }

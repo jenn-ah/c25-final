@@ -18,7 +18,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
-
+import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { PostDetailComponent } from './pages/postDetail/postDetail.component';
     JobsComponent,
     CustomerProfileComponent,
     PostDetailComponent,
+    CategoryPostPage,
   ],
   imports: [
     BrowserModule,

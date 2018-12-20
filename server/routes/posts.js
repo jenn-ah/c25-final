@@ -9,6 +9,7 @@ const validator = require('validator');
 router.get('/', (req, res) => {
 
   return Post.fetchAll({
+    columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
     withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
     .then(posts => {
@@ -40,21 +41,21 @@ router.post('/', (req, res) => {
     return new Post({
       title,
       customer_id,
-      category_id, 
-      post_status_id, 
-      post_priority_id, 
+      category_id,
+      post_status_id,
+      post_priority_id,
       photo,
       description,
       city,
       state,
       zip_code: parseZipcode,
-      budget, 
+      budget,
       can_bid
     })
-
       .save()
       .then(post => {
         return post.refresh({
+          columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
           withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
         });
       })
@@ -68,16 +69,18 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
-  const getId = req.params;
-  return new Post({ title: getId } || { id: getId })
+console.log(req.params)
+  const getId = req.params.id;
+  return new Post({ title: getId } || { id: getId } || {category_id:getId})
     .fetch({
       require: true,
-      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+      //columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
       withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
       const postObj = post.serialize();
+      console.log(postObj)
       return res.json(postObj);
     })
     .catch(err => {
@@ -87,14 +90,16 @@ router.get('/:id', (req, res) => {
 
 router.get('/all/:id', (req, res) => {
   const getId = parseInt(req.params.id);
-
   return new Post()
     .where({ customer_id: getId })
     .fetchAll({
+      require:true,
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
       withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
     })
     .then(posts => {
-      return res.json(posts);
+      const postObj = posts.serialize();
+      return res.json(postObj);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -157,6 +162,22 @@ router.put('/:id/edit', (req, res) => {
       });
   }
 });
+router.get('/categories/:id', (req, res)=>{
+  const catId = parseInt(req.params.id);
+  console.log('posts route, reqparams', req.params)
+  return new Post()
+  .where({category_id:catId})
+  .fetchAll({
+    columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+    withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId', 'vendorId']
+  })
+  .then(posts => {
+    const results = posts.toJSON();
+    console.log('results', results)
+    return res.json(results);
+  })
+  
+})
 
 
 module.exports = router;

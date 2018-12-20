@@ -1,0 +1,29 @@
+
+<div name="category" *ngFor="let post of posts">
+<h2>{{post.categoryId.name}}</h2>
+
+<h3>{{post.title}}</h3>
+<br>
+Name: {{post.customerId.first_name}}
+<br>
+<img src="{{post.photo}}" alt="">
+<br>
+Description: {{post.description}}
+<br>
+Budget: {{post.budget}}
+<br>
+City: {{post.city}}
+<br>
+State: {{post.state}}
+<br>
+Zip Code: {{post.zip_code}}
+<br>
+Category: {{post.categoryId.name}}
+<br>
+Post Status: {{post.postStatusId.type}}
+<br>
+Post Priority: {{post.postPriorityId.type}}
+<br>
+Post Created at: {{post.created_at}}
+
+</div>

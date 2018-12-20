@@ -8,7 +8,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 
 export class PostDetailComponent implements OnInit {
-  post:{
+  post:any
+  posts:{
     id: number,
     title: string,
     username:string,
@@ -46,17 +47,19 @@ export class PostDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    this.post
-  }
-  ngOnInit() {
+  
     let postId = this.route.snapshot.paramMap.get('id');
     this.backend.fetchPost(postId)
       .then((resp) => {
+        console.log(this.post=resp)
         return this.post = resp;
+  
       })
       .catch((err) => {
         return this.router.navigate(['/home'])
       })
+  }
+  ngOnInit() {
   }
 
 

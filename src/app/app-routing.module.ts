@@ -12,13 +12,14 @@ import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
+import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.component';
 
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
   { path: 'postDetail/:id', component: PostDetailComponent},
   { path:'messages', component: MessageComponent},
-  { path:'posts', component: PostsComponent},
+  { path:'posts/:id', component: PostsComponent},
   { path:'create', component: CreateComponent},
   { path:'profile', component: ProfileComponent},
   { path:'customer/profile', component: CustomerProfileComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path:'register', component: RegisterComponent},
   { path:'jobs', component: JobsComponent },
   { path: 'vendorRegister', component: VendorRegisterComponent},
+  { path: 'categoryPostPage/:event', component: CategoryPostPage},
   { path:'error', component: ErrorComponent },
   { path:'**', redirectTo:'', pathMatch: 'full'},
 ];
