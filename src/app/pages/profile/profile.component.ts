@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
 import { SessionService } from '../../services/session.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,23 +10,26 @@ import { Router } from '@angular/router';
 })
 
 export class ProfileComponent implements OnInit {
+    urlId: string;
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
     data: any;
-    vendor: object;
-    customer: object;
+    vendor: any;
+    correctVendor: boolean = false;
 
-    constructor(private backend: BackendService, private router: Router, private session: SessionService) {
-        this.backend.getVendor()
-        .then((data) => {
-            this.vendor = data
-        })
-        .catch((err) => {
-            return this.router.navigate(['/error']);
-        })
+    constructor(private backend: BackendService, private router: Router, private session: SessionService,
+        private route: ActivatedRoute) {
+        this.vendor = this.session.getVendor()
     }
 
     ngOnInit() {
+        this.urlId = this.route.snapshot.paramMap.get('id');
+
+        if (this.urlId === `${this.vendor.id}`) {
+            this.correctVendor = true;
+        }
+        return this.backend.getVendor(this.urlId)
+
     }
 
     vendorLogIn() {
