@@ -24,7 +24,6 @@ export class NewMessageComponent {
     this.backend.getCustomer()
       .then((data) => {
         this.customer = data
-        console.log(this.customer)
       })
       .catch((err) => { console.log(err) })
   }
