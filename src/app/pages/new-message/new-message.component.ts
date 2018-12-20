@@ -13,8 +13,8 @@ export class NewMessageComponent {
   user: {
     username: string;
   } = {
-    username: "annieL",
-  };
+      username: "annieL",
+    };
 
   customer: any;
   message: string;
@@ -39,7 +39,7 @@ export class NewMessageComponent {
     this.message = '';
   }
 
-  
+
   isLoggedIn() {
     return this.session.getIsLoggedIn();
   }
