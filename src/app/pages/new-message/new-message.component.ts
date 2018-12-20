@@ -10,12 +10,12 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./new-message.component.scss']
 })
 export class NewMessageComponent {
-  // user: {
-  //   username: string;
-  // } = {
-  //     username: "annieL",
-  //   };
-user: any;
+  user: {
+    username: string;
+  } = {
+      username: "annieL",
+    };
+// user: any;
 
   customer: any;
   message: string;
