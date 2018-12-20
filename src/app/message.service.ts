@@ -9,7 +9,7 @@ export interface Message {
 
 @Injectable()
 export class MessageService {
-  messagesStream = new ReplaySubject<Message>(1);
+  messagesStream = new ReplaySubject<Message>(20);
 
   constructor(
     private pusherService: PusherService

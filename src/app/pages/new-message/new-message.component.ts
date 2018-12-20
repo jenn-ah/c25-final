@@ -15,7 +15,7 @@ export class NewMessageComponent {
   } = {
       username: "annieL",
     };
-// user: any;
+  // user: any;
 
   customer: any;
   message: string;
