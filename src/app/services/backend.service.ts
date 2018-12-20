@@ -67,6 +67,7 @@ export class BackendService {
   }
 
   createNewPost(data, customer) {
+
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
