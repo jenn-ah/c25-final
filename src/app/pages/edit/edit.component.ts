@@ -9,8 +9,26 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
-    id: any;
-    customer: any;
+    id: number;
+    customer: {
+        id: number
+        username: string,
+        first_name: string,
+        last_name: string,
+        email: string,
+        state: string,
+        city: string,
+        zip_code: number
+    } = {
+        id: null,
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: '',
+        state: '',
+        city: '',
+        zip_code: null
+    };
 
     data: {
         username: string,

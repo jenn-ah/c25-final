@@ -11,9 +11,36 @@ import { ActivatedRoute } from '@angular/router';
 
 export class EditVendorComponent implements OnInit {
     urlId: string;
-    vendorProfile: any;
-    correctVendor: boolean = false;
-    id: any;
+    vendorProfile: {
+        id: number,
+        username: string,
+        first_name: string,
+        last_name: string,
+        phone_number: number,
+        email: string,
+        website: string,
+        description: string,
+        company_name: string,
+        isLoggedIn: boolean,
+        city: string,
+        state: string,
+        zip_code: number
+      } = {
+          id: null,
+          username: "",
+          first_name: "",
+          last_name: "",
+          phone_number: null,
+          email: "",
+          website: "",
+          description: "",
+          company_name: "",
+          isLoggedIn: false,
+          city: "",
+          state: "",
+          zip_code: null,
+        }
+    id: number;
 
     data: {
         first_name: string;

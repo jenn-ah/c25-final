@@ -25,7 +25,6 @@ export class NewMessageComponent {
     last_name: ''
   };
   message: string;
-  data: any;
 
   constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) {
     this.customer = this.session.getCustomer()
