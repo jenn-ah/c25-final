@@ -69,10 +69,8 @@ router.post('/register', (req, res) => {
 
 
 router.get('/jobs/:id', (req, res) => {
-
   const vendorId = parseInt(req.params.id);
 
-  //validation
   return new VendorPost({ vendor_id: vendorId })
     .fetchAll({
       require: true,
@@ -100,7 +98,7 @@ router.get('/:id', (req, res) => {
     })
     .then(vendor => {
       if (!vendor) {
-        res.status(400).json({ message: `Vendor not found.` });
+        return res.status(400).json({ message: `Vendor not found.` });
       } else {
         const vendorObj = vendor.serialize();
         return res.json(vendorObj);
@@ -113,7 +111,6 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/jobs', (req, res) => {
-  //setup validation
 
   const { post_id, vendor_id } = req.body;
   const parsedPostId = parseInt(post_id);
