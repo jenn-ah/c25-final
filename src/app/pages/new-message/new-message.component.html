@@ -8,14 +8,6 @@
     <input id="message" [(ngModel)]="message">
   </div>
 
-  <div>
-    <label for="channel">Channel</label>
-    <select>
-      <option value="vender">Vendor</option>
-      <option value="customer">Customer</option>
-    </select>
-  </div>
-
   <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
 </div>
 

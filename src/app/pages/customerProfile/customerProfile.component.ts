@@ -36,7 +36,6 @@ export class CustomerProfileComponent implements OnInit {
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
         private route: ActivatedRoute) {
         this.customer = this.session.getCustomer()
-
     }
 
     ngOnInit() {

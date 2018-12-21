@@ -4,7 +4,7 @@ import { PusherService } from './pusher.service';
 
 export interface Message {
   text: string;
-  user: string;
+  user: object;
 }
 
 @Injectable()

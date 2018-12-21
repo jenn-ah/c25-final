@@ -14,16 +14,17 @@ export class NewMessageComponent {
     first_name: string,
     last_name: string,
   } = {
-    first_name: '',
-    last_name: ''
-  };
+      first_name: '',
+      last_name: ''
+    };
   customer: {
     first_name: string,
     last_name: string,
   } = {
-    first_name: '',
-    last_name: ''
-  };
+      first_name: '',
+      last_name: ''
+    };
+
   message: string;
 
   constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) {
