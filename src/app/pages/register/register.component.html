@@ -6,11 +6,16 @@
       TO JOIN AS A CUSTOMER
     </h3>
     <form class="form">
-      <input name="username" placeholder="CHOOSE USERNAME" type="text" [(ngModel)]="newCustomerForm.username" />
-      <input name="first_name" placeholder="FIRST NAME" type="text" [(ngModel)]="newCustomerForm.first_name" />
-      <input name="last_name" placeholder="LAST NAME" type="text" [(ngModel)]="newCustomerForm.last_name" />
-      <input name="password" placeholder="PASSWORD" type="password" [(ngModel)]="newCustomerForm.password" />
-      <input name="email" placeholder="EMAIL ADDRESS" type="text" [(ngModel)]="newCustomerForm.email" />
+      <label for="username">username</label>
+      <input name="username" type="text" placeholder="Enter username" [(ngModel)]="newCustomerForm.username" />
+      <label for="first_name">first name</label>
+      <input name="first_name" placeholder="Enter first name" type="text" [(ngModel)]="newCustomerForm.first_name" />
+      <label for="last_name">last name</label>
+      <input name="last_name" placeholder="Enter last name" type="text" [(ngModel)]="newCustomerForm.last_name" />
+      <label for="password">password</label>
+      <input name="password" placeholder="Enter password" type="password" [(ngModel)]="newCustomerForm.password" />
+      <label for="email">email</label>
+      <input name="email" placeholder="Enter email address" type="text" [(ngModel)]="newCustomerForm.email" />
       <div class="stateSelect">
           Select State
           <select name="state" id="state" [(ngModel)]="NewPostForm.state">
@@ -67,8 +72,10 @@
           </select>
 
         </div>
-      <input name="city" placeholder="CITY" type="text" [(ngModel)]="newCustomerForm.city" />
-      <input name="zip_code" placeholder="ZIPCODE" type="text" [(ngModel)]="newCustomerForm.zip_code" />
+      <label for="city">city</label>
+      <input name="city" placeholder="Enter city" type="text" [(ngModel)]="newCustomerForm.city" />
+      <label for="zip_code">zipcode</label>
+      <input name="zip_code" placeholder="Enter zipcode" type="text" [(ngModel)]="newCustomerForm.zip_code" />
       <br>
       <br>
 

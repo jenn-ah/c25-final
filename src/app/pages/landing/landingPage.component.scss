@@ -1,6 +1,8 @@
  
 .landingPage {
-    background-image: url('../../../img/blur-bg.jpg');
+    background-image: url('../../../img/blurbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     filter: contrast(0.9) brightness(.9);
     width: 415px;
     height: 737px;
@@ -97,7 +99,6 @@ input[type=text], input[type=password] {
     color: white;
     width: 200px;
     height: 30px;
-    border-radius: 30px;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
   }
 
