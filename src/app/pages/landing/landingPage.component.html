@@ -1,45 +1,44 @@
 <div class="landingPage">
-<div class="bg">
-<div *ngIf="isCustomer" class="customerLogin">
-  <button class="custBtn" (click)="customerLoginBtnPress()">Customer</button>
-  <div class="customerLoginNext" *ngIf="customerLoginPressed">
-  <form>
-    <br>
-    <br>
-    <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
-    <br>
-    <input type="password" name="password" placeholder="PASSWORD" id="password" [(ngModel)]="password">
-    <br>
-    <br>
-    <button class="submitBtn" (click)="customerLogin()">SIGN IN</button>
-  </form>
-</div>
-  <br>
-  <br>
-  Not registered?
-    <a *ngIf="!isLoggedIn" routerLink="register">Sign up here</a>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div *ngIf="isVendor" class="vendorLogin">
-    <button class="vendorBtn" (click)="vendorLoginBtnPress()">Vendor</button>
-    <div class="vendorLoginNext">
-    <form *ngIf="vendorLoginPressed">
+  <div class="bg">
+    <div *ngIf="isCustomer" class="customerLogin">
+      <button class="custBtn" (click)="customerLoginBtnPress()">Customer</button>
+      <div class="customerLoginNext" *ngIf="customerLoginPressed">
+        <form>
+          <br>
+          <br>
+          <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
+          <br>
+          <input type="password" name="password" placeholder="PASSWORD" id="password" [(ngModel)]="password">
+          <br>
+          <br>
+          <button class="submitBtn" (click)="customerLogin()">SIGN IN</button>
+        </form>
+      </div>
       <br>
       <br>
-      <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
-      <br>
-
-      <input type="password" name="password" id="password" placeholder="PASSWORD" [(ngModel)]="password">
-      <br>
-      <br>
-      <button class="submitBtn" (click)="vendorLogin()">SIGN IN</button>
-      <br>
-    </form>
+      Not registered?
+      <a *ngIf="!isLoggedIn" routerLink="register">Sign up here</a>
     </div>
     <br>
+    <br>
+    <br>
+    <div *ngIf="isVendor" class="vendorLogin">
+      <button class="vendorBtn" (click)="vendorLoginBtnPress()">Vendor</button>
+      <div class="vendorLoginNext">
+        <form *ngIf="vendorLoginPressed">
+          <br>
+          <br>
+          <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
+          <br>
+          <input type="password" name="password" id="password" placeholder="PASSWORD" [(ngModel)]="password">
+          <br>
+          <br>
+          <button class="submitBtn" (click)="vendorLogin()">SIGN IN</button>
+          <br>
+        </form>
+      </div>
+      <br>
       Not registered?
       <a *ngIf="!isLoggedIn" routerLink="vendorRegister">Sign up here</a>
+    </div>
   </div>
-</div>

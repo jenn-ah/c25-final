@@ -12,7 +12,7 @@ export class JobsComponent implements OnInit {
   jobs: object;
 
   constructor(private backend: BackendService, private router: Router) {
-    
+
     this.backend.getVendorJobs()
       .then((data) => {
         return this.jobs = data;

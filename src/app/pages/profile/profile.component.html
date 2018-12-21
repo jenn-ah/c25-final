@@ -1,19 +1,19 @@
 <div class="profile-vendor" *ngIf="vendorLogIn()">
-    <h3 class="company-name"> Works For: {{ vendor.company_name }} </h3>
+    <h3 class="company-name"> Works For: {{ vendorProfile.company_name }} </h3>
     <img class="picture" src="http://static1.squarespace.com/static/53adb9cbe4b05e0d792c6c88/t/599f7c70d55b41248bc3229d/1521349651327/Fashion-Fine-Art-Photographer-Jingna-Zhang---Chinese-Singaporean-Profile-Portrait-2018.jpg">
-    <h3 class="name"> {{ vendor.first_name }} {{ vendor.last_name }} </h3>
+    <h3 class="name"> {{ vendorProfile.first_name }} {{ vendorProfile.last_name }} </h3>
     <div class="info">
-        Website: {{ vendor.website }} <br>
-        Email: {{ vendor.email }} <br>
-        Phone: {{ vendor.phone_number }} <br>
-        About Me: {{ vendor.description }} <br>
-        City: {{ vendor.city }} <br>
-        State: {{ vendor.state }} <br>
-        Zip Code: {{ vendor.zip_code }} <br>
+        Website: {{ vendorProfile.website }} <br>
+        Email: {{ vendorProfile.email }} <br>
+        Phone: {{ vendorProfile.phone_number }} <br>
+        About Me: {{ vendorProfile.description }} <br>
+        City: {{ vendorProfile.city }} <br>
+        State: {{ vendorProfile.state }} <br>
+        Zip Code: {{ vendorProfile.zip_code }} <br>
     </div>
 
     <div class="contact">
-        <button><a routerLink="/messages"> Contact {{vendor.first_name}} </a></button>
+        <button><a routerLink="/messages"> Contact {{vendorProfile.first_name}} </a></button>
     </div>
 
     <div class="logout-div">
@@ -21,4 +21,4 @@
     </div>
 </div>
 
-<div class="editBtn"><a routerLink="/edit/vendor">Edit</a></div>
+<div class="editBtn"><a routerLink="/vendor/:id/edit">Edit</a></div>

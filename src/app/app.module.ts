@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '../app/component/header/header.component';
 import { LandingPageComponent } from '../app/pages/landing/landingPage.component';
 import { DashboardComponent } from '../app/component/dashboard/dashboard.component';
-import { MessageComponent } from '../app/pages/message/message.component';
 import { PostsComponent } from '../app/pages/posts/posts.component';
 import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
@@ -20,6 +19,10 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
 import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
+import { MessageService } from './message.service';
+import { PusherService } from './pusher.service';
+import { MessagesComponent } from './pages/message/message.component';
+import { NewMessageComponent } from './pages/new-message/new-message.component';
 
 
 @NgModule({
@@ -28,7 +31,7 @@ import { PostDetailComponent } from './pages/postDetail/postDetail.component';
     HeaderComponent,
     LandingPageComponent,
     DashboardComponent,
-    MessageComponent,
+    MessagesComponent,
     PostsComponent,
     CreateComponent,
     ProfileComponent,
@@ -41,6 +44,7 @@ import { PostDetailComponent } from './pages/postDetail/postDetail.component';
     EditComponent,
     EditVendorComponent,
     PostDetailComponent,
+    NewMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,7 @@ import { PostDetailComponent } from './pages/postDetail/postDetail.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [PusherService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
