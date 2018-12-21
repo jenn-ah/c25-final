@@ -3,12 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 // require('dotenv').config()
 
-const IAM_KEY = process.env.key
+// const IAM_KEY = process.env.key
 
 export const environment = {
   production: false,
   pusher: {
-    key: IAM_KEY,
+    key: "IAM_KEY",
   }
 };
 

@@ -9,6 +9,7 @@
     overflow: hidden;
     margin-right: -10px;
     color: white;
+    font-size: 14pt;
   }
   
 .bg {
@@ -17,9 +18,10 @@
 
 a {
     text-decoration: none;
-    font-size: 10pt;
+    font-size: 12pt;
     text-transform: uppercase;
     color: white;
+    padding: 5px;
   }
 
 div {
@@ -27,20 +29,34 @@ div {
   align-items: center;
   }
 
-.customerLogin {
+  .customerUsername {
+    margin-top: 25px;
+  }
+
+  .customerPassword {
+    margin-bottom: 25px; 
+  }
+
+  .customerLogin {
+    justify-content: center;
     display: block;
     width: 414px;
+    color: white;
+  }
+
+  .customerLoginNext {
+    justify-content: center;
     color: white;
     text-align: center;
   }
 
-.customerLoginNext {
-  justify-content: center;
-  color: white;
-  text-align: center;
+  .customerSign {
+    justify-content: center;
+    text-align: center;
+    padding: 15px 40px 40px 40px;
   }
 
-.vendorLogin {
+  .vendorLogin {
     display: block;
     width: 414px;
     color: white;
@@ -52,6 +68,21 @@ div {
     color: white;
     text-align: center;
     }
+
+  .vendorUsername {
+    margin-top: 25px;
+  }
+  
+  .vendorPassword {
+    margin-bottom: 25px; 
+  }
+
+  .vendorSign {
+    justify-content: center;
+    text-align: center;
+    padding: 15px 40px 40px 40px;
+  }
+  
 
 .custBtn {
     border: none;
@@ -87,7 +118,8 @@ div {
     }
   }
 
-  .submitBtn {
+  button.submitBtn {
+    padding: 5px;
     font-size: 12pt;
     text-transform: uppercase;
     background-color: transparent;

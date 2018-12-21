@@ -2,7 +2,6 @@
   <div class="custForm">
     <h3 class="custRegTitle">
       PLEASE COMPLETE FORM BELOW
-      <br>
       TO JOIN AS A CUSTOMER
     </h3>
     <form class="form">
@@ -18,7 +17,7 @@
       <input name="email" placeholder="Enter email address" type="text" [(ngModel)]="newCustomerForm.email" />
       <div class="stateSelect">
           Select State
-          <select name="state" id="state" [(ngModel)]="NewPostForm.state">
+          <select name="state" id="state" [(ngModel)]="newCustomerForm.state">
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -70,19 +69,14 @@
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
-
         </div>
       <label for="city">city</label>
       <input name="city" placeholder="Enter city" type="text" [(ngModel)]="newCustomerForm.city" />
       <label for="zip_code">zipcode</label>
       <input name="zip_code" placeholder="Enter zipcode" type="text" [(ngModel)]="newCustomerForm.zip_code" />
-      <br>
-      <br>
-
       <div class="submitBtn">
         <button (click)="createCustomer()"> Submit </button>
       </div>
-
     </form>
   </div>
 </div>

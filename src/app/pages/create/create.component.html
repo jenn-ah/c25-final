@@ -3,15 +3,14 @@
     <div class="createHeader">
       Create a new post for service here
     </div>
-
     <form name="NewPostForm">
       <div class="title">
-
         <input name="title" type="text" placeholder="Title of post" [(ngModel)]="NewPostForm.title" />
       </div>
       <div class="category_id">
-        <label for="category_id">Category</label>
-        <br>
+        <div class="catIdLabel">
+         <label for="category_id">Category</label>
+        </div>
         <select name="category_id" id="category_id" [(ngModel)]="NewPostForm.category_id">
           <option value="1">Automotive</option>
           <option value="2">Electrical</option>
@@ -34,8 +33,9 @@
         </select>
       </div>
       <div class="post_priority_id">
-        <label for="post_priority_id">Priority</label>
-        <br>
+        <div class="postPriorityTitle">
+          <label for="post_priority_id">Priority</label>
+        </div>
         <select name="post_priority_id" id="" [(ngModel)]="NewPostForm.post_priority_id">
           <option value="1">New Request</option>
           <option value="2">Emergency</option>

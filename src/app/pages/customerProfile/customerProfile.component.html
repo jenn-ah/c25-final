@@ -1,16 +1,21 @@
 <div class="profile-customer" *ngIf="customerLogIn()">
-
   <div class="profileContent">
-  <div class="profileTitle"> {{ customer.first_name }} {{ customer.last_name }} 
+  <div class="profileTitle"> 
+    {{ customer.first_name }} {{ customer.last_name }} 
   </div>
-  City: {{ customer.city }} <br>
-  State: {{ customer.state }} <br>
-  Zip Code: {{ customer.zip_code }} <br>
+  <div class="profileCity">
+    City: {{ customer.city }} 
+  </div>
+  <div class="profileState">
+    State: {{ customer.state }} 
+  </div>
+  <div class="profileZipcode">
+    Zip Code: {{ customer.zip_code }} 
+  </div>
   <div class="profileLinks">
-  <a routerLink="/posts"> my posts &nbsp; | &nbsp;</a>
-  <a routerLink="/edit"> edit &nbsp; | &nbsp;</a>
+  <a routerLink="/posts"> my posts | </a>
+  <a routerLink="/edit"> edit | </a>
   <a (click)="logout()"> logout </a>
   </div>
-  
 </div>
 </div>
