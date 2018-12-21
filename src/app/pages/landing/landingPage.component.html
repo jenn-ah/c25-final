@@ -2,8 +2,8 @@
 <div class="bg">
 <div *ngIf="isCustomer" class="customerLogin">
   <button class="custBtn" (click)="customerLoginBtnPress()">Customer</button>
-  <div class="customerLoginNext">
-  <form *ngIf="customerLoginPressed">
+  <div class="customerLoginNext" *ngIf="customerLoginPressed">
+  <form>
     <br>
     <br>
     <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
@@ -11,7 +11,9 @@
     <input type="password" name="password" placeholder="PASSWORD" id="password" [(ngModel)]="password">
     <br>
     <br>
+    <div class="btnDiv">
     <button class="submitBtn" (click)="customerLogin()">SIGN IN</button>
+    </div>
   </form>
 </div>
   <br>Not registered?

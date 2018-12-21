@@ -16,6 +16,8 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const redis = require('connect-redis')(session);
 
+app.use(express.static('public'));
+
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -78,9 +80,9 @@ passport.use('customerLocal', new LocalStrategy((username, password, done) => {
         let customerObj = user.serialize();
         bcrypt.compare(password, customerObj.password)
           .then((res) => {
-            if (res === true) { return done(null, customerObj); }
+            if (res) { return done(null, customerObj); }
             else {
-              return done(null, false, { message: `Bad username/password` })
+              return done(null, false, { message: `Bad username and/or password` });
             }
           });
       }
@@ -101,7 +103,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
           .then((res) => {
             if (res === true) { return done(null, vendorObj); }
             else {
-              return done(null, false, { message: `Bad username/password` })
+              return done(null, false, { message: `Bad username and/or password` });
             }
           });
       }
@@ -109,22 +111,15 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 }));
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
-  function(req, res){
-    console.log('req user', req.user);
-     return res.send(req.user)
+  function (req, res) {
+    return res.send(req.user);
   }
-  );
+);
 
 app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
   function (req, res) {
-    return res.send(req.user)
+    return res.send(req.user);
   });
-
-
-
-
-
-
 
 
 app.listen(PORT, () => {

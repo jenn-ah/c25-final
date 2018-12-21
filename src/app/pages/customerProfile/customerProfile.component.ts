@@ -18,6 +18,7 @@ export class CustomerProfileComponent implements OnInit {
 
         this.backend.getCustomer()
             .then((data) => {
+                console.log('datazs', data);
                 this.customer = data
             })
             .catch((err) => {
