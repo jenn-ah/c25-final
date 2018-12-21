@@ -28,23 +28,23 @@ export class ProfileComponent implements OnInit {
         city: string,
         state: string,
         zip_code: number
-      } = {
-          id: null,
-          username: "",
-          first_name: "",
-          last_name: "",
-          phone_number: null,
-          email: "",
-          website: "",
-          description: "",
-          company_name: "",
-          isLoggedIn: false,
-          city: "",
-          state: "",
-          zip_code: null,
+    } = {
+            id: null,
+            username: "",
+            first_name: "",
+            last_name: "",
+            phone_number: null,
+            email: "",
+            website: "",
+            description: "",
+            company_name: "",
+            isLoggedIn: false,
+            city: "",
+            state: "",
+            zip_code: null,
         }
-        
-    correctVendor: boolean = false;
+
+    ownProfile: boolean = false;
 
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
         this.urlId = this.route.snapshot.paramMap.get('id');
 
         if (this.urlId === `${this.vendorProfile.id}`) {
-            this.correctVendor = true;
+            this.ownProfile = true;
         }
         return this.backend.getVendor(this.urlId)
 

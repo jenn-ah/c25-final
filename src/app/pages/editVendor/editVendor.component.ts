@@ -25,20 +25,20 @@ export class EditVendorComponent implements OnInit {
         city: string,
         state: string,
         zip_code: number
-      } = {
-          id: null,
-          username: "",
-          first_name: "",
-          last_name: "",
-          phone_number: null,
-          email: "",
-          website: "",
-          description: "",
-          company_name: "",
-          isLoggedIn: false,
-          city: "",
-          state: "",
-          zip_code: null,
+    } = {
+            id: null,
+            username: "",
+            first_name: "",
+            last_name: "",
+            phone_number: null,
+            email: "",
+            website: "",
+            description: "",
+            company_name: "",
+            isLoggedIn: false,
+            city: "",
+            state: "",
+            zip_code: null,
         }
     id: number;
 
