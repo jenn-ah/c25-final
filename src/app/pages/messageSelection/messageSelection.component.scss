@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+}
+
+.notifications{
+    text-align: center;
+    padding: 15px;
+    color: red;
+}
+
+.vendors, .customers{
+    text-align: center;
+}
+
+.vendorOne, .vendorTwo, .vendorThree, .customerOne, .customerTwo, .customerThree{
+    border-bottom: lightgrey solid;
+    padding: 15px;
+}

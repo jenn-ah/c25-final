@@ -1,14 +1,17 @@
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+
 // require('dotenv').config()
 
-const IAM_KEY = process.env.key
+// const IAM_KEY = process.env.key
+//It does not want to read my env key will do later.
 
 export const environment = {
   production: false,
   pusher: {
-    key: IAM_KEY,
+    key: 'IAM_KEY',
   }
 };
 

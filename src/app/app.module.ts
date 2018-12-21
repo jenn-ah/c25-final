@@ -23,6 +23,7 @@ import { MessageService } from './message.service';
 import { PusherService } from './pusher.service';
 import { MessagesComponent } from './pages/message/message.component';
 import { NewMessageComponent } from './pages/new-message/new-message.component';
+import { MessagesSelectionComponent } from './pages/messageSelection/messageSelection.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NewMessageComponent } from './pages/new-message/new-message.component';
     EditComponent,
     EditVendorComponent,
     PostDetailComponent,
-    NewMessageComponent
+    NewMessageComponent,
+    MessagesSelectionComponent
   ],
   imports: [
     BrowserModule,

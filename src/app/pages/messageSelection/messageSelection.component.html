@@ -1,0 +1,20 @@
+<h1> Who Do You Wish To Message? </h1>
+<div *ngIf="isLoggedIn()">
+    <div class="vendors">
+        <div class="vendorOne" (click)="onClick()"> Annie Lagrimas </div>
+        <div class="vendorTwo" (click)="onClick()"> Shadrach Lagrimas </div>
+        <div class="vendorThree" (click)="onClick()"> John Doe </div>
+    </div>
+    <div class="notifications" (click)="onClick()"> Current Notifications </div>
+
+</div>
+
+<div *ngIf="isVendorLoggedIn()">
+    <div class="customers">
+        <div class="customerOne" (click)="onClick()"> Jane Doe </div>
+        <div class="customerTwo" (click)="onClick()"> Shadrach Lagrimas </div>
+        <div class="customerThree" (click)="onClick()"> Shad G </div>
+    </div>
+    <div class="notifications" (click)="onClick()"> Current Notifications </div>
+
+</div>

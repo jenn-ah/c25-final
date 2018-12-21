@@ -15,12 +15,14 @@ import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 import { MessagesComponent } from './pages/message/message.component';
+import { MessagesSelectionComponent } from './pages/messageSelection/messageSelection.component';
 
 
 
 const routes: Routes = [
   { path:'', component: LandingPageComponent},
   { path: 'postDetail/:id', component: PostDetailComponent},
+  { path:'messages/select', component: MessagesSelectionComponent},
   { path:'messages', component: MessagesComponent},
   { path:'posts', component: PostsComponent},
   { path:'create', component: CreateComponent},
