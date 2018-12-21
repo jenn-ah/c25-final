@@ -29,13 +29,5 @@
     <input id="message" [(ngModel)]="message">
   </div>
 
-  <div>
-    <label for="channel">Channel</label>
-    <select>
-      <option value="vender">Customer</option>
-      <option value="customer">Vendor</option>
-    </select>
-  </div>
-
   <button (click)="newMessageVendor(message, user)" class="btn btn-default">Send</button>
 </div>
