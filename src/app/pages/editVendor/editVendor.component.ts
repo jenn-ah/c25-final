@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class EditVendorComponent implements OnInit {
     urlId: string;
-    vendor: any;
+    vendorProfile: any;
     correctVendor: boolean = false;
     id: any;
 
@@ -47,8 +47,8 @@ export class EditVendorComponent implements OnInit {
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
         private route: ActivatedRoute) {
-        this.vendor = this.session.getVendor()
-        this.id = this.vendor.id
+        this.vendorProfile = this.session.getVendor()
+        this.id = this.vendorProfile.id
     }
 
     ngOnInit() { }

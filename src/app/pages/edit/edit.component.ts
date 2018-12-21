@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
     editCustomer() {
         event.preventDefault();
         return this.backend
-            .editCustomer(this.data, this.id)
+            .editCustomer(this.data)
             .then(() => {
                 return this.router.navigate(['/']);
             })

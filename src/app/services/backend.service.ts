@@ -104,8 +104,8 @@ export class BackendService {
     return this.http.get(url).toPromise()
   }
 
-  editCustomer(data, id) {
-    const userUrl = this.baseUrl + `api/customers/${id}/edit`;
+  editCustomer(data) {
+    const userUrl = this.baseUrl + `api/customers/${data.id}/edit`;
     return this.http
       .put(userUrl, {
         username: data.username,

@@ -14,19 +14,19 @@ export class ProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
     data: any;
-    vendor: any;
+    vendorProfile: any;
     correctVendor: boolean = false;
 
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
         private route: ActivatedRoute) {
-        this.vendor = this.session.getVendor()
+        this.vendorProfile = this.session.getVendor()
     }
 
     ngOnInit() {
         this.urlId = this.route.snapshot.paramMap.get('id');
 
-        if (this.urlId === `${this.vendor.id}`) {
+        if (this.urlId === `${this.vendorProfile.id}`) {
             this.correctVendor = true;
         }
         return this.backend.getVendor(this.urlId)

@@ -1,11 +1,11 @@
 <div class="profile-customer" *ngIf="customerLogIn()">
-    <h3 class="username"> {{ customer.username }} </h3>
-    <h3 class="Name"> {{ customer.first_name }} {{ customer.last_name }} </h3>
+    <h3 class="username"> {{ ownProfile.username }} </h3>
+    <h3 class="Name"> {{ ownProfile.first_name }} {{ ownProfile.last_name }} </h3>
     <img class="picture" src="https://vignette.wikia.nocookie.net/disney/images/9/96/Iron-Man-AOU-Render.png/revision/latest?cb=20150208173247">
-    City: {{ customer.city }} <br>
-    State: {{ customer.state }} <br>
-    Zip Code: {{ customer.zip_code }} <br>
-    <a class="post-router" routerLink="/posts"> {{customer.first_name}} Posts! </a>
+    City: {{ ownProfile.city }} <br>
+    State: {{ ownProfile.state }} <br>
+    Zip Code: {{ ownProfile.zip_code }} <br>
+    <a class="post-router" routerLink="/posts"> {{ownProfile.first_name}} Posts! </a>
 
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>

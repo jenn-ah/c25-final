@@ -10,8 +10,20 @@ import { SessionService } from 'src/app/services/session.service';
   styleUrls: ['./new-message.component.scss']
 })
 export class NewMessageComponent {
-  vendor: any;
-  customer: any;
+  vendor: {
+    first_name: string,
+    last_name: string,
+  } = {
+    first_name: '',
+    last_name: ''
+  };
+  customer: {
+    first_name: string,
+    last_name: string,
+  } = {
+    first_name: '',
+    last_name: ''
+  };
   message: string;
   data: any;
 

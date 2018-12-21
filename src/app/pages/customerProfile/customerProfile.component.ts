@@ -14,19 +14,19 @@ export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
     editClicked: boolean = true;
-    customer: any;
+    ownProfile: any;
     correctCustomer: boolean = false;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService,
         private route: ActivatedRoute) {
-        this.customer = this.session.getCustomer()
+        this.ownProfile = this.session.getCustomer()
  
     }
 
     ngOnInit() {
         this.urlId = this.route.snapshot.paramMap.get('id');
 
-        if (this.urlId === `${this.customer.id}`) {
+        if (this.urlId === `${this.ownProfile.id}`) {
             this.correctCustomer = true;
         }
         return this.backend.getCustomer(this.urlId)
