@@ -4,12 +4,12 @@ import { PusherService } from './pusher.service';
 
 export interface Message {
   text: string;
-  user: string;
+  user: object;
 }
 
 @Injectable()
 export class MessageService {
-  messagesStream = new ReplaySubject<Message>(1);
+  messagesStream = new ReplaySubject<Message>(20);
 
   constructor(
     private pusherService: PusherService

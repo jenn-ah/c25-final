@@ -1,20 +1,11 @@
 <div class="new-message-component" *ngIf="isLoggedIn()">
   <div class="field">
-    <label for="user">Username</label>
-    <div> {{ customer.username }}</div>
-    <!-- <input id="user" type="text" [(ngModel)]="user"> -->
+    <label for="user">Name</label>
+    <div> {{ customer.first_name }} {{ customer.last_name }}</div>
   </div>
   <div class="field">
     <label for="message">Message</label>
     <input id="message" [(ngModel)]="message">
-  </div>
-
-  <div>
-    <label for="channel">Channel</label>
-    <select>
-      <option value="vender">Vendor</option>
-      <option value="customer">Customer</option>
-    </select>
   </div>
 
   <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
@@ -22,21 +13,12 @@
 
 <div class="new-message-component" *ngIf="isVendorLoggedIn()">
   <div class="field">
-    <label for="user">Username</label>
-    <div> {{ user.username }} </div>
-    <!-- <input id="user" type="text" [(ngModel)]="user"> -->
+    <label for="user">Name</label>
+    <div> {{ vendor.first_name }} {{ vendor.last_name }}</div>
   </div>
   <div class="field">
     <label for="message">Message</label>
     <input id="message" [(ngModel)]="message">
-  </div>
-
-  <div>
-    <label for="channel">Channel</label>
-    <select>
-      <option value="vender">Customer</option>
-      <option value="customer">Vendor</option>
-    </select>
   </div>
 
   <button (click)="newMessageVendor(message, user)" class="btn btn-default">Send</button>

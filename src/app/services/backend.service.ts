@@ -99,13 +99,13 @@ export class BackendService {
       })
   }
 
-  getCustomer() {
-    const url = this.baseUrl + `api/customers/2`
+  getCustomer(id) {
+    const url = this.baseUrl + `api/customers/${id}`;
     return this.http.get(url).toPromise()
   }
 
   editCustomer(data) {
-    const userUrl = this.baseUrl + `api/customers/2/edit`;
+    const userUrl = this.baseUrl + `api/customers/${data.id}/edit`;
     return this.http
       .put(userUrl, {
         username: data.username,
@@ -120,14 +120,14 @@ export class BackendService {
   }
 
 
-  getVendor() {
-    const url = this.baseUrl + `api/vendors/2`;
+  getVendor(id) {
+    const url = this.baseUrl + `api/vendors/${id}`;
     return this.http.get(url).toPromise();
   }
 
 
   editVendor(vendor, id) {
-    const vendorUrl = this.baseUrl + `api/vendors/2/edit`;
+    const vendorUrl = this.baseUrl + `api/vendors/${id}/edit`;
     return this.http
       .put(vendorUrl, {
         first_name: vendor.first_name,

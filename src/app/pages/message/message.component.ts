@@ -10,7 +10,7 @@ import { SessionService } from 'src/app/services/session.service';
     styleUrls: ['./message.component.scss']
 })
 export class MessagesComponent implements OnInit {
-    messages: Array<Message>;
+    messages: Array<Message> = [];
 
     constructor(
         private messageService: MessageService,

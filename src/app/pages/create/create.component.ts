@@ -15,7 +15,7 @@ export class CreateComponent {
         customer_id: number;
         category_id: number;
         post_priority: number;
-        post_status_id:number;
+        post_status_id: number;
         vendor_id: number;
         photo: string;
         city: string;
@@ -28,9 +28,9 @@ export class CreateComponent {
     } = {
             title: '',
             customer_id: this.session.getCustomer().id,
-            category_id:null,
+            category_id: null,
             post_priority: null,
-            post_status_id:null,
+            post_status_id: null,
             vendor_id: null,
             photo: null,
             city: '',
@@ -42,10 +42,10 @@ export class CreateComponent {
             can_bid: null,
         };
 
-    constructor(private backend: BackendService, 
+    constructor(private backend: BackendService,
         private router: Router,
         private session: SessionService) {
-         }
+    }
 
     createPost() {
         event.preventDefault();
