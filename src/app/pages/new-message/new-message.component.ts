@@ -18,8 +18,6 @@ export class NewMessageComponent {
   constructor(private messageService: MessageService, private backend: BackendService, private session: SessionService) {
     this.customer = this.session.getCustomer()
     this.vendor = this.session.getVendor()
-    console.log('customer', this.customer)
-    console.log('vendor', this.vendor)
   }
 
   newMessage(text: string, user: string): void {
