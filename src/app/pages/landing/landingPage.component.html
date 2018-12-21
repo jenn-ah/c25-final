@@ -11,12 +11,12 @@
     <input type="password" name="password" placeholder="PASSWORD" id="password" [(ngModel)]="password">
     <br>
     <br>
-    <div class="btnDiv">
     <button class="submitBtn" (click)="customerLogin()">SIGN IN</button>
-    </div>
   </form>
 </div>
-  <br>Not registered?
+  <br>
+  <br>
+  Not registered?
     <a *ngIf="!isLoggedIn" routerLink="register">Sign up here</a>
   </div>
   <br>

@@ -1,6 +1,7 @@
  
 .profile-customer {
-    background-image: url('../../../img/blur-bg.jpg');
+    background-image: url('../../../img/blurbg.png');
+    background-size: cover;
     filter: contrast(0.9) brightness(.9);
     width: 415px;
     height: 737px;
@@ -11,7 +12,8 @@
 
   .profileContent {
       text-align: center;
-      background-color: rgba(66, 62, 92, 0.3);
+      background-color: rgba(255, 255, 255, 0.2);
+      color: black;
       justify-content: center;
       width: 300px;
       margin: 120px auto 120px;
@@ -27,7 +29,7 @@
 
   a {
       text-decoration: none;
-      color: white;
+      color: black;
       text-transform: uppercase;
   }
 
