@@ -1,32 +1,17 @@
-.dashboard{
-    margin-bottom: 10px;
-    display: flex;
-    flex-flow: row wrap;
-    bottom: 10px;
+.dashboard {
+    position: fixed;
+    bottom: 0px;
+    margin-left: 0px;
     width: 100%;
     text-align: center;
-    background-color: white;
-    border: 1px solid lightgrey;
+    background-color: darkgray;
 }
 
-.links{
-    width: 100%; 
-    padding: 10px;
-}
-
-.vendor-links{
-    width: 100%;
-    padding: 10px;
-}
-
-div{
-    // border-top: solid black;
+div {
     display: inline;
-    width: 100%;
-
 }
 
-.icon{
+.icon {
     height: 35px;
     width: 35px;
     margin: 18px;

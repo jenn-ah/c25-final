@@ -6,25 +6,28 @@ import { Injectable } from '@angular/core';
 export class SessionService {
   customer: {
     id: number,
+    username: string,
     first_name: string,
     last_name: string,
-    username: string,
     isLoggedIn: boolean,
+    email: string,
     city: string,
     state: string,
     zip_code: number,
   } = {
       id: null,
+      username: '', 
       first_name: '',
       last_name: '',
-      username: '',
       isLoggedIn: false,
+      email: "",
       city: "",
       state: "",
       zip_code: null,
     }
   vendor: {
     id: number,
+    username: string,
     first_name: string,
     last_name: string,
     phone_number: number,
@@ -38,6 +41,7 @@ export class SessionService {
     zip_code: number
   } = {
       id: null,
+      username: "",
       first_name: "",
       last_name: "",
       phone_number: null,
@@ -67,9 +71,10 @@ export class SessionService {
 
   setCustomerSession(customer) {
     this.customer.id = customer.id;
+    this.customer.username = customer.username;
     this.customer.first_name = customer.first_name;
     this.customer.last_name = customer.last_name;
-    this.customer.username = customer.username;
+    this.customer.email = customer.email;
     this.customer.isLoggedIn = true;
     this.customer.city = customer.city;
     this.customer.state = customer.state;
@@ -80,6 +85,7 @@ export class SessionService {
 
   setVendorSession(vendor) {
     this.vendor.id = vendor.id,
+    this.vendor.username = vendor.username
       this.vendor.first_name = vendor.first_name,
       this.vendor.last_name = vendor.last_name,
       this.vendor.phone_number = vendor.phone_number,
@@ -99,11 +105,15 @@ export class SessionService {
   }
 
   getVendor() {
-    return this.vendor
+    return this.vendor;
+  }
+
+  getVendorId() {
+    return this.vendor.id;
   }
 
   getCustomer() {
-    return this.customer
+    return this.customer;
   }
   getIsVendorLoggedIn() {
     return this.vendor.isLoggedIn;

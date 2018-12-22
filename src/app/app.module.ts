@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '../app/component/header/header.component';
 import { LandingPageComponent } from '../app/pages/landing/landingPage.component';
 import { DashboardComponent } from '../app/component/dashboard/dashboard.component';
-import { MessageComponent } from '../app/pages/message/message.component';
 import { PostsComponent } from '../app/pages/posts/posts.component';
 import { CreateComponent } from '../app/pages/create/create.component';
 import { ProfileComponent } from '../app/pages/profile/profile.component';
@@ -17,8 +16,15 @@ import { VendorRegisterComponent } from './pages/vendorRegister/vendorRegister.c
 import { ErrorComponent } from './pages/error/error.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { CustomerProfileComponent } from './pages/customerProfile/customerProfile.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
 import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.component';
+import { MessageService } from './message.service';
+import { PusherService } from './pusher.service';
+import { MessageComponent } from './pages/message/message.component';
+import { NewMessageComponent } from './pages/new-message/new-message.component';
+
 
 @NgModule({
   declarations: [
@@ -36,8 +42,11 @@ import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.comp
     ErrorComponent,
     JobsComponent,
     CustomerProfileComponent,
+    EditComponent,
+    EditVendorComponent,
     PostDetailComponent,
     CategoryPostPage,
+    NewMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +54,7 @@ import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.comp
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [PusherService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

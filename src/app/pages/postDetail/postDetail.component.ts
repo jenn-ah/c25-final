@@ -24,15 +24,10 @@ export class PostDetailComponent implements OnInit {
         return this.post = resp;
       })
       .catch((err) => {
-        return this.router.navigate(['/home'])
+        return this.router.navigate(['/home']);
       })
   }
   ngOnInit() {
   }
-
-
-
-
-
 
 }

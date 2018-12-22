@@ -21,7 +21,6 @@ router.get('/', (req, res) => {
 
 router.post('/search/:param', (req, res) => {
   const searchParams = req.params
-  console.log(searchParams)
   new Post()
     .query('where', 'title', 'LIKE', `%${searchParams.param}%`)
     .fetch()
@@ -31,7 +30,6 @@ router.post('/search/:param', (req, res) => {
         return res.send('No post found')
       }else{
       const postObj = post.serialize();
-      console.log("search for",postObj)
       return res.json(postObj);
       }
     })
@@ -41,8 +39,10 @@ router.post('/search/:param', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+
   const { title, customer_id, category_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
   const parseZipcode = parseInt(zip_code);
+
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {
@@ -124,7 +124,9 @@ router.get('/all/:id', (req, res) => {
 });
 
 router.get('/:id/edit', (req, res) => {
+
   const getId = req.params.id;
+
   return new Post({ id: getId })
     .fetch({
       require: true,

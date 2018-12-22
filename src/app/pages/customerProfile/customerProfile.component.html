@@ -9,4 +9,23 @@
     <div class="logout-div">
         <button class="logout"><a (click)="logout()">Logout</a></button>
     </div>
+  <div class="profileContent">
+  <div class="profileTitle"> 
+    {{ customer.first_name }} {{ customer.last_name }} 
+  </div>
+  <div class="profileCity">
+    City: {{ customer.city }} 
+  </div>
+  <div class="profileState">
+    State: {{ customer.state }} 
+  </div>
+  <div class="profileZipcode">
+    Zip Code: {{ customer.zip_code }} 
+  </div>
+  <div class="profileLinks">
+  <a routerLink="/posts"> my posts | </a>
+  <a routerLink="/edit"> edit | </a>
+  <a (click)="logout()"> logout </a>
+  </div>
+</div>
 </div>

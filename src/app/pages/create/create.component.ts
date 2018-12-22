@@ -42,10 +42,10 @@ export class CreateComponent {
             can_bid: null,
         };
 
-    constructor(private backend: BackendService, 
+    constructor(private backend: BackendService,
         private router: Router,
         private session: SessionService) {
-         }
+    }
 
     createPost() {
         event.preventDefault();

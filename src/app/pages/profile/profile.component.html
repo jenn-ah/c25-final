@@ -1,22 +1,39 @@
 <div class="profile-vendor" *ngIf="vendorLogIn()">
-    <h3 class="company-name"> Works For: {{ vendor.company_name }} </h3>
-    <img class="picture" src="https://pbs.twimg.com/profile_images/921495502654341120/0NozWMEF_400x400.jpg">
-    <h3 class="name"> {{ vendor.first_name }} {{ vendor.last_name }} </h3>
-    <div class="info">
-        Website: {{ vendor.website }} <br>
-        Email: {{ vendor.email }} <br>
-        Phone: {{ vendor.phone_number }} <br>
-        About Me: {{ vendor.description }} <br>
-        City: {{ vendor.city }} <br>
-        State: {{ vendor.state }} <br>
-        Zip Code: {{ vendor.zip_code }} <br>
-    </div>
+  <h3 class="company-name"> Works For: {{ vendorProfile.company_name }} </h3>
+  <img class="picture" src="http://static1.squarespace.com/static/53adb9cbe4b05e0d792c6c88/t/599f7c70d55b41248bc3229d/1521349651327/Fashion-Fine-Art-Photographer-Jingna-Zhang---Chinese-Singaporean-Profile-Portrait-2018.jpg">
+  <h3 class="name"> {{ vendorProfile.first_name }} {{ vendorProfile.last_name }} </h3>
+  <div class="info">
 
-    <div class="contact">
-        <button><a routerLink="/messages"> Contact {{vendor.first_name}} </a></button>
+    <div class="vProfileWebsite">
+      Website: {{ vendorProfile.website }}
     </div>
+    <div class="vProfileEmail">
+      Email: {{ vendorProfile.email }}
+    </div>
+    <div class="vProfileWebsite">
+      Phone: {{ vendorProfile.phone_number }}
+    </div>
+    <div class="vProfileAbout">
+      About Me: {{ vendorProfile.description }}
+    </div>
+    <div class="vProfileCity">
+      City: {{ vendorProfile.city }}
+    </div>
+    <div class="vProfileState">
+      State: {{ vendorProfile.state }}
+    </div>
+    <div class="vProfileZipcode">
+      Zip Code: {{ vendorProfile.zip_code }}
+    </div>
+  </div>
 
-    <div class="logout-div">
-        <button class="logout"><a (click)="logout()">Logout</a></button>
-    </div>
+  <div class="contact">
+    <button><a routerLink="/messages"> Contact {{vendorProfile.first_name}} </a></button>
+  </div>
+
+  <div class="logout-div">
+    <button class="logout"><a (click)="logout()">Logout</a></button>
+  </div>
 </div>
+
+<div class="editBtn"><a routerLink="/vendor/:id/edit">Edit</a></div>

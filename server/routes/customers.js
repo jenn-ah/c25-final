@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
     })
     .then(customer => {
       if (!customer) {
-        res.status(400).json({ message: `User not found.` });
+        return res.status(400).json({ message: `User not found.` });
       } else {
         const custObj = customer.serialize();
         return res.json(custObj);
@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+
   let { first_name, last_name, username, password, email, state, city, zip_code } = req.body;
   const parseZipcode = parseInt(zip_code);
 
@@ -99,7 +100,6 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.put('/:id/edit', (req, res) => {
-
   const getId = parseInt(req.params.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
@@ -124,6 +124,7 @@ router.put('/:id/edit', (req, res) => {
         customer.save({
           first_name,
           last_name,
+          username,
           email,
           state,
           city,

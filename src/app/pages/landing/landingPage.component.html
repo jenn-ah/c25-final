@@ -1,29 +1,41 @@
-<div class="landingPage" >
-<div *ngIf="isCustomer" class="customer">
-  <h2><button (click)="customerLoginBtnPress()">Customer Login</button></h2>
-  <form *ngIf="customerLoginPressed">
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" [(ngModel)]="username">
-    <label for="password">Password</label>
-    <input type="text" name="password" id="password" [(ngModel)]="password">
-    <button (click)="customerLogin()">Submit</button>
-  </form>
-  <br>
-  <div class="customerRegister">
-    <h2><a *ngIf="!isLoggedIn" routerLink="register">New Customer Register</a></h2>
+<div class="landingPage">
+  <div class="bg">
+    <div *ngIf="isCustomer" class="customerLogin">
+      <button class="custBtn" (click)="customerLoginBtnPress()">Customer</button>
+      <div class="customerLoginNext" *ngIf="customerLoginPressed">
+        <form>
+          <div class="customerUsername">
+            <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
+          </div>
+          <div class="customerPassword">
+            <input type="password" name="password" placeholder="PASSWORD" id="password" [(ngModel)]="password">
+          </div>
+          <button class="submitBtn" (click)="customerLogin()">SIGN IN</button>
+        </form>
+      </div>
+      <div class="customerSign">
+        Not registered?
+        <a *ngIf="!isLoggedIn" routerLink="register"> Sign up here </a>
+      </div>
+    </div>
+
+    <div *ngIf="isVendor" class="vendorLogin">
+      <button class="vendorBtn" (click)="vendorLoginBtnPress()">Vendor</button>
+      <div class="vendorLoginNext" *ngIf="vendorLoginPressed">
+        <form>
+          <div class="vendorUsername">
+            <input type="text" name="username" id="username" placeholder="USERNAME" [(ngModel)]="username">
+          </div>
+          <div class="vendorPassword">
+            <input type="password" name="password" id="password" placeholder="PASSWORD" [(ngModel)]="password">
+          </div>
+          <button class="submitBtn" (click)="vendorLogin()">SIGN IN</button>
+
+        </form>
+      </div>
+      <div class="vendorSign">
+        Not registered?
+        <a *ngIf="!isLoggedIn" routerLink="vendorRegister">Sign up here</a>
+      </div>  
+    </div>
   </div>
-</div>
-<div *ngIf="isVendor" class="vendor">
-  <h2><button  (click)="vendorLoginBtnPress()">Vendor Login</button></h2>
-  <form *ngIf="vendorLoginPressed">
-    <label for="company_name">Username</label>
-    <input type="text" name="username" id="username" [(ngModel)]="username">
-    <label for="password">Password</label>
-    <input type="text" name="password" id="password" [(ngModel)]="password">
-    <button (click)="vendorLogin()">Submit</button>
-  </form>
-  <br>
-  <div class="vendorRegister">
-    <h2><a *ngIf="!isLoggedIn" routerLink="vendorRegister">New Vendor Register</a></h2>
-  </div>
-</div>

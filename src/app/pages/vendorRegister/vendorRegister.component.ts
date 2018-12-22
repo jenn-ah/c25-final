@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 
 export class VendorRegisterComponent {
   newVendorForm: {
+    username: string;
     first_name: string;
     last_name: string;
     company_name: string;
@@ -26,6 +27,7 @@ export class VendorRegisterComponent {
     phone_number: string;
     license_number: string;
   } = {
+      username: "",
       first_name: "",
       last_name: "",
       company_name: "",

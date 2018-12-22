@@ -3,8 +3,8 @@ import { BackendService } from "../../services/backend.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
@@ -26,14 +26,15 @@ export class HomeComponent implements OnInit {
                 return this.router.navigate(['/error']);
             })
     }
-    ngOnInit() { }
 
-    fetchPostDetail(id) {
-        return this.backend.fetchPost(id)
-            .then((resp) => {
-                this.post = resp
-                return this.router.navigate(['/postDetail/id', this.post])
-            });
-    }
+  ngOnInit() { }
+
+  fetchPostDetail(id) {
+    return this.backend.fetchPost(id)
+      .then((resp) => {
+        this.post = resp;
+        return this.router.navigate(['/postDetail/id', this.post]);
+      });
+  }
 
 }

@@ -1,4 +1,5 @@
 <div class="header">
+<<<<<<< HEAD
   <div class="categories">
     <h2><a routerLink="" *ngIf="isLoggedIn">Categories</a></h2>
     <select ngModel (ngModelChange)="categoriesEvent($event)" id="categories">
@@ -24,4 +25,29 @@
       <button (click)="postSearcher()">Submit</button>
     </form>
   </div>
+=======
+<div class="categories">
+  <h2><a routerLink="" *ngIf="isLoggedIn">Categories</a></h2>
+  <select name="categories" id="categories">
+    <option value="1">Automotive</option>
+    <option value="2">Electrical</option>
+    <option value="3">Plumbing</option>
+    <option value="4">Landscaping</option>
+    <option value="5">Clothing</option>
+    <option value="6">Childcare</option>
+    <option value="7">Painting</option>
+    <option value="8">Carpentry</option>
+    <option value="9">Cleaning</option>
+    <option value="10">Food</option>
+    <option value="11">Other</option>
+  </select>
+</div>
+<div class="search">
+  <form>
+    <label for="search">Search</label>
+    <input type="text" name="search"  id="search" [(ngModel)]="search">
+    <button (click)="postSearch()">Submit</button>
+  </form>
+</div>
+>>>>>>> development
 </div>

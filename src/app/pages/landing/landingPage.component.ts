@@ -14,6 +14,8 @@ export class LandingPageComponent implements OnInit {
   isVendor: boolean = true;
   
   username: string = "";
+  first_name: string = "";
+  last_name: string = "";
   password: string = "";
 
   constructor(

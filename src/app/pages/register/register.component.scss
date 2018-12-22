@@ -1,0 +1,87 @@
+.bg {
+  background-image: url('../../../img/blurbg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 415px;
+  height: 737px;
+  overflow: hidden;
+  margin-right: -10px;
+  background-color: darkgrey;
+}
+
+.custRegTitle {
+  font-size: 12pt;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: dimgrey;
+}
+
+input[type=text], input[type=password] {
+  padding: 5px;
+  height: auto;
+  width: 100%;
+  font-size: 12pt;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #555555;
+  outline: none;
+  border: 1px solid darkgray;
+  border-radius: 0px;
+}
+
+.stateSelect {
+  font-size: 10pt;
+  color: #555555;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
+select {
+  width: 312px;
+  padding: 5px;
+  font-size: 12pt;
+  color: #555555;
+  background-color: transparent;
+  border: 1px solid darkgray;
+  border-radius: 0px;
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
+}
+
+option {
+  text-align: center;
+}
+
+label {
+  font-size: 10pt;
+  color: #555555;
+  text-transform: uppercase;
+}
+
+
+.custForm {
+  font-family: Roboto;
+  border-radius: 10px;
+  margin-top: 25px;
+  color: #555555;
+  background: white;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.submitBtn {
+  margin-top: 15px;
+  font-size: 12pt;
+  text-align: center;
+  background-color: transparent;
+}

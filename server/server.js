@@ -1,4 +1,8 @@
+require('dotenv').config()
+
 const express = require('express');
+const http = require('http');
+const api = require('./routes/messages');
 const app = express();
 const PORT = process.env.EXPRESS_HOST_PORT || 8989;
 const Customer = require("./db/Models/Customer");
@@ -15,6 +19,8 @@ const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const redis = require('connect-redis')(session);
+
+app.use(express.static('public'));
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,7 +62,7 @@ passport.deserializeUser((username, cb) => {
 
 passport.deserializeUser((username, cb) => {
   return new Vendor()
-    .where({ id: username })
+    .where({ username: username })
     .fetch()
     .then((username) => {
       if (!username) {
@@ -78,9 +84,9 @@ passport.use('customerLocal', new LocalStrategy((username, password, done) => {
         let customerObj = user.serialize();
         bcrypt.compare(password, customerObj.password)
           .then((res) => {
-            if (res === true) { return done(null, customerObj); }
+            if (res) { return done(null, customerObj); }
             else {
-              return done(null, false, { message: `Bad username/password` })
+              return done(null, false, { message: `Bad username and/or password` });
             }
           });
       }
@@ -99,9 +105,9 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
         let vendorObj = vendor.serialize();
         bcrypt.compare(password, vendorObj.password)
           .then((res) => {
-            if (res === true) { return done(null, vendorObj); }
+            if (res) { return done(null, vendorObj); }
             else {
-              return done(null, false, { message: `Bad username/password` })
+              return done(null, false, { message: `Bad username/password` });
             }
           });
       }
@@ -110,7 +116,11 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function (req, res) {
+<<<<<<< HEAD
      res.send(req.user);
+=======
+    return res.send(req.user);
+>>>>>>> development
   }
 );
 
@@ -119,12 +129,15 @@ app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRed
     return res.send(req.user);
   });
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
+app.use('/api', api);
 
-
-
-
-
+const server = http.createServer(app);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
