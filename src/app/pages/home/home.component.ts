@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { IPost } from '../../interfaces/interfaces'
 
 @Component({
     templateUrl: './home.component.html',
@@ -10,26 +9,7 @@ import { IPost } from '../../interfaces/interfaces'
 
 export class HomeComponent implements OnInit {
     posts: Object[] = [];
-    post: IPost = {
-        id: null,
-        title: '',
-        first_name: '',
-        username: '',
-        category_id: null,
-        customer_id: null,
-        post_status_id: null,
-        post_priority_id: null,
-        photo: '',
-        description: '',
-        email: '',
-        city: '',
-        state: '',
-        zip_code: null,
-        budget: null,
-        can_bid: false,
-        created_at: '',
-        customerId: null,
-    }
+    post: any;
     isAuthorized: boolean;
     hasAdminAccess: boolean;
     id: number;
@@ -39,8 +19,7 @@ export class HomeComponent implements OnInit {
         private route: ActivatedRoute) {
 
         this.backend.getAllHomeItems()
-            .then((data) => {
-                console.log(data)
+            .then((data: Object[]) => {
                 return this.posts = data
             })
             .catch((err) => {

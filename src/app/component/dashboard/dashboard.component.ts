@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit {
     getPosts() {
         let customerId = this.session.getCustomer()
         return this.backend.getPostByCustomer(customerId.id)
-            .then((resp) => {
+            .then((resp:Object[]) => {
                 this.posts = resp
                 return this.router.navigate([`/posts/${customerId.id}`, this.posts])
             });

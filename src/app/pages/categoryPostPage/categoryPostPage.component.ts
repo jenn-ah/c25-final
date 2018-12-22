@@ -20,7 +20,7 @@ posts:Object[]=[];
       let catergoryId = this.route.snapshot.paramMap.get('event');
       
       this.postService.getCategory(catergoryId)
-      .then((resp)=>{
+      .then((resp:Object[])=>{
         return this.posts = resp;
       })
     };
