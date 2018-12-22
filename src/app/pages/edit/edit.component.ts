@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class EditComponent implements OnInit {
+    customerEdit = this.session.getCustomer()
     id: number;
     customer: {
         id: number
@@ -20,15 +21,15 @@ export class EditComponent implements OnInit {
         city: string,
         zip_code: number
     } = {
-        id: null,
-        username: '',
-        first_name: '',
-        last_name: '',
-        email: '',
-        state: '',
-        city: '',
-        zip_code: null
-    };
+            id: null,
+            username: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            state: '',
+            city: '',
+            zip_code: null
+        };
 
     data: {
         username: string,
@@ -53,7 +54,11 @@ export class EditComponent implements OnInit {
         this.id = this.customer.id
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.customerEdit;
+        this.id = this.customer.id
+    }
+
 
 
     editCustomer() {
@@ -67,5 +72,4 @@ export class EditComponent implements OnInit {
                 return this.router.navigate(['/error']);
             });
     }
-
-}
+};

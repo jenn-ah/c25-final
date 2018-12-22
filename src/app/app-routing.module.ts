@@ -14,26 +14,27 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
 import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
-import { MessagesComponent } from './pages/message/message.component';
-
-
+import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.component';
+import { MessageComponent } from './pages/message/message.component';
 
 const routes: Routes = [
-  { path:'', component: LandingPageComponent},
-  { path: 'postDetail/:id', component: PostDetailComponent},
-  { path:'messages', component: MessagesComponent},
-  { path:'posts', component: PostsComponent},
-  { path:'create', component: CreateComponent},
-  { path:'profile/:id', component: ProfileComponent},
-  { path:'edit', component: EditComponent},
-  { path:'vendor/:id/edit', component: EditVendorComponent},
-  { path:'customer/profile/:id', component: CustomerProfileComponent},
-  { path:'home', component: HomeComponent},
-  { path:'register', component: RegisterComponent},
-  { path:'jobs', component: JobsComponent },
-  { path: 'vendorRegister', component: VendorRegisterComponent},
-  { path:'error', component: ErrorComponent },
-  { path:'**', redirectTo:'', pathMatch: 'full'},
+  { path: '', component: LandingPageComponent },
+  { path: 'postDetail/:id', component: PostDetailComponent },
+  { path: 'posts/:id', component: PostsComponent },
+  { path: 'message', component: MessageComponent },
+  { path: 'posts', component: PostsComponent },
+  { path: 'create', component: CreateComponent },
+  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'edit', component: EditComponent },
+  { path: 'vendor/:id/edit', component: EditVendorComponent },
+  { path: 'customer/profile/:id', component: CustomerProfileComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'jobs', component: JobsComponent },
+  { path: 'vendorRegister', component: VendorRegisterComponent },
+  { path: 'categoryPostPage/:event', component: CategoryPostPage },
+  { path: 'error', component: ErrorComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -19,9 +19,10 @@ import { CustomerProfileComponent } from './pages/customerProfile/customerProfil
 import { EditComponent } from './pages/edit/edit.component';
 import { EditVendorComponent } from './pages/editVendor/editVendor.component';
 import { PostDetailComponent } from './pages/postDetail/postDetail.component';
+import { CategoryPostPage } from './pages/categoryPostPage/categoryPostPage.component';
 import { MessageService } from './message.service';
 import { PusherService } from './pusher.service';
-import { MessagesComponent } from './pages/message/message.component';
+import { MessageComponent } from './pages/message/message.component';
 import { NewMessageComponent } from './pages/new-message/new-message.component';
 
 
@@ -31,7 +32,7 @@ import { NewMessageComponent } from './pages/new-message/new-message.component';
     HeaderComponent,
     LandingPageComponent,
     DashboardComponent,
-    MessagesComponent,
+    MessageComponent,
     PostsComponent,
     CreateComponent,
     ProfileComponent,
@@ -44,6 +45,7 @@ import { NewMessageComponent } from './pages/new-message/new-message.component';
     EditComponent,
     EditVendorComponent,
     PostDetailComponent,
+    CategoryPostPage,
     NewMessageComponent
   ],
   imports: [

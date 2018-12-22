@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../services/backend.service'
+import { BackendService } from '../../services/backend.service';
 import { SessionService } from '../../services/session.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -10,27 +10,13 @@ import { Router } from '@angular/router';
 })
 
 export class CustomerProfileComponent implements OnInit {
+    isLoggedIn: boolean = false;
+    loginPressed: boolean = false;
+    customer: any;
+
+    
   urlId: string;
-  isLoggedIn: boolean = false;
-  loginPressed: boolean = false;
   editClicked: boolean = true;
-  customer: {
-    id: number,
-    username: string,
-    first_name: string,
-    last_name: string,
-    city: string,
-    state: string,
-    zip_code: number
-  } = {
-      id: null,
-      username: '',
-      first_name: '',
-      last_name: '',
-      city: '',
-      state: '',
-      zip_code: null
-    };
   ownProfile: boolean = false;
 
   constructor(private backend: BackendService, private router: Router, private session: SessionService,
@@ -46,17 +32,17 @@ export class CustomerProfileComponent implements OnInit {
     }
     return this.backend.getCustomer(this.urlId)
 
-  }
+  };
 
   customerLogIn() {
     return this.session.getIsLoggedIn();
-  }
+  };
 
   logout() {
     this.session.clearSession()
     this.isLoggedIn = false;
     this.loginPressed = false;
     return this.router.navigate([''])
-  }
+  };
 
-}
+};

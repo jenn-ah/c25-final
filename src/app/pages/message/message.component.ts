@@ -9,7 +9,7 @@ import { SessionService } from 'src/app/services/session.service';
     templateUrl: './message.component.html',
     styleUrls: ['./message.component.scss']
 })
-export class MessagesComponent implements OnInit {
+export class MessageComponent implements OnInit {
     messages: Array<Message> = [];
 
     constructor(

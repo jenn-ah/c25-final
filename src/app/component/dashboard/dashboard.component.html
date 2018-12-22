@@ -2,7 +2,7 @@
     <div class="links" *ngIf="isLoggedIn()">
         <div><a routerLink="/home"><img class="icon" src="https://image.flaticon.com/icons/svg/25/25694.svg"></a></div>
         <div><a routerLink="/messages"><img class="icon" src="https://cdn0.iconfinder.com/data/icons/thin-communication-messaging/24/thin-0306_chat_message_discussion_bubble_conversation-512.png"></a></div>
-        <div><a routerLink="/posts"><img class="icon" src="https://cdn3.iconfinder.com/data/icons/social-media-2172/128/posts-512.png"></a></div>
+        <div><a (click)="getPosts()"><img class="icon" src="https://cdn3.iconfinder.com/data/icons/social-media-2172/128/posts-512.png"></a></div>
         <div><a routerLink="/create"><img class="icon" src="https://www.clipartmax.com/png/middle/121-1212600_blog-posts-font-awesome-edit-icon-png.png"></a></div>
         <div><a routerLink="/customer/profile/:id"><img class="icon" src="https://static.thenounproject.com/png/630729-200.png"></a></div>
     </div>

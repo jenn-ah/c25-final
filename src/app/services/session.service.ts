@@ -16,7 +16,7 @@ export class SessionService {
     zip_code: number,
   } = {
       id: null,
-      username: '', 
+      username: '',
       first_name: '',
       last_name: '',
       isLoggedIn: false,
@@ -67,7 +67,7 @@ export class SessionService {
       try { this.vendor = JSON.parse(vendorString); }
       catch (err) { console.log(err) }
     }
-  }
+  };
 
   setCustomerSession(customer) {
     this.customer.id = customer.id;
@@ -80,13 +80,12 @@ export class SessionService {
     this.customer.state = customer.state;
     this.customer.zip_code = customer.zip_code;
     localStorage.setItem('customer', JSON.stringify(this.customer))
-
-  }
+  };
 
   setVendorSession(vendor) {
     this.vendor.id = vendor.id,
-    this.vendor.username = vendor.username
-      this.vendor.first_name = vendor.first_name,
+      this.vendor.username = vendor.username
+    this.vendor.first_name = vendor.first_name,
       this.vendor.last_name = vendor.last_name,
       this.vendor.phone_number = vendor.phone_number,
       this.vendor.email = vendor.email,
@@ -98,26 +97,26 @@ export class SessionService {
       this.vendor.state = vendor.state,
       this.vendor.zip_code = vendor.zip_code,
       localStorage.setItem('vendor', JSON.stringify(this.vendor))
-  }
+  };
 
   getIsLoggedIn() {
     return this.customer.isLoggedIn;
-  }
+  };
 
   getVendor() {
     return this.vendor;
-  }
+  };
 
   getVendorId() {
     return this.vendor.id;
-  }
+  };
 
   getCustomer() {
     return this.customer;
-  }
+  };
   getIsVendorLoggedIn() {
     return this.vendor.isLoggedIn;
-  }
+  };
 
   clearSession() {
     this.customer.id = undefined;
@@ -129,6 +128,6 @@ export class SessionService {
 
     localStorage.removeItem('customer');
     localStorage.removeItem('vendor');
-  }
+  };
 
-}
+};

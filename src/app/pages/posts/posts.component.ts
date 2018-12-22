@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
-import { Router } from '@angular/router';
-import { SessionService } from '../../services/session.service'
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './posts.component.html',
@@ -9,15 +8,29 @@ import { SessionService } from '../../services/session.service'
 })
 
 export class PostsComponent implements OnInit {
-post: any;
+    posts: Object[] = [];
+    post: any;
 
-    constructor(private backend: BackendService, 
+    constructor(private backend: BackendService,
         private router: Router,
-        private session: SessionService) {
+        private route: ActivatedRoute) {
 
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        let postId = this.route.snapshot.paramMap.get('id');
+        this.backend.getPostByCustomer(postId)
+            .then((resp: Object[]) => {
+                this.posts = resp;
+                return this.posts
+            })
+    };
 
-    
-}
+    fetchPostDetail(id) {
+        return this.backend.fetchPost(id)
+            .then((resp) => {
+                this.post = resp
+                return this.router.navigate(['/postDetail/id', this.post])
+            });
+    }
+};

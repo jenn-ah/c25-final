@@ -3,58 +3,39 @@ import { HttpClient } from "@angular/common/http"
 import { AuthService } from "../services/auth.service"
 import { SessionService } from "../services/session.service"
 
-
 @Injectable({
   providedIn: "root"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
-  id: number;
 
-  customer: {
-    id: number,
-    username: string,
-    password: string,
-    first_name: string,
-    last_name: string
-  } = {
-      id: null,
-      username: '',
-      password: '',
-      first_name: '',
-      last_name: ''
-    };
-  vendor: {
-    id: number,
-    username: string,
-    password: string,
-  } = {
-      id: null,
-      username: '',
-      password: ''
-    }
-
+  data: any;
   constructor(
     private http: HttpClient,
     private auth: AuthService,
     private session: SessionService
   ) { }
 
+  fetchAllPosts(param) {
+    const searchUrl = this.baseUrl + `api/posts/search/` + param;
+    return this.http.post(searchUrl, { title: param }).toPromise()
+  };
+
   fetchPost(param) {
-    const searchUrl = this.baseUrl + `api/posts/${param}/edit`
+    const searchUrl = this.baseUrl + `api/posts/` + param;
     return this.http.get(searchUrl).toPromise()
-  }
+  };
 
   getAllHomeItems() {
     const url = this.baseUrl + 'api/posts'
     return this.http.get(url).toPromise()
-  }
+  };
 
   getVendorJobs() {
     const vendorId = this.session.getVendorId();
     const url = this.baseUrl + `api/vendors/jobs/${vendorId}`;
     return this.http.get(url).toPromise();
-  }
+  };
 
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
@@ -70,17 +51,17 @@ export class BackendService {
         email: data.email
       })
       .toPromise();
-  }
+  };
 
   createNewPost(data, customer) {
 
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
-      customer_id: customer.id,
+      customer_id: data.customer_id,
       category_id: data.category_id,
       post_status_id: data.post_status_id,
-      post_priority: data.post_priority,
+      post_priority_id: data.post_priority_id,
       vendor_id: data.vendor_id,
       photo: data.photo,
       state: data.state,
@@ -90,13 +71,12 @@ export class BackendService {
       can_bid: data.can_bid,
       zip_code: data.zip_code,
     }).toPromise()
-  }
+  };
 
-  getPostByCustomer(username) {
-    const getMyPosts = this.baseUrl + 'api/posts';
-    return this.http.post(getMyPosts, { username: username })
-  }
-
+  getPostByCustomer(id) {
+    const getMyPosts = this.baseUrl + `api/posts/all/${id}`;
+    return this.http.get(getMyPosts).toPromise();
+  };
 
   customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
@@ -104,15 +84,15 @@ export class BackendService {
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })
-  }
+  };
 
   getCustomer(id) {
     const url = this.baseUrl + `api/customers/${id}`;
     return this.http.get(url).toPromise()
-  }
+  };
 
   editCustomer(data) {
-    const userUrl = this.baseUrl + `api/customers/${data.id}/edit`;
+    const userUrl = this.baseUrl + `api/customers/edit`;
     return this.http
       .put(userUrl, {
         username: data.username,
@@ -124,14 +104,12 @@ export class BackendService {
         email: data.email
       })
       .toPromise();
-  }
-
+  };
 
   getVendor(id) {
     const url = this.baseUrl + `api/vendors/${id}`;
     return this.http.get(url).toPromise();
-  }
-
+  };
 
   editVendor(vendor, id) {
     const vendorUrl = this.baseUrl + `api/vendors/${id}/edit`;
@@ -152,7 +130,7 @@ export class BackendService {
         license_number: vendor.license_number
       })
       .toPromise();
-  }
+  };
 
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';
@@ -160,7 +138,7 @@ export class BackendService {
       .then((resp) => {
         return this.auth.vendorLoginCheck(resp);
       })
-  }
+  };
 
   vendorReg(data) {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
@@ -182,6 +160,5 @@ export class BackendService {
       phone_number: data.phone_number,
       license_number: data.license_number
     }).toPromise();
-  }
-
-}
+  };
+};

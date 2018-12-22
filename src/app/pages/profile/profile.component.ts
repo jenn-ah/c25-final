@@ -60,16 +60,16 @@ export class ProfileComponent implements OnInit {
     }
     return this.backend.getVendor(this.urlId)
 
-  }
+  };
 
   vendorLogIn() {
     return this.session.getIsVendorLoggedIn();
-  }
+  };
 
   logout() {
     this.session.clearSession()
     this.isLoggedIn = false;
     this.loginPressed = false;
     return this.router.navigate([''])
-  }
-}
+  };
+};
