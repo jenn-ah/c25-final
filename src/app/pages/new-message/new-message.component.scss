@@ -1,10 +1,11 @@
 .field {
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 25px;
+  margin-left: 20px;
 }
 
 #message {
-  width: 300px;
+  width: 100%;
 }
 
 .message{
@@ -15,9 +16,14 @@
   color: black;
 }
 
+.name{
+  font-size: 19px;
+}
+
 input {
   padding: 5px;
   font-size: 12px;
+  width: 30%;
 }
 
 button {
@@ -26,4 +32,10 @@ button {
   border: 1px solid lightgrey;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.new-message-component{
+  margin-left: 15px; 
+  margin-top: 15px;
+  display: inline-block;
 }

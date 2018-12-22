@@ -11,6 +11,10 @@
 .messages{
     border: solid black;
     padding: 15px;
+    margin-left: 15px; 
+    margin-top: 15px;
+    width: 66%;
+     
 }
 
 .messages-component{
@@ -23,5 +27,5 @@
     overflow: hidden;
     margin-right: -10px;
     color: white;
-    font-size: 14pt;
+    font-size: 15px;
 }
