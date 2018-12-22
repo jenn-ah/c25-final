@@ -20,8 +20,10 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+
   const { title, customer_id, category_id, post_status_id, post_priority_id, photo, description, city, state, zip_code, budget, can_bid } = req.body;
   const parseZipcode = parseInt(zip_code);
+
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {
@@ -40,15 +42,15 @@ router.post('/', (req, res) => {
     return new Post({
       title,
       customer_id,
-      category_id, 
-      post_status_id, 
-      post_priority_id, 
+      category_id,
+      post_status_id,
+      post_priority_id,
       photo,
       description,
       city,
       state,
       zip_code: parseZipcode,
-      budget, 
+      budget,
       can_bid
     })
 
@@ -70,6 +72,7 @@ router.post('/', (req, res) => {
 router.get('/:id', (req, res) => {
 
   const getId = req.params;
+
   return new Post({ title: getId } || { id: getId })
     .fetch({
       require: true,
@@ -102,7 +105,9 @@ router.get('/all/:id', (req, res) => {
 });
 
 router.get('/:id/edit', (req, res) => {
+
   const getId = req.params.id;
+
   return new Post({ id: getId })
     .fetch({
       require: true,
@@ -119,8 +124,8 @@ router.get('/:id/edit', (req, res) => {
 });
 
 router.put('/:id/edit', (req, res) => {
-  const getId = req.params.id;
 
+  const getId = req.params.id;
   const { title, description, city, state, zip_code, budget, can_bid } = req.body;
 
   if (validator.isEmpty(title)) {

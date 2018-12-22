@@ -1,32 +1,45 @@
-.logout{
-    border: solid lightgrey;
-    border-radius: 10px;
-}
+ 
+.profile-customer {
+    background-image: url('../../../img/blurbg.png');
+    background-size: cover;
+    filter: contrast(0.9) brightness(.9);
+    width: 415px;
+    height: 737px;
+    overflow: hidden;
+    margin-right: -10px;
+    color: white;
+  }
 
-.logout-div{
-    position:absolute;
-    top:0;
-    right:0;
-}
+  .profileContent {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: black;
+      justify-content: center;
+      width: 300px;
+      margin: 120px auto 120px;
+      padding: 0 20px 20px;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+  }
 
-.profile-customer{
-    text-align: center;
-}
+  a {
+      text-decoration: none;
+      color: black;
+      text-transform: uppercase;
+  }
 
-.picture{
-    display: block;
-    border: black solid;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-    height: 100px;
-}
+  .profileTitle {
+      font-size: 16pt;
+      padding: 25px;
+  }
 
-.post-router{
-    text-decoration: none;
-    color: black;
-}
-
-.editBtn{
-    text-align: center
-}
+  .profileLinks {
+      margin-top: 15px;
+      padding: 10px;
+      justify-self: last baseline;
+  }

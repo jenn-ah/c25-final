@@ -1,18 +1,17 @@
-<div class="Customer-home">
-    <div class="custHome">
-        <div class="cust-posts" *ngFor="let post of posts">
-            <div name="post">
-                <h4 class="title"> {{post.title}} </h4>
-                <input type="hidden" name="id" [(ngModel)]="id" value="{{post.id}}">
-                    <img class="img" name="photo" (click)="fetchPostDetail(post.id)" src="{{post.photo}}">
-                    <b>description:</b> {{post.description}}
-                    <br>
-                    city: {{post.city}}
-                    state: {{post.state}}
-                    zipcode: {{post.zip_code}}
-                    budget: {{post.budget}}
-                    priority: {{post.postPriorityId.type}}
-                    created: {{post.created_at}}
-            </div>
-        </div>
+
+  <div class="custHome">
+    <div class="custPosts" *ngFor="let post of posts">
+      <div name="post">
+        <h4 class="title"> {{post.title}} </h4>
+        <input type="hidden" name="id" [(ngModel)]="id" value="{{post.id}}">
+        <img class="img" name="photo" (click)="fetchPostDetail(post.id)" src="{{post.photo}}">
+        description: {{post.description}}
+        city: {{post.city}}
+        state: {{post.state}}
+        zipcode: {{post.zip_code}}
+        budget: {{post.budget}}
+        priority: {{post.postPriorityId.type}}
+        created: {{post.created_at}}
+      </div>
     </div>
+  </div>

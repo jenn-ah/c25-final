@@ -50,6 +50,12 @@ export class BackendService {
     return this.http.get(url).toPromise()
   }
 
+  getVendorJobs() {
+    const vendorId = this.session.getVendorId();
+    const url = this.baseUrl + `api/vendors/jobs/${vendorId}`;
+    return this.http.get(url).toPromise();
+  }
+
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
     return this.http
@@ -67,6 +73,7 @@ export class BackendService {
   }
 
   createNewPost(data, customer) {
+
     const url = this.baseUrl + "api/posts";
     return this.http.post(url, {
       title: data.title,
@@ -91,9 +98,9 @@ export class BackendService {
   }
 
 
-  customerLogin(username, password, first_name, last_name) {
+  customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
-    return this.http.post(customerUrl, { username: username, password: password, first_name: first_name, last_name: last_name }).toPromise()
+    return this.http.post(customerUrl, { username: username, password: password }).toPromise()
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })

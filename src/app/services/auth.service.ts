@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SessionService } from './session.service';
-//import { BackendService } from './backend.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +7,6 @@ import { SessionService } from './session.service';
 export class AuthService {
   constructor(
     private session: SessionService,
-    //private backend: BackendService,
   ){}
 
   customerLoginCheck(customer){

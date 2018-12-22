@@ -1,15 +1,23 @@
-.Customer-home{
-    text-align: center; 
+.custHome {
+  background-image: url('../../../img/blurbg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 740px;
+  margin-right: -10px;
+  filter: contrast(0.9) brightness(.9);
 }
 
-.cust-cards{
- border: solid black;
- height: 100%;
- margin-bottom: 10px;
- border-radius: 10px;
-}
-
-.img{
-    width: 100px;
-    height: auto;
+.custPosts {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: black;
+  justify-content: center;
+  width: 415px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
 }

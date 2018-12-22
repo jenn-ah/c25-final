@@ -1,15 +1,21 @@
 <div class="profile-customer" *ngIf="customerLogIn()">
-    <h3 class="username"> {{ customer.username }} </h3>
-    <h3 class="Name"> {{ customer.first_name }} {{ customer.last_name }} </h3>
-    <img class="picture" src="https://vignette.wikia.nocookie.net/disney/images/9/96/Iron-Man-AOU-Render.png/revision/latest?cb=20150208173247">
-    City: {{ customer.city }} <br>
-    State: {{ customer.state }} <br>
-    Zip Code: {{ customer.zip_code }} <br>
-    <a class="post-router" routerLink="/posts"> {{customer.first_name}} Posts! </a>
-
-    <div class="logout-div">
-        <button class="logout"><a (click)="logout()">Logout</a></button>
-    </div>
+  <div class="profileContent">
+  <div class="profileTitle"> 
+    {{ customer.first_name }} {{ customer.last_name }} 
+  </div>
+  <div class="profileCity">
+    City: {{ customer.city }} 
+  </div>
+  <div class="profileState">
+    State: {{ customer.state }} 
+  </div>
+  <div class="profileZipcode">
+    Zip Code: {{ customer.zip_code }} 
+  </div>
+  <div class="profileLinks">
+  <a routerLink="/posts"> my posts | </a>
+  <a routerLink="/edit"> edit | </a>
+  <a (click)="logout()"> logout </a>
+  </div>
 </div>
-
-<div class="editBtn"><a routerLink="/edit">Edit</a></div>
+</div>

@@ -1,0 +1,47 @@
+.bg {
+  background-image: url('../../../img/blurbg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 415px;
+  height: 737px;
+  overflow: hidden;
+  margin-right: -10px;
+  background-color: darkgrey;
+}
+
+.vendorRegTitle {
+  font-size: 10pt;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: darkgrey;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #555555;
+  outline: none;
+  border-bottom: 1px solid darkgray;
+}
+
+.vendorForm {
+  font-family: Roboto;
+  border-radius: 10px;
+  margin-top: 15px;
+  color: #555555;
+  background: white;
+  width: 300px;
+  height: 575px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.submitBtn {
+  text-align: center;
+}
