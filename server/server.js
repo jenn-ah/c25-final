@@ -1,8 +1,6 @@
 require('dotenv').config()
 
 const express = require('express');
-const http = require('http');
-const api = require('./routes/messages');
 const app = express();
 const PORT = process.env.EXPRESS_HOST_PORT || 8989;
 const Customer = require("./db/Models/Customer");
@@ -12,6 +10,7 @@ const categoriesRouter = require('./routes/categories');
 const customersRouter = require('./routes/customers');
 const postsRouter = require('./routes/posts');
 const vendorsRouter = require('./routes/vendors');
+const messagesRouter = require('./routes/messages');
 
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
@@ -30,6 +29,7 @@ app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/vendors', vendorsRouter);
+app.use('/api/messages', messagesRouter);
 
 app.use(session({
   store: new redis({
@@ -125,15 +125,6 @@ app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRed
     return res.send(req.user);
   });
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
-app.use('/api', api);
-
-const server = http.createServer(app);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
