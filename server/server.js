@@ -19,8 +19,9 @@ const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const redis = require('connect-redis')(session);
+const path = require('path');
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname + 'public')));
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
