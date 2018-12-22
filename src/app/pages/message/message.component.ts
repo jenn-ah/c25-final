@@ -3,7 +3,6 @@ import { Message } from '../../message.service';
 import { MessageService } from '../../message.service';
 import { SessionService } from 'src/app/services/session.service';
 
-
 @Component({
     selector: 'app-messages',
     templateUrl: './message.component.html',
