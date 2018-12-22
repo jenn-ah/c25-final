@@ -16,3 +16,16 @@ h1{
     border-bottom: lightgrey solid;
     padding: 15px;
 }
+
+.page{
+    background-image: url('../../../img/blurbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: contrast(0.9) brightness(.9);
+    width: 415px;
+    height: 737px;
+    overflow: hidden;
+    margin-right: -10px;
+    color: white;
+    font-size: 14pt;
+}

@@ -8,7 +8,7 @@
     <input id="message" [(ngModel)]="message">
   </div>
 
-  <button (click)="newMessage(message, user)" class="btn btn-default">Send</button>
+  <button (click)="newMessage(message, user)" class="btn">Send</button>
 </div>
 
 <div class="new-message-component" *ngIf="isVendorLoggedIn()">
@@ -21,5 +21,5 @@
     <input id="message" [(ngModel)]="message">
   </div>
 
-  <button (click)="newMessageVendor(message, user)" class="btn btn-default">Send</button>
+  <button (click)="newMessageVendor(message, user)" class="btn">Send</button>
 </div>

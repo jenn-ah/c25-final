@@ -1,5 +1,5 @@
-<h1> Who Do You Wish To Message? </h1>
-<div *ngIf="isLoggedIn()">
+<div class="page" *ngIf="isLoggedIn()">
+    <h1> Who Do You Wish To Message? </h1>
     <div class="vendors">
         <div class="vendorOne" (click)="onClick()"> Annie Lagrimas </div>
         <div class="vendorTwo" (click)="onClick()"> Shadrach Lagrimas </div>
@@ -9,7 +9,8 @@
 
 </div>
 
-<div *ngIf="isVendorLoggedIn()">
+<div class="page" *ngIf="isVendorLoggedIn()">
+    <h1> Who Do You Wish To Message? </h1>
     <div class="customers">
         <div class="customerOne" (click)="onClick()"> Jane Doe </div>
         <div class="customerTwo" (click)="onClick()"> Shadrach Lagrimas </div>
