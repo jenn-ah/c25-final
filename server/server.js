@@ -26,11 +26,6 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use('/api/categories', categoriesRouter);
-app.use('/api/customers', customersRouter);
-app.use('/api/posts', postsRouter);
-app.use('/api/vendors', vendorsRouter);
-
 app.use(session({
   store: new redis({
     url: process.env.REDIS_URL,
@@ -48,28 +43,9 @@ passport.serializeUser((username, done) => {
   done(null, username)
 });
 
-passport.deserializeUser((username, cb) => {
-  return new Customer()
-    .where({ username: username })
-    .fetch()
-    .then((username) => {
-      if (!username) {
-        cb(null, 'pass');
-      }
-      cb(null, username);
-    });
-});
-
-passport.deserializeUser((username, cb) => {
-  return new Vendor()
-    .where({ username: username })
-    .fetch()
-    .then((username) => {
-      if (!username) {
-        cb(null, 'done');
-      }
-      cb(null, username);
-    });
+passport.deserializeUser((user, cb) => {
+  console.log('des pass user', user)
+  return cb(null, user);
 });
 
 passport.use('customerLocal', new LocalStrategy((username, password, done) => {
@@ -116,11 +92,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function (req, res) {
-<<<<<<< HEAD
-     res.send(req.user);
-=======
-    return res.send(req.user);
->>>>>>> development
+    res.send(req.user);
   }
 );
 
@@ -136,6 +108,11 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', api);
+app.use('/api/categories', categoriesRouter);
+app.use('/api/customers', customersRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/vendors', vendorsRouter);
+
 
 const server = http.createServer(app);
 

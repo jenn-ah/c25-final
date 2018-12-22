@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../services/backend.service'
+import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
-import { PostService } from '../../services/post.service'
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { PostService } from '../../services/post.service'
 })
 
 export class HeaderComponent implements OnInit {
-  post:any;
+  post: any;
   search: string;
   filter: Object[] = [];
   filterSearch: Object;
@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
     private backend: BackendService,
     private router: Router,
     private postService: PostService
-  ) { }
-  ngOnInit() { }
+  ) { };
+  ngOnInit() { };
 
   postSearch() {
     return this.backend.fetchPost(this.search)
@@ -28,11 +28,11 @@ export class HeaderComponent implements OnInit {
         this.search = '';
         return this.router.navigate(['/posts/resp', resp]);
       })
-  }
+  };
 
   categoriesEvent(event) {
     return this.router.navigate(['/categoryPostPage', event]);
-  }
+  };
 
   postSearcher() {
     let filterArray = []
@@ -40,13 +40,13 @@ export class HeaderComponent implements OnInit {
     if (this.search.toLowerCase) {
       let param = filterArray.filter((element) => {
         return element;
-      })
+      });
       return this.backend.fetchAllPosts(param)
 
         .then((resp) => {
           let postData = resp
           return this.router.navigate(['/postDetail/postData', postData]);
-        })
-    }
-  }
-}
+        });
+    };
+  };
+};

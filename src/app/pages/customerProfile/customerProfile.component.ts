@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../services/backend.service'
+import { BackendService } from '../../services/backend.service';
 import { SessionService } from '../../services/session.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
-    customer: Object;
+    customer: any;
 
     
   urlId: string;
@@ -32,17 +32,17 @@ export class CustomerProfileComponent implements OnInit {
     }
     return this.backend.getCustomer(this.urlId)
 
-  }
+  };
 
   customerLogIn() {
     return this.session.getIsLoggedIn();
-  }
+  };
 
   logout() {
     this.session.clearSession()
     this.isLoggedIn = false;
     this.loginPressed = false;
     return this.router.navigate([''])
-  }
+  };
 
-}
+};

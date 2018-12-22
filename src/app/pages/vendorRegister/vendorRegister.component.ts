@@ -36,7 +36,7 @@ export class VendorRegisterComponent {
       street_address: "",
       city: "",
       state: "",
-      zip_code:"",
+      zip_code: "",
       photo: "",
       website: "",
       description: "",
@@ -52,12 +52,12 @@ export class VendorRegisterComponent {
   createNewVendor() {
     event.preventDefault()
     return this.backend.vendorReg(this.newVendorForm)
-    .then((resp)=>{
-      return this.router.navigate(['/profile'])
-    })
-    .catch((err)=>{
-      return this.router.navigate(['/vendorRegister'])
-    })
-  }
+      .then((resp) => {
+        return this.router.navigate(['/profile'])
+      })
+      .catch((err) => {
+        return this.router.navigate(['/vendorRegister'])
+      })
+  };
 
-}
+};

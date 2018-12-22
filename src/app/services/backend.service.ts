@@ -3,40 +3,39 @@ import { HttpClient } from "@angular/common/http"
 import { AuthService } from "../services/auth.service"
 import { SessionService } from "../services/session.service"
 
-
 @Injectable({
   providedIn: "root"
 })
 export class BackendService {
   baseUrl: string = "http://localhost:4200/";
 
-  data:any;
+  data: any;
   constructor(
     private http: HttpClient,
     private auth: AuthService,
     private session: SessionService
   ) { }
 
-  fetchAllPosts(param){
+  fetchAllPosts(param) {
     const searchUrl = this.baseUrl + `api/posts/search/` + param;
-    return this.http.post(searchUrl, {title:param}).toPromise()
-  }
+    return this.http.post(searchUrl, { title: param }).toPromise()
+  };
 
   fetchPost(param) {
-    const searchUrl = this.baseUrl + `api/posts/`+param;
+    const searchUrl = this.baseUrl + `api/posts/` + param;
     return this.http.get(searchUrl).toPromise()
-  }
+  };
 
   getAllHomeItems() {
     const url = this.baseUrl + 'api/posts'
     return this.http.get(url).toPromise()
-  }
+  };
 
   getVendorJobs() {
     const vendorId = this.session.getVendorId();
     const url = this.baseUrl + `api/vendors/jobs/${vendorId}`;
     return this.http.get(url).toPromise();
-  }
+  };
 
   register(data) {
     const userUrl = this.baseUrl + `api/customers`;
@@ -52,7 +51,7 @@ export class BackendService {
         email: data.email
       })
       .toPromise();
-  }
+  };
 
   createNewPost(data, customer) {
 
@@ -72,13 +71,12 @@ export class BackendService {
       can_bid: data.can_bid,
       zip_code: data.zip_code,
     }).toPromise()
-  }
+  };
 
   getPostByCustomer(id) {
     const getMyPosts = this.baseUrl + `api/posts/all/${id}`;
     return this.http.get(getMyPosts).toPromise();
-  }
-
+  };
 
   customerLogin(username, password) {
     const customerUrl = this.baseUrl + "api/customer/login";
@@ -86,15 +84,15 @@ export class BackendService {
       .then((resp) => {
         return this.auth.customerLoginCheck(resp);
       })
-  }
+  };
 
   getCustomer(id) {
     const url = this.baseUrl + `api/customers/${id}`;
     return this.http.get(url).toPromise()
-  }
+  };
 
   editCustomer(data) {
-    const userUrl = this.baseUrl + `api/customers/${data.id}/edit`;
+    const userUrl = this.baseUrl + `api/customers/edit`;
     return this.http
       .put(userUrl, {
         username: data.username,
@@ -106,14 +104,12 @@ export class BackendService {
         email: data.email
       })
       .toPromise();
-  }
-
+  };
 
   getVendor(id) {
     const url = this.baseUrl + `api/vendors/${id}`;
     return this.http.get(url).toPromise();
-  }
-
+  };
 
   editVendor(vendor, id) {
     const vendorUrl = this.baseUrl + `api/vendors/${id}/edit`;
@@ -134,7 +130,7 @@ export class BackendService {
         license_number: vendor.license_number
       })
       .toPromise();
-  }
+  };
 
   vendorLogin(username, password) {
     const vendorUrl = this.baseUrl + 'api/vendors/login';
@@ -142,7 +138,7 @@ export class BackendService {
       .then((resp) => {
         return this.auth.vendorLoginCheck(resp);
       })
-  }
+  };
 
   vendorReg(data) {
     const vendorRegUrl = this.baseUrl + 'api/vendors/register';
@@ -164,8 +160,5 @@ export class BackendService {
       phone_number: data.phone_number,
       license_number: data.license_number
     }).toPromise();
-  }
-
-  
-  
-}
+  };
+};

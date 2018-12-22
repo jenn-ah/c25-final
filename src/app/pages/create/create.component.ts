@@ -15,7 +15,7 @@ export class CreateComponent {
         customer_id: number;
         category_id: number;
         post_priority_id: number;
-        post_status_id:number;
+        post_status_id: number;
         vendor_id: number;
         photo: string;
         city: string;
@@ -28,9 +28,9 @@ export class CreateComponent {
     } = {
             title: '',
             customer_id: this.session.getCustomer().id,
-            category_id:null,
+            category_id: null,
             post_priority_id: null,
-            post_status_id:null,
+            post_status_id: null,
             vendor_id: null,
             photo: null,
             city: '',
@@ -58,4 +58,4 @@ export class CreateComponent {
                 return this.router.navigate(['/error']);
             });
     }
-}
+};

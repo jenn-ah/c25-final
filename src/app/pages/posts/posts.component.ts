@@ -8,29 +8,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class PostsComponent implements OnInit {
-    posts:Object[]=[];
-    post:any;
-    
-    constructor(private backend: BackendService, 
+    posts: Object[] = [];
+    post: any;
+
+    constructor(private backend: BackendService,
         private router: Router,
         private route: ActivatedRoute) {
 
     }
 
-    ngOnInit() { 
+    ngOnInit() {
         let postId = this.route.snapshot.paramMap.get('id');
-    this.backend.getPostByCustomer(postId)
-      .then((resp:Object[]) => {
-          this.posts = resp;
-        return this.posts
-      })
-    }
+        this.backend.getPostByCustomer(postId)
+            .then((resp: Object[]) => {
+                this.posts = resp;
+                return this.posts
+            })
+    };
 
-    fetchPostDetail(id){
-     return this.backend.fetchPost(id)
-     .then((resp)=>{
-         this.post = resp
-         return this.router.navigate(['/postDetail/id', this.post])
-     });
+    fetchPostDetail(id) {
+        return this.backend.fetchPost(id)
+            .then((resp) => {
+                this.post = resp
+                return this.router.navigate(['/postDetail/id', this.post])
+            });
     }
-}
+};

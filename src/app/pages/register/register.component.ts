@@ -40,4 +40,4 @@ export class RegisterComponent {
         return this.router.navigate(['/error']);
       });
   }
-}
+};

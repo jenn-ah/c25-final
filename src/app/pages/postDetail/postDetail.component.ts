@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../services/backend.service'
+import { BackendService } from '../../services/backend.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -8,15 +8,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 
 export class PostDetailComponent implements OnInit {
-  posts:Object[];
-  post:any;
-  
+  posts: Object[];
+  post: any;
+
   constructor(
     private backend: BackendService,
     private router: Router,
     private route: ActivatedRoute,
   ) {
-  
+
     let postId = this.route.snapshot.paramMap.get('id');
     this.backend.fetchPost(postId)
       .then((resp) => {
@@ -26,8 +26,8 @@ export class PostDetailComponent implements OnInit {
       .catch((err) => {
         return this.router.navigate(['/home']);
       })
-  }
+  };
   ngOnInit() {
-  }
+  };
 
-}
+};

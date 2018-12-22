@@ -79,28 +79,28 @@ router.post('/', (req, res) => {
   };
 });
 
-
 router.get('/:id/edit', (req, res) => {
-
   const getId = parseInt(req.params.id);
-
+  
   return new Customer({ id: getId })
-    .fetch({
-      require: true,
-      columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
-    })
-    .then(customer => {
-      const custObj = customer.serialize();
-      return res.json(custObj);
-    })
-    .catch(err => {
-      return res.status(500).json({ message: err.message, code: err.code });
-    });
+  .fetch({
+    require: true,
+    columns: ['first_name', 'last_name', 'username', 'email', 'state', 'city', 'zip_code']
+  })
+  .then(customer => {
+    const custObj = customer.serialize();
+    return res.json(custObj);
+  })
+  .catch(err => {
+    return res.status(500).json({ message: err.message, code: err.code });
+  });
 });
 
 
-router.put('/:id/edit', (req, res) => {
-  const getId = parseInt(req.params.id);
+router.put('/edit', (req, res) => {
+  console.log('cust params',req.params)
+  console.log('cust route',req.user)
+  const getId = parseInt(req.user.id);
   const { first_name, last_name, username, email, state, city, zip_code } = req.body;
 
   if (!validator.isAlpha(first_name)) {

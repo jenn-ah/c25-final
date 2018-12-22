@@ -25,12 +25,11 @@ router.post('/search/:param', (req, res) => {
     .query('where', 'title', 'LIKE', `%${searchParams.param}%`)
     .fetch()
     .then(post => {
-      console.log('are you here', post)
-      if(!post){
+      if (!post) {
         return res.send('No post found')
-      }else{
-      const postObj = post.serialize();
-      return res.json(postObj);
+      } else {
+        const postObj = post.serialize();
+        return res.json(postObj);
       }
     })
     .catch(err => {
