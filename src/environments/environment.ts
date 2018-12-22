@@ -6,12 +6,11 @@
 // require('dotenv').config()
 
 // const IAM_KEY = process.env.key
-//It does not want to read my env key will do later.
 
 export const environment = {
   production: false,
   pusher: {
-    key: 'IAM_KEY',
+    key: "IAM_KEY",
   }
 };
 

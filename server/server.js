@@ -20,6 +20,8 @@ const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const redis = require('connect-redis')(session);
 
+app.use(express.static('public'));
+
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -48,84 +50,84 @@ passport.serializeUser((username, done) => {
 
 passport.deserializeUser((username, cb) => {
   return new Customer()
-  .where({ username: username })
-  .fetch()
-  .then((username) => {
-    if (!username) {
-      cb(null, 'pass');
-    }
-    cb(null, username);
-  });
+    .where({ username: username })
+    .fetch()
+    .then((username) => {
+      if (!username) {
+        cb(null, 'pass');
+      }
+      cb(null, username);
+    });
 });
 
 passport.deserializeUser((username, cb) => {
   return new Vendor()
-  .where({ username: username })
-  .fetch()
-  .then((username) => {
-    if (!username) {
-      cb(null, 'done');
-    }
-    cb(null, username);
-  });
+    .where({ username: username })
+    .fetch()
+    .then((username) => {
+      if (!username) {
+        cb(null, 'done');
+      }
+      cb(null, username);
+    });
 });
 
 passport.use('customerLocal', new LocalStrategy((username, password, done) => {
   new Customer()
-  .where({ username })
-  .fetch()
-  .then((user) => {
-    if (!user) {
-      return done(null, false, { message: `Incorrect username/password` });
-    }
-    else {
-      let customerObj = user.serialize();
-      bcrypt.compare(password, customerObj.password)
-      .then((res) => {
-        if (res === true) { return done(null, customerObj); }
-        else {
-          return done(null, false, { message: `Bad username/password` })
-        }
-      });
-    }
-  });
+    .where({ username })
+    .fetch()
+    .then((user) => {
+      if (!user) {
+        return done(null, false, { message: `Incorrect username/password` });
+      }
+      else {
+        let customerObj = user.serialize();
+        bcrypt.compare(password, customerObj.password)
+          .then((res) => {
+            if (res) { return done(null, customerObj); }
+            else {
+              return done(null, false, { message: `Bad username and/or password` });
+            }
+          });
+      }
+    });
 }));
 
 passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
   new Vendor()
-  .where({ username })
-  .fetch()
-  .then((vendor) => {
-    if (!vendor) {
-      return done(null, false, { message: `Incorrect username/password` });
-    }
-    else {
-      let vendorObj = vendor.serialize();
-      bcrypt.compare(password, vendorObj.password)
-      .then((res) => {
-        if (res === true) { return done(null, vendorObj); }
-        else {
-          return done(null, false, { message: `Bad username/password` })
-        }
-      });
-    }
-  });
+    .where({ username })
+    .fetch()
+    .then((vendor) => {
+      if (!vendor) {
+        return done(null, false, { message: `Incorrect username/password` });
+      }
+      else {
+        let vendorObj = vendor.serialize();
+        bcrypt.compare(password, vendorObj.password)
+          .then((res) => {
+            if (res) { return done(null, vendorObj); }
+            else {
+              return done(null, false, { message: `Bad username/password` });
+            }
+          });
+      }
+    });
 }));
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
-function (req, res) {
-  return res.send(req.user)
-}
+  function (req, res) {
+    return res.send(req.user);
+  }
 );
 
 app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRedirect: '' }),
-function (req, res) {
-  return res.send(req.user)
-});
+  function (req, res) {
+    return res.send(req.user);
+  });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 

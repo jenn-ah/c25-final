@@ -1,20 +1,136 @@
-div{
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+ 
+.landingPage {
+    background-image: url('../../../img/blurbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: contrast(0.9) brightness(.9);
+    width: 415px;
+    height: 737px;
+    overflow: hidden;
+    margin-right: -10px;
+    color: white;
+    font-size: 14pt;
+  }
   
+.bg {
+    display: inline-block;
   }
-  div.customer{
-    display: flex;
-    flex-flow: column;
-    margin: 30px;
+
+a {
+    text-decoration: none;
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: white;
+    padding: 5px;
   }
-  div.vendor{
-    display: flex;
-    flex-flow: column;
-    margin: 30px;
+
+div {
+  display: flex;
+  align-items: center;
   }
-  button{
+
+  .customerUsername {
+    margin-top: 25px;
+  }
+
+  .customerPassword {
+    margin-bottom: 25px; 
+  }
+
+  .customerLogin {
+    justify-content: center;
+    display: block;
+    width: 414px;
+    color: white;
+  }
+
+  .customerLoginNext {
+    justify-content: center;
+    color: white;
+    text-align: center;
+  }
+
+  .customerSign {
+    justify-content: center;
+    text-align: center;
+    padding: 15px 40px 40px 40px;
+  }
+
+  .vendorLogin {
+    display: block;
+    width: 414px;
+    color: white;
+    text-align: center;
+  }
+
+  .vendorLoginNext {
+    justify-content: center;
+    color: white;
+    text-align: center;
+    }
+
+  .vendorUsername {
+    margin-top: 25px;
+  }
+  
+  .vendorPassword {
+    margin-bottom: 25px; 
+  }
+
+  .vendorSign {
+    justify-content: center;
+    text-align: center;
+    padding: 15px 40px 40px 40px;
+  }
+  
+
+.custBtn {
+    border: none;
+    border-radius: 0%;
     font-size: 30px;
-    border-radius: 20px;
+    padding: 16px;
+    width: 100%;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+
+    &:hover {
+      border: none;
+      border-radius: 0%;
+      background-color: white;
+      color: #555555;
+    }
   }
+
+.vendorBtn {
+    border: none;
+    border-radius: 0%;
+    font-size: 30px;
+    padding: 16px;
+    width: 100%;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    
+    &:hover {
+      border: none;
+      border-radius: 0%;
+      background-color: white;
+      color: #555555;
+    }
+  }
+
+  button.submitBtn {
+    padding: 5px;
+    font-size: 12pt;
+    text-transform: uppercase;
+    background-color: transparent;
+  }
+
+input[type=text], input[type=password] {
+    text-align: center;
+    margin-bottom: 10px;
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-bottom: 1px solid white;
+  }
+

@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
+const VendorPost = require('../db/Models/VendorPost');
 const bcrypt = require('bcryptjs');
 const saltRounds = 12;
 
 
 router.post('/register', (req, res) => {
 
-  const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body
+  const { first_name, username, last_name, company_name, email, password, street_address, city, state, zip_code, photo, website, description, phone_number, license_number } = req.body;
   const parseZip = parseInt(zip_code);
   if (!validator.isAlpha(first_name)) {
     return res.status(400).json({ status: Error, message: 'Invalid first name' });
@@ -26,7 +27,7 @@ router.post('/register', (req, res) => {
     return res.status(400).json({ status: Error, message: 'Invalid city' });
   } else if (!validator.isAlpha(state) && (state.length !== 2)) {
     return res.status(400).json({ status: Error, message: 'Invalid state' });
-  } else if (!validator.isNumeric(zip_code) && (zip_code.length !== 5)) {
+  } else if (validator.isEmpty(zip_code) && (zip_code.length !== 5)) {
     return res.status(400).json({ status: Error, message: 'Invalid zip code' });
   } else if (!validator.isURL(website)) {
     return res.status(400).json({ status: Error, message: 'Invalid website' });
@@ -66,6 +67,26 @@ router.post('/register', (req, res) => {
   };
 });
 
+
+router.get('/jobs/:id', (req, res) => {
+  const vendorId = parseInt(req.params.id);
+
+  return new VendorPost({ vendor_id: vendorId })
+    .fetchAll({
+      require: true,
+      columns: ['id', 'post_id', 'vendor_id'],
+      withRelated: ['vendorId', 'postId']
+    })
+    .then(jobs => {
+      const results = jobs.toJSON();
+      return res.json(results);
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
 
@@ -77,11 +98,31 @@ router.get('/:id', (req, res) => {
     })
     .then(vendor => {
       if (!vendor) {
-        res.status(400).json({ message: `Vendor not found.` });
+        return res.status(400).json({ message: `Vendor not found.` });
       } else {
         const vendorObj = vendor.serialize();
         return res.json(vendorObj);
       }
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+});
+
+
+router.post('/jobs', (req, res) => {
+
+  const { post_id, vendor_id } = req.body;
+  const parsedPostId = parseInt(post_id);
+  const parsedVendorId = parseInt(vendor_id);
+
+  return new VendorPost({
+    post_id: parsedPostId,
+    vendor_id: parsedVendorId
+  })
+    .save()
+    .then(job => {
+      return res.json(job);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
