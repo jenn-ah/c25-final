@@ -8,8 +8,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 
 export class PostDetailComponent implements OnInit {
-  post:any
-  posts:{
+  posts:Object[]
+  post:{
     id: number,
     title: string,
     username:string,

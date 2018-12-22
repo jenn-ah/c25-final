@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../db/Models/Post');
-const Category = require('../db/Models/Category')
-const PostStatus = require('../db/Models/PostStatus')
-const PostPriority = require('../db/Models/PostPriority')
+const Category = require('../db/Models/Category');
+const PostStatus = require('../db/Models/PostStatus');
+const PostPriority = require('../db/Models/PostPriority');
 const validator = require('validator');
 
 router.get('/', (req, res) => {
@@ -19,16 +19,23 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/search/:param', (req, res)=>{
+router.post('/search/:param', (req, res)=>{
   const searchParams = req.params
-   return new Post()
-  .where({ title: searchParams.param })
-  .fetch({
-    require: true,
-    columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
-    withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
-  })
+  console.log(searchParams)
+    new Post(console.log(Post
+   .query('where', 'title', 'LIKE','%searchParams%')))
+   
+  .fetch(
+    // columns: ['title', 'id', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+    // withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
+  )
+  // .then((resp)=>{
+  //   console.log('refresh', resp)
+  //   return post.refresh(json(resp))
+  // })
+  
   .then(post => {
+    console.log('are you here',post)
     const postObj = post.serialize();
     return res.json(postObj);
   })

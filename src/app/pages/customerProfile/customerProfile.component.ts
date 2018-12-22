@@ -11,11 +11,10 @@ import { Router } from '@angular/router';
 export class CustomerProfileComponent implements OnInit {
     isLoggedIn: boolean = false;
     loginPressed: boolean = false;
-    customer: object;
+    customer: Object;
 
     constructor(private backend: BackendService, private router: Router, private session: SessionService) {
         this.customer = this.session.getCustomer();
-
     }
 
     ngOnInit() {

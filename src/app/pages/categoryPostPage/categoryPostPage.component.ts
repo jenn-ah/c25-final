@@ -9,7 +9,7 @@ import { PostService } from '../../services/post.service'
 })
 
 export class CategoryPostPage implements OnInit {
-posts:any;
+posts:Object[]=[];
 
   constructor(
     private backend: BackendService,

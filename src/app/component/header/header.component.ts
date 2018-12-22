@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../services/backend.service'
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service'
+import { IPost } from '../../interfaces/interfaces'
 
 @Component({
   selector: 'app-header',
@@ -10,23 +11,29 @@ import { PostService } from '../../services/post.service'
 })
 
 export class HeaderComponent implements OnInit {
-  post: {
-    id: number,
-    title: string,
-    description: string,
-    photo: string,
-    post_status: string,
-    post_priority: string,
-    city: string,
-    state: string,
-    zip_code: string,
-    email: string,
-    customer_id: string,
-    can_bid: boolean,
-    budget: number
+  post:IPost={
+    id: null,
+    first_name:'',
+    username:'',
+    category_id:null,
+    customerId:null,
+    title: '',
+    description: '',
+    photo: '',
+    post_status_id: null,
+    post_priority_id: null,
+    city: '',
+    state: '',
+    zip_code: null,
+    email: '',
+    customer_id: null,
+    can_bid: false,
+    budget: null,
+    created_at:null,
   };
   search: string;
   filter: Object[] = [];
+  filterSearch: Object[];
 
   constructor(
     private backend: BackendService,
@@ -47,5 +54,14 @@ categoriesEvent(event){
   return this.router.navigate(['/categoryPostPage',event]);
 }
 
+postSearcher(){
+  if(this.search.toLowerCase){
+    return this.filterSearch = this.backend.fetchAllPosts(this.search)
+  
+  .then((resp)=>{
+    return this.router.navigate(['/posts/resp', resp]);
+  })}
+  
+}
 
 }

@@ -99,19 +99,22 @@ export class BackendService {
       budget: null,
       can_bid: false
     }
-
+data:any;
   constructor(
     private http: HttpClient,
     private auth: AuthService,
     private session: SessionService
   ) { }
 
+  fetchAllPosts(param){
+    const searchUrl = this.baseUrl + `api/posts/search/` + param;
+    console.log(searchUrl)
+    return this.http.post(searchUrl, {title:param}).toPromise()
+  }
+
   fetchPost(param) {
     const searchUrl = this.baseUrl + `api/posts/`+param;
     return this.http.get(searchUrl).toPromise()
-    .then((resp)=>{
-      return resp
-    })
   }
 
   getVendor(id: number) {
@@ -203,5 +206,5 @@ export class BackendService {
   }
 
   
-
+  
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../../services/session.service'
+import { IPost } from '../../interfaces/interfaces'
 
 @Component({
     templateUrl: './posts.component.html',
@@ -9,39 +10,26 @@ import { SessionService } from '../../services/session.service'
 })
 
 export class PostsComponent implements OnInit {
-    posts:any;
-post:{
-    id:number,
-    title:string,
-    first_name:string,
-    category_id:number,
-    customer_id:number,
-    post_status_id:number,
-    post_priority: number,
-    photo:string,
-    description:string,
-    city:string,
-    state:string,
-    zip_code:number,
-    budget:number,
-    can_bid:boolean,
-    created_at:string,
-} = {
+    posts:Object[]=[];
+    post:  IPost = {
     id:null,
     title:'',
     first_name:'',
+    username:'',
     category_id:null,
     customer_id:null,
     post_status_id:null,
-    post_priority: null,
+    post_priority_id: null,
     photo:'',
     description:'',
+    email:'',
     city:'',
     state:'',
     zip_code:null,
     budget:null,
     can_bid: false,
     created_at:'',
+    customerId:null,
 }
     constructor(private backend: BackendService, 
         private router: Router,
@@ -57,13 +45,9 @@ post:{
           this.posts = resp;
         return this.posts
       })
-    //   .catch((err) => {
-    //     return this.router.navigate(['/home'])
-    //   })
     }
 
     fetchPostDetail(id){
-        //let postId = this.route.snapshot.paramMap.get('id');
      return this.backend.fetchPost(id)
      .then((resp)=>{
          this.post = resp
