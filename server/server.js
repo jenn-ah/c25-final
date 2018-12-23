@@ -1,4 +1,5 @@
 require('dotenv').config()
+const http= require('http')
 
 const express = require('express');
 const app = express();
@@ -107,7 +108,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api', api);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/customers', customersRouter);
 app.use('/api/posts', postsRouter);
@@ -116,6 +116,6 @@ app.use('/api/vendors', vendorsRouter);
 
 const server = http.createServer(app);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
