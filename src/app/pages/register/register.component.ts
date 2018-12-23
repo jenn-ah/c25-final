@@ -34,7 +34,7 @@ export class RegisterComponent {
     return this.backend
       .register(this.newCustomerForm)
       .then(() => {
-        return this.router.navigate(['/home']);
+        return this.router.navigate(['/']);
       })
       .catch(err => {
         return this.router.navigate(['/error']);

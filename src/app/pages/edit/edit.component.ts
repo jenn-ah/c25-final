@@ -66,7 +66,7 @@ export class EditComponent implements OnInit {
         return this.backend
             .editCustomer(this.data)
             .then(() => {
-                return this.router.navigate(['/']);
+                return this.router.navigate(['/profile']);
             })
             .catch(err => {
                 return this.router.navigate(['/error']);
