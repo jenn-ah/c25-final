@@ -127,7 +127,7 @@ export class BackendService {
   }
 
 
-  getVendor(id) {
+ getVendor(id) {
     const url = this.baseUrl + `api/vendors/${id}`;
     return this.http.get(url).toPromise();
   }

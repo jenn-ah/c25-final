@@ -77,7 +77,6 @@ router.post('/', (req, res) => {
   };
 });
 
-
 router.get('/:id/edit', (req, res) => {
 
   const getId = parseInt(req.params.id);
@@ -95,7 +94,6 @@ router.get('/:id/edit', (req, res) => {
       return res.status(500).json({ message: err.message, code: err.code });
     });
 });
-
 
 router.put('/:id/edit', (req, res) => {
   const getId = parseInt(req.params.id);
