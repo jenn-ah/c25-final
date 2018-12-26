@@ -4,20 +4,18 @@
 <div class="cust-cards" *ngFor="let post of posts">
     <div name="post" >
         <h4 class="title"> {{post.title}} </h4>
-        <h5 class="category_id">{{Category}}</h5>
-        <img class="img" src="{{post.photo}}">
+        <h5 class="category_id">Category:{{post.category_id}}</h5>
+        <input type="hidden" name="id" [(ngModel)]="id" value="{{post.id}}">
+        <img class="img" name="photo" (click)="fetchPostDetail(post.id)" src="{{post.photo}}">
         <div class="description"> description: {{post.description}}</div>
         <div class="city"> city: {{post.city}} </div>
         <div class="state"> state: {{post.state}} </div>
         <div class="zip_code">zipcode: {{post.zip_code}} </div>
-        <div class="price"> ${{post.price}} </div>
-        <div class="priotity_id">
-            <select name="priority_id" [(ngModel)]='priority_id'>
-                <option value="">Non-Emergent</option>
-                <option value="2">Emergency</option>
-            </select>
-        </div>
+        <div class="price">budget: ${{post.price}} </div>
+        <div class="priotity_id">priority: {{post.priority_id}}</div>
         <div class="post_status"> status: {{post.status}} </div>
         <div class="created_at"> created: {{post.created_at}}</div>
     </div>
 </div>
+
+

@@ -7,15 +7,14 @@ import { SessionService } from './session.service';
 export class AuthService {
   constructor(
     private session: SessionService,
-  ){}
+  ) { }
 
-  customerLoginCheck(customer){
+  customerLoginCheck(customer) {
     return this.session.setCustomerSession(customer);
-       
-     }
-  
 
-  vendorLoginCheck(vendor){
-      return this.session.setVendorSession(vendor);
-    }
-}
+  };
+
+  vendorLoginCheck(vendor) {
+    return this.session.setVendorSession(vendor);
+  }
+};

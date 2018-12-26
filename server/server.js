@@ -1,4 +1,5 @@
 require('dotenv').config()
+const http= require('http')
 
 const express = require('express');
 const app = express();
@@ -26,12 +27,6 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-app.use('/api/categories', categoriesRouter);
-app.use('/api/customers', customersRouter);
-app.use('/api/posts', postsRouter);
-app.use('/api/vendors', vendorsRouter);
-app.use('/api/messages', messagesRouter);
-
 app.use(session({
   store: new redis({
     url: process.env.REDIS_URL,
@@ -49,28 +44,9 @@ passport.serializeUser((username, done) => {
   done(null, username)
 });
 
-passport.deserializeUser((username, cb) => {
-  return new Customer()
-    .where({ username: username })
-    .fetch()
-    .then((username) => {
-      if (!username) {
-        cb(null, 'pass');
-      }
-      cb(null, username);
-    });
-});
-
-passport.deserializeUser((username, cb) => {
-  return new Vendor()
-    .where({ username: username })
-    .fetch()
-    .then((username) => {
-      if (!username) {
-        cb(null, 'done');
-      }
-      cb(null, username);
-    });
+passport.deserializeUser((user, cb) => {
+  console.log('des pass user', user)
+  return cb(null, user);
 });
 
 passport.use('customerLocal', new LocalStrategy((username, password, done) => {
@@ -117,7 +93,7 @@ passport.use('vendorLogin', new LocalStrategy((username, password, done) => {
 
 app.post('/api/customer/login', passport.authenticate('customerLocal', { failureRedirect: '' }),
   function (req, res) {
-    return res.send(req.user);
+    res.send(req.user);
   }
 );
 
@@ -126,7 +102,20 @@ app.post('/api/vendors/login', passport.authenticate('vendorLogin', { failureRed
     return res.send(req.user);
   });
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
-app.listen(PORT, () => {
+app.use('/api/categories', categoriesRouter);
+app.use('/api/customers', customersRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/vendors', vendorsRouter);
+
+
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });

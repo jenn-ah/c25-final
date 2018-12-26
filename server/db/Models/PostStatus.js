@@ -4,8 +4,8 @@ class PostStatus extends bookshelf.Model {
   get tableName() { return "post_statuses"; }
   get hasTimestamps() { return false; }
 
-  post_id(){
-    return this.belongsTo('Post', 'post_id')
+  post_id() {
+    return this.hasMany('Post', 'id')
   }
 }
 

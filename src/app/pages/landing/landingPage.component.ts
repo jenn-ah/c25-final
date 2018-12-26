@@ -28,12 +28,12 @@ export class LandingPageComponent implements OnInit {
   customerLoginBtnPress() {
     this.isVendor = false;
     return this.customerLoginPressed = true;
-  }
+  };
 
   vendorLoginBtnPress() {
     this.isCustomer = false;
     return this.vendorLoginPressed = true;
-  }
+  };
 
   customerLogin() {
     return this.backend.customerLogin(this.username, this.password)
@@ -43,18 +43,18 @@ export class LandingPageComponent implements OnInit {
      .catch(err => {
        return this.router.navigate(['/'])
      })
-  }
+  };
 
   vendorLogin() {
     return this.backend.vendorLogin(this.username, this.password)
   .then((resp)=> {
-    return this.router.navigate(["/home"]);
+    return this.router.navigate(['/home']);
   })
   .catch((err)=>{
     return this.router.navigate(['/'])
   })
-  }
+  };
 
 
 
-}
+};

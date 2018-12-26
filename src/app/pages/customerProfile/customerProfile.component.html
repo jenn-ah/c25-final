@@ -1,4 +1,13 @@
 <div class="profile-customer" *ngIf="customerLogIn()">
+    <h3 class="Name"> {{ customer.first_name }} {{ customer.last_name }} </h3>
+    City: {{ customer.city }} <br>
+    State: {{ customer.state }} <br>
+    Zip Code: {{ customer.zip_code }} <br>
+   <a class="post-router" routerLink='/posts/{{customer.id}}'> {{customer.first_name}} Posts!  </a>
+
+    <div class="logout-div">
+        <button class="logout"><a (click)="logout()">Logout</a></button>
+    </div>
   <div class="profileContent">
   <div class="profileTitle"> 
     {{ customer.first_name }} {{ customer.last_name }} 

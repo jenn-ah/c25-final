@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from "../../services/backend.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   templateUrl: './home.component.html',
@@ -8,23 +8,26 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  posts: object;
+  posts: Object[] = [];
   post: any;
-
   isAuthorized: boolean;
   hasAdminAccess: boolean;
   id: number;
-  constructor(private backend: BackendService, private router: Router) {
+  constructor(
+    private backend: BackendService,
+    private router: Router,
+    private route: ActivatedRoute) {
 
     this.backend.getAllHomeItems()
-      .then((data) => {
-        this.posts = data;
+      .then((data: Object[]) => {
+        return this.posts = data
       })
       .catch((err) => {
         return this.router.navigate(['/error']);
       })
   }
-  ngOnInit() { }
+
+  ngOnInit() { };
 
   fetchPostDetail(id) {
     return this.backend.fetchPost(id)
@@ -34,4 +37,4 @@ export class HomeComponent implements OnInit {
       });
   }
 
-}
+};

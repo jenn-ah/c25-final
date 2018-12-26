@@ -7,8 +7,8 @@ const PostPriority = require('../db/Models/PostPriority');
 const validator = require('validator');
 
 router.get('/', (req, res) => {
-
   return Post.fetchAll({
+    columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
     withRelated: ['categoryId', 'customerId', 'postStatusId', 'postPriorityId']
   })
     .then(posts => {
@@ -18,6 +18,24 @@ router.get('/', (req, res) => {
       return res.status(500).json({ message: err.message, code: err.code });
     });
 });
+
+router.post('/search/:param', (req, res) => {
+  const searchParams = req.params
+  new Post()
+    .query('where', 'title', 'LIKE', `%${searchParams.param}%`)
+    .fetch()
+    .then(post => {
+      if (!post) {
+        return res.send('No post found')
+      } else {
+        const postObj = post.serialize();
+        return res.json(postObj);
+      }
+    })
+    .catch(err => {
+      return res.status(500).json({ message: err.message, code: err.code });
+    });
+})
 
 router.post('/', (req, res) => {
 
@@ -53,10 +71,10 @@ router.post('/', (req, res) => {
       budget,
       can_bid
     })
-
       .save()
       .then(post => {
         return post.refresh({
+          columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
           withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
         });
       })
@@ -70,13 +88,11 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
-  const getId = req.params;
-
-  return new Post({ title: getId } || { id: getId })
+  const getId = req.params.id;
+  return new Post({ id: getId })
     .fetch({
       require: true,
-      columns: ['category_id', 'customer_id', 'id', 'title', 'post_status_id', 'post_priority_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid'],
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
       withRelated: ['customerId', 'postStatusId', 'postPriorityId', 'categoryId']
     })
     .then(post => {
@@ -90,14 +106,16 @@ router.get('/:id', (req, res) => {
 
 router.get('/all/:id', (req, res) => {
   const getId = parseInt(req.params.id);
-
   return new Post()
     .where({ customer_id: getId })
     .fetchAll({
+      require: true,
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
       withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId']
     })
     .then(posts => {
-      return res.json(posts);
+      const postObj = posts.serialize();
+      return res.json(postObj);
     })
     .catch(err => {
       return res.status(500).json({ message: err.message, code: err.code });
@@ -124,10 +142,8 @@ router.get('/:id/edit', (req, res) => {
 });
 
 router.put('/:id/edit', (req, res) => {
-
   const getId = req.params.id;
   const { title, description, city, state, zip_code, budget, can_bid } = req.body;
-
   if (validator.isEmpty(title)) {
     return res.status(400).json({ status: Error, message: 'Invalid title' });
   } else if (validator.isEmpty(description)) {
@@ -162,6 +178,20 @@ router.put('/:id/edit', (req, res) => {
       });
   }
 });
+
+router.get('/categories/:id', (req, res) => {
+  const catId = parseInt(req.params.id);
+  return new Post()
+    .where({ category_id: catId })
+    .fetchAll({
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+      withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId', 'vendorId']
+    })
+    .then(posts => {
+      const results = posts.toJSON();
+      return res.json(results);
+    })
+})
 
 
 module.exports = router;

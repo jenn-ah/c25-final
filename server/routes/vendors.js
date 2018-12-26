@@ -4,8 +4,8 @@ const validator = require('validator');
 const Vendor = require('../db/Models/Vendor');
 const VendorPost = require('../db/Models/VendorPost');
 const bcrypt = require('bcryptjs');
+const Post = require('../db/Models/Post');
 const saltRounds = 12;
-
 
 router.post('/register', (req, res) => {
 
@@ -67,7 +67,6 @@ router.post('/register', (req, res) => {
   };
 });
 
-
 router.get('/jobs/:id', (req, res) => {
   const vendorId = parseInt(req.params.id);
 
@@ -85,7 +84,6 @@ router.get('/jobs/:id', (req, res) => {
       return res.status(500).json({ message: err.message, code: err.code });
     });
 });
-
 
 router.get('/:id', (req, res) => {
   const getId = req.params.id;
@@ -109,7 +107,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
 router.post('/jobs', (req, res) => {
 
   const { post_id, vendor_id } = req.body;
@@ -129,7 +126,6 @@ router.post('/jobs', (req, res) => {
     });
 });
 
-
 router.get('/:id/edit', (req, res) => {
   const getId = req.params.id;
 
@@ -146,7 +142,6 @@ router.get('/:id/edit', (req, res) => {
       return res.status(500).json({ message: err.message, code: err.code });
     });
 });
-
 
 router.put('/:id/edit', (req, res) => {
   const getId = req.params.id;
