@@ -5,7 +5,7 @@ class PostPriority extends bookshelf.Model {
   get hasTimestamps() { return false; }
 
   post_priority_id() {
-    return this.belongsTo('Post', 'post_priority_id');
+    return this.hasMany('Post', 'post_priority_id');
   }
 
 }

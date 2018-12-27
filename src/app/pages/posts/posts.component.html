@@ -4,7 +4,7 @@
 <div class="cust-cards" *ngFor="let post of posts">
     <div name="post" >
         <h4 class="title"> {{post.title}} </h4>
-        <h5 class="category_id">Category:{{post.category_id}}</h5>
+        <h5 class="category_id">Category:{{post.categoryId.name}}</h5>
         <input type="hidden" name="id" [(ngModel)]="id" value="{{post.id}}">
         <img class="img" name="photo" (click)="fetchPostDetail(post.id)" src="{{post.photo}}">
         <div class="description"> description: {{post.description}}</div>

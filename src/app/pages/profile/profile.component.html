@@ -1,6 +1,6 @@
 <div class="profile-vendor" *ngIf="vendorLogIn()">
   <h3 class="company-name"> Works For: {{ vendorProfile.company_name }} </h3>
-  <img class="picture" src="http://static1.squarespace.com/static/53adb9cbe4b05e0d792c6c88/t/599f7c70d55b41248bc3229d/1521349651327/Fashion-Fine-Art-Photographer-Jingna-Zhang---Chinese-Singaporean-Profile-Portrait-2018.jpg">
+  <img class="picture" src="{{vendorProfile.photo}}">
   <h3 class="name"> {{ vendorProfile.first_name }} {{ vendorProfile.last_name }} </h3>
   <div class="info">
 

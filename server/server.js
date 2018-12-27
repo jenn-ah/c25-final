@@ -116,6 +116,6 @@ app.use('/api/vendors', vendorsRouter);
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });

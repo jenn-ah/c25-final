@@ -3,6 +3,7 @@ import { BackendService } from '../../services/backend.service';
 import { SessionService } from '../../services/session.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   templateUrl: './customerProfile.component.html',
@@ -21,17 +22,10 @@ export class CustomerProfileComponent implements OnInit {
 
   constructor(private backend: BackendService, private router: Router, private session: SessionService,
     private route: ActivatedRoute) {
-    this.customer = this.session.getCustomer()
   }
 
   ngOnInit() {
-    this.urlId = this.route.snapshot.paramMap.get('id');
-
-    if (this.urlId === `${this.customer.id}`) {
-      this.ownProfile = true;
-    }
-    return this.backend.getCustomer(this.urlId)
-
+    this.customer = this.session.getCustomer();
   };
 
   customerLogIn() {

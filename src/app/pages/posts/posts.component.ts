@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PostsComponent implements OnInit {
     posts: Object[] = [];
     post: any;
-
+    
     constructor(private backend: BackendService,
         private router: Router,
         private route: ActivatedRoute) {
@@ -22,6 +22,7 @@ export class PostsComponent implements OnInit {
         this.backend.getPostByCustomer(postId)
             .then((resp: Object[]) => {
                 this.posts = resp;
+                console.log(this.posts)
                 return this.posts
             })
     };

@@ -27,7 +27,8 @@ export class ProfileComponent implements OnInit {
     isLoggedIn: boolean,
     city: string,
     state: string,
-    zip_code: number
+    zip_code: number,
+    photo:string,
   } = {
       id: null,
       username: "",
@@ -42,6 +43,7 @@ export class ProfileComponent implements OnInit {
       city: "",
       state: "",
       zip_code: null,
+      photo:'',
     }
 
   ownProfile: boolean = false;
@@ -49,17 +51,16 @@ export class ProfileComponent implements OnInit {
 
   constructor(private backend: BackendService, private router: Router, private session: SessionService,
     private route: ActivatedRoute) {
-    this.vendorProfile = this.session.getVendor();
-  }
-
-  ngOnInit() {
-    this.urlId = this.route.snapshot.paramMap.get('id');
-
-    if (this.urlId === `${this.vendorProfile.id}`) {
-      this.ownProfile = true;
     }
-    return this.backend.getVendor(this.urlId)
-
+    
+    ngOnInit() {
+      let vendorId = this.session.getVendor();
+        this.backend.getVendor(vendorId.id)
+            .then((resp:{}) => {
+              console.log(resp)
+                this.vendorProfile = resp;
+                return this.vendorProfile
+            })
   };
 
   vendorLogIn() {

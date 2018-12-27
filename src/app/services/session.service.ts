@@ -38,7 +38,8 @@ export class SessionService {
     isLoggedIn: boolean,
     city: string,
     state: string,
-    zip_code: number
+    zip_code: number,
+    photo: string,
   } = {
       id: null,
       username: "",
@@ -53,6 +54,7 @@ export class SessionService {
       city: "",
       state: "",
       zip_code: null,
+      photo: '',
     }
 
   constructor() {
@@ -83,9 +85,9 @@ export class SessionService {
   };
 
   setVendorSession(vendor) {
-    this.vendor.id = vendor.id,
-      this.vendor.username = vendor.username
-    this.vendor.first_name = vendor.first_name,
+      this.vendor.id = vendor.id,
+      this.vendor.username = vendor.username,
+      this.vendor.first_name = vendor.first_name,
       this.vendor.last_name = vendor.last_name,
       this.vendor.phone_number = vendor.phone_number,
       this.vendor.email = vendor.email,
@@ -96,6 +98,7 @@ export class SessionService {
       this.vendor.city = vendor.city,
       this.vendor.state = vendor.state,
       this.vendor.zip_code = vendor.zip_code,
+      this.vendor.photo = vendor.photo,
       localStorage.setItem('vendor', JSON.stringify(this.vendor))
   };
 

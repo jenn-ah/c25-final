@@ -10,7 +10,7 @@ class Post extends bookshelf.Model {
   }
 
   categoryId() {
-    return this.hasOne('Category', 'id');
+    return this.belongsTo('Category', 'category_id', 'id');
   }
 
   postStatusId() {
@@ -18,11 +18,11 @@ class Post extends bookshelf.Model {
   }
 
   postPriorityId() {
-    return this.hasOne('PostPriority', 'id');
+    return this.belongsTo('PostPriority', 'post_priority_id', 'id');
   }
 
   vendorId() {
-    return this.hasOne('Vendor', 'id')
+    return this.belongsTo('Vendor', 'vendor_id', 'id')
   }
 }
 
