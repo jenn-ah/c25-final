@@ -10,7 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class PostDetailComponent implements OnInit {
   posts: Object[];
   post: any;
-
+  select: any;
   constructor(
     private backend: BackendService,
     private router: Router,
@@ -29,5 +29,15 @@ export class PostDetailComponent implements OnInit {
   };
   ngOnInit() {
   };
+
+  chosePost(param) {
+    return this.backend.vendorFetchPost(param)
+      .then((post) => {
+        this.post = post
+        console.log(this.post);
+
+      })
+  }
+
 
 };
