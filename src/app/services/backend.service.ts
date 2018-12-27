@@ -161,4 +161,10 @@ export class BackendService {
       license_number: data.license_number
     }).toPromise();
   };
+
+  vendorFetchPost(param){
+    console.log(param)
+    const chosePost= this.baseUrl + `api/posts/select`
+    return this.http.put(chosePost, {id:param}).toPromise()
+  }
 };

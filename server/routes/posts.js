@@ -193,5 +193,20 @@ router.get('/categories/:id', (req, res) => {
     })
 })
 
+router.put(`/select`, (req, res) => {
+  const postId = parseInt(req.body.id);
+  return new Post()
+    .where({ id: postId })
+    .fetch({
+      columns: ['id', 'title', 'category_id', 'customer_id', 'post_status_id', 'post_priority_id', 'vendor_id', 'photo', 'description', 'city', 'state', 'zip_code', 'budget', 'can_bid', 'created_at'],
+      withRelated: ['customerId', 'categoryId', 'postStatusId', 'postPriorityId', 'vendorId']
+    })
+    .then((post) => {
+      const venId = req.user.id
+      post.save({vendor_id: venId });
+      return res.json(post)
+    })
+  })
+  
 
 module.exports = router;

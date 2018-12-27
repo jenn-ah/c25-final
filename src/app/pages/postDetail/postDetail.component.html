@@ -1,6 +1,10 @@
 <div id="postDetailView">
 
+  <div id="vendorAssigned" *ngIf="post.vendorId">Vendor {{post.vendorId.company_name}} has made an offer.</div>
 <h2>{{post.title}}</h2>
+<div >
+  <button *ngIf="!post.vendorId" (click)="chosePost(post.id)">Select</button>
+</div>
 <div name="postStatus"><b>Post Status:</b>{{post.post_status_id}}</div>
 <div name="postPriority"><b>Post Priority:</b>{{post.post_priority_id}}</div>
 <img name="img" src={{post.photo}}>
@@ -12,6 +16,7 @@
 <div name="budget" ><b>Budget:</b> ${{post.budget}}</div>
 <div name="bidStatus" ><b>Email:</b>{{post.customerId.email}}</div>
 <div name="createdAt"><b>Uploaded Date:</b>{{post.created_at}}</div>
+<div name="id" hidden>{{post.id}}</div>
 </div>
 <div name="buttonDiv" >
 <button (click)="editPost()">Edit Post</button>
