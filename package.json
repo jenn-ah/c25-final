@@ -34,7 +34,7 @@
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
     "pg": "^7.7.1",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "validator": "^10.9.0",
